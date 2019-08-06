@@ -1,0 +1,11 @@
+site_name: Binance API Docs
+nav:
+    - SUMMARY: index.md
+    - MARKET DATA: web-socket-streams.md 
+    - REST API: rest-api.md
+    - WAPI: wapi-api.md
+    - USER DATA: user-data-stream.md
+    - MARGIN: margin-api.md
+    - ERROR INFO: errors.md
+     
+theme: readthedocs
