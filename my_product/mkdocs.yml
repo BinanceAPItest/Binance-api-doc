@@ -1,11 +1,16 @@
-site_name: Binance API Docs
+site_name: Exchange API Docs
 nav:
-    - SUMMARY: index.md
-    - MARKET DATA: web-socket-streams.md 
-    - REST API: rest-api.md
-    - WAPI: wapi-api.md
-    - USER DATA: user-data-stream.md
-    - MARGIN: margin-api.md
-    - ERROR INFO: errors.md
+    - GENERAL INFO: index.md
+    - WALLET ACCOUNT: account.md
+    - MARKET DATA: 
+        - Rest API: rest_Market_data.md 
+        - Web Socket Streams: wss_Market_data.md 
+    - SPOT ACCOUNT/TRADE: 
+        - Rest API: rest_spot.md
+        - Web Scoket Streams: wss_spot.md
+    - MARGIN TRADE: Margin.md
+    - ERROR INFO: error_info.md
      
-theme: readthedocs
+#theme: rtd-dropdown
+theme: windmill
+#extra_css: [extra.css]
