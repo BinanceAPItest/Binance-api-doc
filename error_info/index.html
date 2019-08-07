@@ -1,121 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
-    
-    <link rel="shortcut icon" href="../img/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>ERROR INFO - Exchange API Docs</title>
-    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
-    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
-    <link href="../css/base.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/highlight.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>ERROR INFO - Exchange API Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/bootstrap-3.3.7.min.js"></script>
-    <script src="../js/highlight.pack.js"></script>
-    
-    <base target="_top">
-    <script>
-      var base_url = '..';
-      var is_top_frame = false;
-        
-        var pageToc = [
-          {title: "10xx - General Server or Network issues", url: "#_top", children: [
-              {title: "-1000 UNKNOWN", url: "#-1000-unknown" },
-              {title: "-1001 DISCONNECTED", url: "#-1001-disconnected" },
-              {title: "-1002 UNAUTHORIZED", url: "#-1002-unauthorized" },
-              {title: "-1003 TOO_MANY_REQUESTS", url: "#-1003-too_many_requests" },
-              {title: "-1006 UNEXPECTED_RESP", url: "#-1006-unexpected_resp" },
-              {title: "-1007 TIMEOUT", url: "#-1007-timeout" },
-              {title: "-1014 UNKNOWN_ORDER_COMPOSITION", url: "#-1014-unknown_order_composition" },
-              {title: "-1015 TOO_MANY_ORDERS", url: "#-1015-too_many_orders" },
-              {title: "-1016 SERVICE_SHUTTING_DOWN", url: "#-1016-service_shutting_down" },
-              {title: "-1020 UNSUPPORTED_OPERATION", url: "#-1020-unsupported_operation" },
-              {title: "-1021 INVALID_TIMESTAMP", url: "#-1021-invalid_timestamp" },
-              {title: "-1022 INVALID_SIGNATURE", url: "#-1022-invalid_signature" },
-          ]},
-          {title: "11xx - Request issues", url: "#11xx-request-issues", children: [
-              {title: "-1100 ILLEGAL_CHARS", url: "#-1100-illegal_chars" },
-              {title: "-1101 TOO_MANY_PARAMETERS", url: "#-1101-too_many_parameters" },
-              {title: "-1102 MANDATORY_PARAM_EMPTY_OR_MALFORMED", url: "#-1102-mandatory_param_empty_or_malformed" },
-              {title: "-1103 UNKNOWN_PARAM", url: "#-1103-unknown_param" },
-              {title: "-1104 UNREAD_PARAMETERS", url: "#-1104-unread_parameters" },
-              {title: "-1105 PARAM_EMPTY", url: "#-1105-param_empty" },
-              {title: "-1106 PARAM_NOT_REQUIRED", url: "#-1106-param_not_required" },
-              {title: "-1111 BAD_PRECISION", url: "#-1111-bad_precision" },
-              {title: "-1112 NO_DEPTH", url: "#-1112-no_depth" },
-              {title: "-1114 TIF_NOT_REQUIRED", url: "#-1114-tif_not_required" },
-              {title: "-1115 INVALID_TIF", url: "#-1115-invalid_tif" },
-              {title: "-1116 INVALID_ORDER_TYPE", url: "#-1116-invalid_order_type" },
-              {title: "-1117 INVALID_SIDE", url: "#-1117-invalid_side" },
-              {title: "-1118 EMPTY_NEW_CL_ORD_ID", url: "#-1118-empty_new_cl_ord_id" },
-              {title: "-1119 EMPTY_ORG_CL_ORD_ID", url: "#-1119-empty_org_cl_ord_id" },
-              {title: "-1120 BAD_INTERVAL", url: "#-1120-bad_interval" },
-              {title: "-1121 BAD_SYMBOL", url: "#-1121-bad_symbol" },
-              {title: "-1125 INVALID_LISTEN_KEY", url: "#-1125-invalid_listen_key" },
-              {title: "-1127 MORE_THAN_XX_HOURS", url: "#-1127-more_than_xx_hours" },
-              {title: "-1128 OPTIONAL_PARAMS_BAD_COMBO", url: "#-1128-optional_params_bad_combo" },
-              {title: "-1130 INVALID_PARAMETER", url: "#-1130-invalid_parameter" },
-              {title: "-2010 NEW_ORDER_REJECTED", url: "#-2010-new_order_rejected" },
-              {title: "-2011 CANCEL_REJECTED", url: "#-2011-cancel_rejected" },
-              {title: "-2013 NO_SUCH_ORDER", url: "#-2013-no_such_order" },
-              {title: "-2014 BAD_API_KEY_FMT", url: "#-2014-bad_api_key_fmt" },
-              {title: "-2015 REJECTED_MBX_KEY", url: "#-2015-rejected_mbx_key" },
-              {title: "-2016 NO_TRADING_WINDOW", url: "#-2016-no_trading_window" },
-          ]},
-          {title: "Messages for -1010 ERROR_MSG_RECEIVED, -2010 NEW_ORDER_REJECTED, and -2011 CANCEL_REJECTED", url: "#messages-for-1010-error_msg_received-2010-new_order_rejected-and-2011-cancel_rejected", children: [
-          ]},
-          {title: "-9xxx Filter failures", url: "#-9xxx-filter-failures", children: [
-          ]},
-        ];
-
-    </script>
-    <script src="../js/base.js"></script> 
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "ERROR INFO";
+    var mkdocs_page_input_path = "error_info.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
 </head>
 
-<body>
-<script>
-if (is_top_frame) { $('body').addClass('wm-top-page'); }
-</script>
+<body class="wy-body-for-nav" role="document">
 
-
-
-<div class="container-fluid wm-page-content">
-  <a name="_top"></a>
-    
+  <div class="wy-grid-for-nav">
 
     
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Exchange API Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">GENERAL INFO</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../account/">WALLET ACCOUNT</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Market_Data/">MARKET DATA</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../spot/">SPOT ACCOUNT/TRADE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Margin/">MARGIN TRADE</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">ERROR INFO</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#10xx-general-server-or-network-issues">10xx - General Server or Network issues</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#-1000-unknown">-1000 UNKNOWN</a></li>
+        
+            <li><a class="toctree-l3" href="#-1001-disconnected">-1001 DISCONNECTED</a></li>
+        
+            <li><a class="toctree-l3" href="#-1002-unauthorized">-1002 UNAUTHORIZED</a></li>
+        
+            <li><a class="toctree-l3" href="#-1003-too_many_requests">-1003 TOO_MANY_REQUESTS</a></li>
+        
+            <li><a class="toctree-l3" href="#-1006-unexpected_resp">-1006 UNEXPECTED_RESP</a></li>
+        
+            <li><a class="toctree-l3" href="#-1007-timeout">-1007 TIMEOUT</a></li>
+        
+            <li><a class="toctree-l3" href="#-1014-unknown_order_composition">-1014 UNKNOWN_ORDER_COMPOSITION</a></li>
+        
+            <li><a class="toctree-l3" href="#-1015-too_many_orders">-1015 TOO_MANY_ORDERS</a></li>
+        
+            <li><a class="toctree-l3" href="#-1016-service_shutting_down">-1016 SERVICE_SHUTTING_DOWN</a></li>
+        
+            <li><a class="toctree-l3" href="#-1020-unsupported_operation">-1020 UNSUPPORTED_OPERATION</a></li>
+        
+            <li><a class="toctree-l3" href="#-1021-invalid_timestamp">-1021 INVALID_TIMESTAMP</a></li>
+        
+            <li><a class="toctree-l3" href="#-1022-invalid_signature">-1022 INVALID_SIGNATURE</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#11xx-request-issues">11xx - Request issues</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#-1100-illegal_chars">-1100 ILLEGAL_CHARS</a></li>
+        
+            <li><a class="toctree-l3" href="#-1101-too_many_parameters">-1101 TOO_MANY_PARAMETERS</a></li>
+        
+            <li><a class="toctree-l3" href="#-1102-mandatory_param_empty_or_malformed">-1102 MANDATORY_PARAM_EMPTY_OR_MALFORMED</a></li>
+        
+            <li><a class="toctree-l3" href="#-1103-unknown_param">-1103 UNKNOWN_PARAM</a></li>
+        
+            <li><a class="toctree-l3" href="#-1104-unread_parameters">-1104 UNREAD_PARAMETERS</a></li>
+        
+            <li><a class="toctree-l3" href="#-1105-param_empty">-1105 PARAM_EMPTY</a></li>
+        
+            <li><a class="toctree-l3" href="#-1106-param_not_required">-1106 PARAM_NOT_REQUIRED</a></li>
+        
+            <li><a class="toctree-l3" href="#-1111-bad_precision">-1111 BAD_PRECISION</a></li>
+        
+            <li><a class="toctree-l3" href="#-1112-no_depth">-1112 NO_DEPTH</a></li>
+        
+            <li><a class="toctree-l3" href="#-1114-tif_not_required">-1114 TIF_NOT_REQUIRED</a></li>
+        
+            <li><a class="toctree-l3" href="#-1115-invalid_tif">-1115 INVALID_TIF</a></li>
+        
+            <li><a class="toctree-l3" href="#-1116-invalid_order_type">-1116 INVALID_ORDER_TYPE</a></li>
+        
+            <li><a class="toctree-l3" href="#-1117-invalid_side">-1117 INVALID_SIDE</a></li>
+        
+            <li><a class="toctree-l3" href="#-1118-empty_new_cl_ord_id">-1118 EMPTY_NEW_CL_ORD_ID</a></li>
+        
+            <li><a class="toctree-l3" href="#-1119-empty_org_cl_ord_id">-1119 EMPTY_ORG_CL_ORD_ID</a></li>
+        
+            <li><a class="toctree-l3" href="#-1120-bad_interval">-1120 BAD_INTERVAL</a></li>
+        
+            <li><a class="toctree-l3" href="#-1121-bad_symbol">-1121 BAD_SYMBOL</a></li>
+        
+            <li><a class="toctree-l3" href="#-1125-invalid_listen_key">-1125 INVALID_LISTEN_KEY</a></li>
+        
+            <li><a class="toctree-l3" href="#-1127-more_than_xx_hours">-1127 MORE_THAN_XX_HOURS</a></li>
+        
+            <li><a class="toctree-l3" href="#-1128-optional_params_bad_combo">-1128 OPTIONAL_PARAMS_BAD_COMBO</a></li>
+        
+            <li><a class="toctree-l3" href="#-1130-invalid_parameter">-1130 INVALID_PARAMETER</a></li>
+        
+            <li><a class="toctree-l3" href="#-2010-new_order_rejected">-2010 NEW_ORDER_REJECTED</a></li>
+        
+            <li><a class="toctree-l3" href="#-2011-cancel_rejected">-2011 CANCEL_REJECTED</a></li>
+        
+            <li><a class="toctree-l3" href="#-2013-no_such_order">-2013 NO_SUCH_ORDER</a></li>
+        
+            <li><a class="toctree-l3" href="#-2014-bad_api_key_fmt">-2014 BAD_API_KEY_FMT</a></li>
+        
+            <li><a class="toctree-l3" href="#-2015-rejected_mbx_key">-2015 REJECTED_MBX_KEY</a></li>
+        
+            <li><a class="toctree-l3" href="#-2016-no_trading_window">-2016 NO_TRADING_WINDOW</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#messages-for-1010-error_msg_received-2010-new_order_rejected-and-2011-cancel_rejected">Messages for -1010 ERROR_MSG_RECEIVED, -2010 NEW_ORDER_REJECTED, and -2011 CANCEL_REJECTED</a></li>
+    
+
+    <li class="toctree-l2"><a href="#-9xxx-filter-failures">-9xxx Filter failures</a></li>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Exchange API Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
     
       
     
-
-  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
-    
-    <div class="wm-article-nav">
-      <a href="../Margin/" class="btn btn-xs btn-default pull-left">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../Margin/" class="btn btn-xs btn-link">
-        MARGIN TRADE
-      </a>
-    </div>
-    
-  </div>
-
-    
-
-    <p>Errors consist of two parts: an error code and a message. Codes are universal,
+    <li>ERROR INFO</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Errors consist of two parts: an error code and a message. Codes are universal,
  but messages can vary. Here is the error JSON payload:</p>
 <pre><code class="javascript">{
   &quot;code&quot;:-1121,
@@ -432,33 +528,48 @@ The following messages which will indicate the specific error:</p>
 </tr>
 </tbody>
 </table>
-
-  <br>
-    
-
-    
-    
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-    
-
-  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
-    
-    <div class="wm-article-nav">
-      <a href="../Margin/" class="btn btn-xs btn-default pull-left">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../Margin/" class="btn btn-xs btn-link">
-        MARGIN TRADE
-      </a>
+      
+        <a href="../Margin/" class="btn btn-neutral" title="MARGIN TRADE"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
     </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
     
   </div>
 
-    <br>
-</div>
-
-<footer class="col-md-12 wm-page-content">
-  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../Margin/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
 
 </body>
 </html>

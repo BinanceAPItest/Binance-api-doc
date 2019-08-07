@@ -1,107 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
-    
-    <link rel="shortcut icon" href="../img/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>MARGIN TRADE - Exchange API Docs</title>
-    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
-    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
-    <link href="../css/base.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/highlight.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>MARGIN TRADE - Exchange API Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/bootstrap-3.3.7.min.js"></script>
-    <script src="../js/highlight.pack.js"></script>
-    
-    <base target="_top">
-    <script>
-      var base_url = '..';
-      var is_top_frame = false;
-        
-        var pageToc = [
-          {title: "General endpoints", url: "#_top", children: [
-              {title: "Margin account transfer (MARGIN)", url: "#margin-account-transfer-margin" },
-              {title: "Margin account borrow (MARGIN)", url: "#margin-account-borrow-margin" },
-              {title: "Margin account repay (MARGIN)", url: "#margin-account-repay-margin" },
-              {title: "Margin account new order (TRADE)", url: "#margin-account-new-order-trade" },
-              {title: "Margin account cancel order (TRADE)", url: "#margin-account-cancel-order-trade" },
-              {title: "Query loan record (USER_DATA)", url: "#query-loan-record-user_data" },
-              {title: "Query repay record (USER_DATA)", url: "#query-repay-record-user_data" },
-              {title: "Query margin account details (USER_DATA)", url: "#query-margin-account-details-user_data" },
-              {title: "Query margin asset (MARKET_DATA)", url: "#query-margin-asset-market_data" },
-              {title: "Query margin pair (MARKET_DATA)", url: "#query-margin-pair-market_data" },
-              {title: "Query margin priceIndex (MARKET_DATA)", url: "#query-margin-priceindex-market_data" },
-              {title: "Query margin account's order (USER_DATA)", url: "#query-margin-accounts-order-user_data" },
-              {title: "Query margin account's open order (USER_DATA)", url: "#query-margin-accounts-open-order-user_data" },
-              {title: "Query margin account's all order (USER_DATA)", url: "#query-margin-accounts-all-order-user_data" },
-              {title: "Query margin account's trade list (USER_DATA)", url: "#query-margin-accounts-trade-list-user_data" },
-              {title: "Query max borrow (USER_DATA)", url: "#query-max-borrow-user_data" },
-              {title: "Query max transfer-out amount (USER_DATA)", url: "#query-max-transfer-out-amount-user_data" },
-              {title: "Start user data stream for margin account (USER_STREAM)", url: "#start-user-data-stream-for-margin-account-user_stream" },
-              {title: "Delete user data stream for margin account  (USER_STREAM)", url: "#delete-user-data-stream-for-margin-account-user_stream" },
-          ]},
-          {title: "Ping user data stream for margin account  (USER_STREAM)", url: "#ping-user-data-stream-for-margin-account-user_stream", children: [
-          ]},
-        ];
-
-    </script>
-    <script src="../js/base.js"></script> 
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "MARGIN TRADE";
+    var mkdocs_page_input_path = "Margin.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
 </head>
 
-<body>
-<script>
-if (is_top_frame) { $('body').addClass('wm-top-page'); }
-</script>
+<body class="wy-body-for-nav" role="document">
 
-
-
-<div class="container-fluid wm-page-content">
-  <a name="_top"></a>
-    
+  <div class="wy-grid-for-nav">
 
     
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Exchange API Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">GENERAL INFO</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../account/">WALLET ACCOUNT</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Market_Data/">MARKET DATA</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../spot/">SPOT ACCOUNT/TRADE</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">MARGIN TRADE</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#general-endpoints">General endpoints</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#margin-account-transfer-margin">Margin account transfer (MARGIN)</a></li>
+        
+            <li><a class="toctree-l3" href="#margin-account-borrow-margin">Margin account borrow (MARGIN)</a></li>
+        
+            <li><a class="toctree-l3" href="#margin-account-repay-margin">Margin account repay (MARGIN)</a></li>
+        
+            <li><a class="toctree-l3" href="#margin-account-new-order-trade">Margin account new order (TRADE)</a></li>
+        
+            <li><a class="toctree-l3" href="#margin-account-cancel-order-trade">Margin account cancel order (TRADE)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-loan-record-user_data">Query loan record (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-repay-record-user_data">Query repay record (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-margin-account-details-user_data">Query margin account details (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-margin-asset-market_data">Query margin asset (MARKET_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-margin-pair-market_data">Query margin pair (MARKET_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-margin-priceindex-market_data">Query margin priceIndex (MARKET_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-margin-accounts-order-user_data">Query margin account's order (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-margin-accounts-open-order-user_data">Query margin account's open order (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-margin-accounts-all-order-user_data">Query margin account's all order (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-margin-accounts-trade-list-user_data">Query margin account's trade list (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-max-borrow-user_data">Query max borrow (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-max-transfer-out-amount-user_data">Query max transfer-out amount (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#start-user-data-stream-for-margin-account-user_stream">Start user data stream for margin account (USER_STREAM)</a></li>
+        
+            <li><a class="toctree-l3" href="#delete-user-data-stream-for-margin-account-user_stream">Delete user data stream for margin account  (USER_STREAM)</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#ping-user-data-stream-for-margin-account-user_stream">Ping user data stream for margin account  (USER_STREAM)</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../error_info/">ERROR INFO</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Exchange API Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
     
       
     
-
-  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
-    
-    <div class="wm-article-nav pull-right">
-      <a href="../error_info/" class="btn btn-xs btn-default pull-right">
-        Next
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </a>
-      <a href="../error_info/" class="btn btn-xs btn-link">
-        ERROR INFO
-      </a>
-    </div>
-    
-    <div class="wm-article-nav">
-      <a href="../spot/" class="btn btn-xs btn-default pull-left">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../spot/" class="btn btn-xs btn-link">
-        SPOT ACCOUNT/TRADE
-      </a>
-    </div>
-    
-  </div>
-
-    
-
-    <h2 id="general-endpoints">General endpoints</h2>
+    <li>MARGIN TRADE</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="general-endpoints">General endpoints</h2>
 <h3 id="margin-account-transfer-margin">Margin account transfer (MARGIN)</h3>
 <pre><code>Post /sapi/v1/margin/transfer 
 </code></pre>
@@ -1315,43 +1375,52 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><strong>Response:</strong></p>
 <pre><code class="javascript">{}
 </code></pre>
-
-  <br>
-    
-
-    
-    
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-    
+        <a href="../error_info/" class="btn btn-neutral float-right" title="ERROR INFO">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../spot/" class="btn btn-neutral" title="SPOT ACCOUNT/TRADE"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
-    
-    <div class="wm-article-nav pull-right">
-      <a href="../error_info/" class="btn btn-xs btn-default pull-right">
-        Next
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </a>
-      <a href="../error_info/" class="btn btn-xs btn-link">
-        ERROR INFO
-      </a>
-    </div>
-    
-    <div class="wm-article-nav">
-      <a href="../spot/" class="btn btn-xs btn-default pull-left">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../spot/" class="btn btn-xs btn-link">
-        SPOT ACCOUNT/TRADE
-      </a>
-    </div>
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
     
   </div>
 
-    <br>
-</div>
-
-<footer class="col-md-12 wm-page-content">
-  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../spot/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../error_info/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
 
 </body>
 </html>

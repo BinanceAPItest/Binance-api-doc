@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Filters - Exchange API Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Filters";
+    var mkdocs_page_input_path = "GI_Filters.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Exchange API Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">GENERAL INFO</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../account/">WALLET ACCOUNT</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Market_Data/">MARKET DATA</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../spot/">SPOT ACCOUNT/TRADE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Margin/">MARGIN TRADE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../error_info/">ERROR INFO</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Exchange API Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Filters</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="filters">Filters</h1>
+<p>Filters define trading rules on a symbol or an exchange.
+Filters come in two forms: <code>symbol filters</code> and <code>exchange filters</code>.</p>
+<h2 id="symbol-filters">Symbol Filters</h2>
+<h3 id="price_filter">PRICE_FILTER</h3>
+<p>The <code>PRICE_FILTER</code> defines the <code>price</code> rules for a symbol. There are 3 parts:</p>
+<ul>
+<li><code>minPrice</code> defines the minimum <code>price</code>/<code>stopPrice</code> allowed; disabled on <code>minPrice</code> == 0.</li>
+<li><code>maxPrice</code> defines the maximum <code>price</code>/<code>stopPrice</code> allowed; disabled on <code>maxPrice</code> == 0.</li>
+<li><code>tickSize</code> defines the intervals that a <code>price</code>/<code>stopPrice</code> can be increased/decreased by; disabled on <code>tickSize</code> == 0.</li>
+</ul>
+<p>Any of the above variables can be set to 0, which disables that rule in the <code>price filter</code>. In order to pass the <code>price filter</code>, the following must be true for <code>price</code>/<code>stopPrice</code> of the enabled rules:</p>
+<ul>
+<li><code>price</code> &gt;= <code>minPrice</code> </li>
+<li><code>price</code> &lt;= <code>maxPrice</code></li>
+<li>(<code>price</code>-<code>minPrice</code>) % <code>tickSize</code> == 0</li>
+</ul>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;PRICE_FILTER&quot;,
+    &quot;minPrice&quot;: &quot;0.00000100&quot;,
+    &quot;maxPrice&quot;: &quot;100000.00000000&quot;,
+    &quot;tickSize&quot;: &quot;0.00000100&quot;
+  }
+</code></pre>
+
+<h3 id="percent_price">PERCENT_PRICE</h3>
+<p>The <code>PERCENT_PRICE</code> filter defines valid range for a price based on the average of the previous trades.
+<code>avgPriceMins</code> is the number of minutes the average price is calculated over. 0 means the last price is used.</p>
+<p>In order to pass the <code>percent price</code>, the following must be true for <code>price</code>:
+* <code>price</code> &lt;= <code>weightedAveragePrice</code> * <code>multiplierUp</code>
+* <code>price</code> &gt;= <code>weightedAveragePrice</code> * <code>multiplierDown</code></p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;PERCENT_PRICE&quot;,
+    &quot;multiplierUp&quot;: &quot;1.3000&quot;,
+    &quot;multiplierDown&quot;: &quot;0.7000&quot;,
+    &quot;avgPriceMins&quot;: 5
+  }
+</code></pre>
+
+<h3 id="lot_size">LOT_SIZE</h3>
+<p>The <code>LOT_SIZE</code> filter defines the <code>quantity</code> (aka "lots" in auction terms) rules for a symbol. There are 3 parts:</p>
+<ul>
+<li><code>minQty</code> defines the minimum <code>quantity</code>/<code>icebergQty</code> allowed.</li>
+<li><code>maxQty</code> defines the maximum <code>quantity</code>/<code>icebergQty</code> allowed.</li>
+<li><code>stepSize</code> defines the intervals that a <code>quantity</code>/<code>icebergQty</code> can be increased/decreased by.</li>
+</ul>
+<p>In order to pass the <code>lot size</code>, the following must be true for <code>quantity</code>/<code>icebergQty</code>:</p>
+<ul>
+<li><code>quantity</code> &gt;= <code>minQty</code></li>
+<li><code>quantity</code> &lt;= <code>maxQty</code></li>
+<li>(<code>quantity</code>-<code>minQty</code>) % <code>stepSize</code> == 0</li>
+</ul>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;LOT_SIZE&quot;,
+    &quot;minQty&quot;: &quot;0.00100000&quot;,
+    &quot;maxQty&quot;: &quot;100000.00000000&quot;,
+    &quot;stepSize&quot;: &quot;0.00100000&quot;
+  }
+</code></pre>
+
+<h3 id="min_notional">MIN_NOTIONAL</h3>
+<p>The <code>MIN_NOTIONAL</code> filter defines the minimum notional value allowed for an order on a symbol.
+An order's notional value is the <code>price</code> * <code>quantity</code>.
+<code>applyToMarket</code> determines whether or not the <code>MIN_NOTIONAL</code> filter will also be applied to <code>MARKET</code> orders.
+Since <code>MARKET</code> orders have no price, the average price is used over the last <code>avgPriceMins</code> minutes.
+<code>avgPriceMins</code> is the number of minutes the average price is calculated over. 0 means the last price is used.</p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;MIN_NOTIONAL&quot;,
+    &quot;minNotional&quot;: &quot;0.00100000&quot;,
+    &quot;applyToMarket&quot;: true,
+    &quot;avgPriceMins&quot;: 5
+  }
+</code></pre>
+
+<h3 id="iceberg_parts">ICEBERG_PARTS</h3>
+<p>The <code>ICEBERG_PARTS</code> filter defines the maximum parts an iceberg order can have. The number of <code>ICEBERG_PARTS</code> is defined as <code>CEIL(qty / icebergQty)</code>.</p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;ICEBERG_PARTS&quot;,
+    &quot;limit&quot;: 10
+  }
+</code></pre>
+
+<h3 id="market_lot_size">MARKET_LOT_SIZE</h3>
+<p>The <code>MARKET_LOT_SIZE</code> filter defines the <code>quantity</code> (aka "lots" in auction terms) rules for <code>MARKET</code> orders on a symbol. There are 3 parts:</p>
+<ul>
+<li><code>minQty</code> defines the minimum <code>quantity</code> allowed.</li>
+<li><code>maxQty</code> defines the maximum <code>quantity</code> allowed.</li>
+<li><code>stepSize</code> defines the intervals that a <code>quantity</code> can be increased/decreased by.</li>
+</ul>
+<p>In order to pass the <code>market lot size</code>, the following must be true for <code>quantity</code>:</p>
+<ul>
+<li><code>quantity</code> &gt;= <code>minQty</code></li>
+<li><code>quantity</code> &lt;= <code>maxQty</code></li>
+<li>(<code>quantity</code>-<code>minQty</code>) % <code>stepSize</code> == 0</li>
+</ul>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;MARKET_LOT_SIZE&quot;,
+    &quot;minQty&quot;: &quot;0.00100000&quot;,
+    &quot;maxQty&quot;: &quot;100000.00000000&quot;,
+    &quot;stepSize&quot;: &quot;0.00100000&quot;
+  }
+</code></pre>
+
+<h3 id="max_num_orders">MAX_NUM_ORDERS</h3>
+<p>The <code>MAX_NUM_ORDERS</code> filter defines the maximum number of orders an account is allowed to have open on a symbol.
+Note that both "algo" orders and normal orders are counted for this filter.</p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;MAX_NUM_ORDERS&quot;,
+    &quot;limit&quot;: 25
+  }
+</code></pre>
+
+<h3 id="max_num_algo_orders">MAX_NUM_ALGO_ORDERS</h3>
+<p>The <code>MAX_NUM_ALGO_ORDERS</code> filter defines the maximum number of "algo" orders an account is allowed to have open on a symbol.
+"Algo" orders are <code>STOP_LOSS</code>, <code>STOP_LOSS_LIMIT</code>, <code>TAKE_PROFIT</code>, and <code>TAKE_PROFIT_LIMIT</code> orders.</p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;MAX_NUM_ALGO_ORDERS&quot;,
+    &quot;maxNumAlgoOrders&quot;: 5
+  }
+</code></pre>
+
+<h3 id="max_num_iceberg_orders">MAX_NUM_ICEBERG_ORDERS</h3>
+<p>The <code>MAX_NUM_ICEBERG_ORDERS</code> filter defines the maximum number of <code>ICEBERG</code> orders an account is allowed to have open on a symbol.
+An <code>ICEBERG</code> order is any order where the <code>icebergQty</code> is &gt; 0.</p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;MAX_NUM_ICEBERG_ORDERS&quot;,
+    &quot;maxNumIcebergOrders&quot;: 5
+  }
+</code></pre>
+
+<h2 id="exchange-filters">Exchange Filters</h2>
+<h3 id="exchange_max_num_orders">EXCHANGE_MAX_NUM_ORDERS</h3>
+<p>The <code>MAX_NUM_ORDERS</code> filter defines the maximum number of orders an account is allowed to have open on the exchange.
+Note that both "algo" orders and normal orders are counted for this filter.</p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;EXCHANGE_MAX_NUM_ORDERS&quot;,
+    &quot;maxNumOrders&quot;: 1000
+  }
+</code></pre>
+
+<h3 id="exchange_max_num_algo_orders">EXCHANGE_MAX_NUM_ALGO_ORDERS</h3>
+<p>The <code>MAX_ALGO_ORDERS</code> filter defines the maximum number of "algo" orders an account is allowed to have open on the exchange.
+"Algo" orders are <code>STOP_LOSS</code>, <code>STOP_LOSS_LIMIT</code>, <code>TAKE_PROFIT</code>, and <code>TAKE_PROFIT_LIMIT</code> orders.</p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;EXCHANGE_MAX_ALGO_ORDERS&quot;,
+    &quot;maxNumAlgoOrders&quot;: 200
+  }
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

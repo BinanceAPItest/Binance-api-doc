@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>General API Information - Exchange API Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "General API Information";
+    var mkdocs_page_input_path = "GI_api_info_limits.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Exchange API Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">GENERAL INFO</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../account/">WALLET ACCOUNT</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Market_Data/">MARKET DATA</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../spot/">SPOT ACCOUNT/TRADE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Margin/">MARGIN TRADE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../error_info/">ERROR INFO</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Exchange API Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>General API Information</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="general-api-information">General API Information</h1>
+<ul>
+<li>The base endpoint is: <strong>https://api.binance.com</strong></li>
+<li>All endpoints return either a JSON object or array.</li>
+<li>Data is returned in <strong>ascending</strong> order. Oldest first, newest last.</li>
+<li>All time and timestamp related fields are in milliseconds.</li>
+<li>HTTP <code>4XX</code> return codes are used for for malformed requests;
+  the issue is on the sender's side.</li>
+<li>HTTP <code>429</code> return code is used when breaking a request rate limit.</li>
+<li>HTTP <code>418</code> return code is used when an IP has been auto-banned for continuing to send requests after receiving <code>429</code> codes.</li>
+<li>HTTP <code>5XX</code> return codes are used for internal errors; the issue is on
+  Binance's side.
+  And When using <code>/wapi/v3</code> , HTTP <code>504</code> return code is used when the API successfully sent the message
+but not get a response within the timeout period.
+  It is important to <strong>NOT</strong> treat this as a failure operation; the execution status is
+  <strong>UNKNOWN</strong> and could have been a success.</li>
+<li>When using <code>/api/v1</code> and <code>/sapi/v1/margin</code>, any endpoint can return an ERROR; the error payload is as follows:</li>
+</ul>
+<pre><code class="javascript">{
+  &quot;code&quot;: -1121,
+  &quot;msg&quot;: &quot;Invalid symbol.&quot;
+}
+</code></pre>
+
+<ul>
+<li>When using <code>/wapi/v3</code>, any endpoint can retun an ERROR; the error payload is as follows:</li>
+</ul>
+<pre><code class="javascript">{
+  &quot;success&quot;: false,
+  &quot;msg&quot;: &quot;Invalid symbol.&quot;
+}
+</code></pre>
+
+<ul>
+<li>Specific error codes and messages defined in another document.</li>
+<li>For <code>GET</code> endpoints, parameters must be sent as a <code>query string</code>.</li>
+<li>For <code>POST</code>, <code>PUT</code>, and <code>DELETE</code> endpoints, the parameters may be sent as a
+  <code>query string</code> or in the <code>request body</code> with content type
+  <code>application/x-www-form-urlencoded</code>. You may mix parameters between both the
+  <code>query string</code> and <code>request body</code> if you wish to do so.</li>
+<li>Parameters may be sent in any order.</li>
+<li>If a parameter sent in both the <code>query string</code> and <code>request body</code>, the
+  <code>query string</code> parameter will be used.</li>
+</ul>
+<h1 id="limits">LIMITS</h1>
+<ul>
+<li>The <code>/api/v1/exchangeInfo</code> <code>rateLimits</code> array contains objects related to the exchange's <code>RAW_REQUEST</code>, <code>REQUEST_WEIGHT</code>, and <code>ORDER</code> rate limits. These are further defined in the <code>ENUM definitions</code> section under <code>Rate limiters (rateLimitType)</code>.</li>
+<li>The <code>/wapi/v3</code> <code>rateLimits</code> array contains objects related to the exchange's <code>REQUESTS</code> and <code>ORDER</code> rate limits.</li>
+<li>A 429 will be returned when either rate limit is violated.</li>
+<li>Each route has a <code>weight</code> which determines for the number of requests each endpoint counts for. Heavier endpoints and endpoints that do operations on multiple symbols will have a heavier <code>weight</code>.</li>
+<li>Every request will contain a <code>X-MBX-USED-WEIGHT</code> header which has the current used weight for the IP for the current minute.</li>
+<li>When a 429 is recieved, it's your obligation as an API to back off and not spam the API.</li>
+<li><strong>Repeatedly violating rate limits and/or failing to back off after receiving 429s will result in an automated IP ban (http status 418).</strong></li>
+<li>IP bans are tracked and <strong>scale in duration</strong> for repeat offenders, <strong>from 2 minutes to 3 days</strong>.</li>
+<li>A <code>Retry-After</code> header is sent with a 418 or 429 responses and will give the <strong>number of seconds</strong> required to wait, in the case of a 418, to prevent a ban, or, in the case of a 429, until the ban is over.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Public WAPI for Binance (2018-07-18) - Exchange API Docs</title>
+  <title>WA wapi - Exchange API Docs</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,8 +17,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Public WAPI for Binance (2018-07-18)";
-    var mkdocs_page_input_path = "wapi-api.md";
+    var mkdocs_page_name = "WA wapi";
+    var mkdocs_page_input_path = "WA_wapi.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -100,7 +100,7 @@
     
       
     
-    <li>Public WAPI for Binance (2018-07-18)</li>
+    <li>WA wapi</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -110,206 +110,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="public-wapi-for-binance-2018-07-18">Public WAPI for Binance (2018-07-18)</h1>
-<h1 id="general-api-information">General API Information</h1>
-<ul>
-<li>The base endpoint is: <strong>https://api.binance.com</strong></li>
-<li>All endpoints return either a JSON object or array.</li>
-<li>Data is returned in <strong>ascending</strong> order. Oldest first, newest last.</li>
-<li>All time and timestamp related fields are in milliseconds.</li>
-<li>HTTP <code>4XX</code> return codes are used for for malformed requests;
-  the issue is on the sender's side.</li>
-<li>HTTP <code>429</code> return code is used when breaking a request rate limit.</li>
-<li>HTTP <code>418</code> return code is used when an IP has been auto-banned for continuing to send requests after receiving <code>429</code> codes.</li>
-<li>HTTP <code>5XX</code> return codes are used for internal errors; the issue is on
-  Binance's side.</li>
-<li>HTTP <code>504</code> return code is used when the API successfully sent the message
-but not get a response within the timeout period.
-It is important to <strong>NOT</strong> treat this as a failure; the execution status is
-<strong>UNKNOWN</strong> and could have been a success.</li>
-<li>Any endpoint can retun an ERROR; the error payload is as follows:</li>
-</ul>
-<pre><code class="javascript">{
-  &quot;success&quot;: false,
-  &quot;msg&quot;: &quot;Invalid symbol.&quot;
-}
-</code></pre>
-
-<ul>
-<li>Specific error codes and messages defined in another document.</li>
-<li>For <code>GET</code> endpoints, parameters must be sent as a <code>query string</code>.</li>
-<li>For <code>POST</code>, <code>PUT</code>, and <code>DELETE</code> endpoints, the parameters may be sent as a
-  <code>query string</code> or in the <code>request body</code> with content type
-  <code>application/x-www-form-urlencoded</code>. You may mix parameters between both the
-  <code>query string</code> and <code>request body</code> if you wish to do so.</li>
-<li>Parameters may be sent in any order.</li>
-<li>If a parameter sent in both the <code>query string</code> and <code>request body</code>, the
-  <code>query string</code> parameter will be used.</li>
-</ul>
-<h1 id="limits">LIMITS</h1>
-<ul>
-<li>The <code>/wapi/v3</code> <code>rateLimits</code> array contains objects related to the exchange's <code>REQUESTS</code> and <code>ORDER</code> rate limits.</li>
-<li>A 429 will be returned when either rather limit is violated.</li>
-<li>Each route has a <code>weight</code> which determines for the number of requests each endpoint counts for. Heavier endpoints and endpoints that do operations on multiple symbols will have a heavier <code>weight</code>.</li>
-<li>When a 429 is recieved, it's your obligation as an API to back off and not spam the API.</li>
-<li><strong>Repeatedly violating rate limits and/or failing to back off after receiving 429s will result in an automated IP ban (http status 418).</strong></li>
-<li>IP bans are tracked and <strong>scale in duration</strong> for repeat offenders, <strong>from 2 minutes to 3 days</strong>.</li>
-</ul>
-<h1 id="endpoint-security-type">Endpoint security type</h1>
-<ul>
-<li>Each endpoint has a security type that determines the how you will
-  interact with it.</li>
-<li>API-keys are passed into the Rest API via the <code>X-MBX-APIKEY</code>
-  header.</li>
-<li>API-keys and secret-keys <strong>are case sensitive</strong>.</li>
-<li>API-keys can be configured to only access certain types of secure endpoints.
- For example, one API-key could be used for TRADE only, while another API-key
- can access everything except for TRADE routes.</li>
-<li>By default, API-keys can access all secure routes.</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Security Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NONE</td>
-<td>Endpoint can be accessed freely.</td>
-</tr>
-<tr>
-<td>TRADE</td>
-<td>Endpoint requires sending a valid API-Key and signature.</td>
-</tr>
-<tr>
-<td>USER_DATA</td>
-<td>Endpoint requires sending a valid API-Key and signature.</td>
-</tr>
-<tr>
-<td>USER_STREAM</td>
-<td>Endpoint requires sending a valid API-Key.</td>
-</tr>
-<tr>
-<td>MARKET_DATA</td>
-<td>Endpoint requires sending a valid API-Key.</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><code>TRADE</code> and <code>USER_DATA</code> endpoints are <code>SIGNED</code> endpoints.</li>
-</ul>
-<h1 id="signed-trade-and-user_data-endpoint-security">SIGNED (TRADE and USER_DATA) Endpoint security</h1>
-<ul>
-<li><code>SIGNED</code> endpoints require an additional parameter, <code>signature</code>, to be
-  sent in the  <code>query string</code> or <code>request body</code>.</li>
-<li>Endpoints use <code>HMAC SHA256</code> signatures. The <code>HMAC SHA256 signature</code> is a keyed <code>HMAC SHA256</code> operation.
-  Use your <code>secretKey</code> as the key and <code>totalParams</code> as the value for the HMAC operation.</li>
-<li>The <code>signature</code> is <strong>not case sensitive</strong>, but it should come last in the list or params!</li>
-<li><code>totalParams</code> is defined as the <code>query string</code> concatenated with the
-  <code>request body</code>.</li>
-</ul>
-<h2 id="timing-security">Timing security</h2>
-<ul>
-<li>A <code>SIGNED</code> endpoint also requires a parameter, <code>timestamp</code>, to be sent which
-  should be the millisecond timestamp of when the request was created and sent.</li>
-<li>An additional parameter, <code>recvWindow</code>, may be sent to specific the number of
-  milliseconds after <code>timestamp</code> the request is valid for. If <code>recvWindow</code>
-  is not sent, <strong>it defaults to 5000</strong>.</li>
-<li>The logic is as follows:
-  <code>javascript
-  if (timestamp &lt; (serverTime + 1000) &amp;&amp; (serverTime - timestamp) &lt;= recvWindow) {
-    // process request
-  } else {
-    // reject request
-  }</code></li>
-</ul>
-<p><strong>Serious trading is about timing.</strong> Networks can be unstable and unreliable,
-which can lead to requests taking varying amounts of time to reach the
-servers. With <code>recvWindow</code>, you can specify that the request must be
-processed within a certain number of milliseconds or be rejected by the
-server.</p>
-<p><strong>Tt recommended to use a small recvWindow of 5000 or less!</strong></p>
-<h2 id="signed-endpoint-examples-for-post-wapiv3withdrawhtml">SIGNED Endpoint Examples for POST /wapi/v3/withdraw.html</h2>
-<p>Here is a step-by-step example of how to send a vaild signed payload from the
-Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl</code>.</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>apiKey</td>
-<td>vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A</td>
-</tr>
-<tr>
-<td>secretKey</td>
-<td>NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>asset</td>
-<td>ETH</td>
-</tr>
-<tr>
-<td>address</td>
-<td>0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b</td>
-</tr>
-<tr>
-<td>addressTag</td>
-<td>1 (Secondary address identifier for coins like XRP,XMR etc.)</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>1</td>
-</tr>
-<tr>
-<td>recvWindow</td>
-<td>5000</td>
-</tr>
-<tr>
-<td>name</td>
-<td>addressName (Description of the address)</td>
-</tr>
-<tr>
-<td>timestamp</td>
-<td>1508396497000</td>
-</tr>
-<tr>
-<td>signature</td>
-<td>157fb937ec848b5f802daa4d9f62bea08becbf4f311203bda2bd34cd9853e320</td>
-</tr>
-</tbody>
-</table>
-<h3 id="example-1-as-a-query-string">Example 1: As a query string</h3>
-<ul>
-<li><strong>queryString:</strong> asset=ETH&amp;address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b&amp;amount=1&amp;recvWindow=5000&amp;name=test&amp;timestamp=1510903211000</li>
-<li>
-<p><strong>HMAC SHA256 signature:</strong></p>
-<p><code>[linux]$ echo -n "asset=ETH&amp;address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b&amp;amount=1&amp;recvWindow=5000&amp;timestamp=1510903211000" | openssl dgst -sha256 -hmac "NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j"
-(stdin)= 157fb937ec848b5f802daa4d9f62bea08becbf4f311203bda2bd34cd9853e320</code></p>
-</li>
-<li>
-<p><strong>curl command:</strong></p>
-<p><code>(HMAC SHA256)
-[linux]$ curl -H "X-MBX-APIKEY: vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A" -X POST 'https://www.binance.com/wapi/v3/withdraw.html?asset=ETH&amp;address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b&amp;amount=1&amp;recvWindow=5000&amp;name=addressName&amp;timestamp=1510903211000&amp;signature=157fb937ec848b5f802daa4d9f62bea08becbf4f311203bda2bd34cd9853e320'</code></p>
-</li>
-</ul>
-<p>Note that for wapi, parameters must be sent in query strings.</p>
-<h3 id="withdraw">Withdraw</h3>
+                <h2 id="withdraw">Withdraw</h2>
 <pre><code>POST /wapi/v3/withdraw.html (HMAC SHA256)
 </code></pre>
 
@@ -384,7 +185,7 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 }
 </code></pre>
 
-<h3 id="deposit-history-user_data">Deposit History (USER_DATA)</h3>
+<h2 id="deposit-history-user_data">Deposit History (USER_DATA)</h2>
 <pre><code>GET /wapi/v3/depositHistory.html (HMAC SHA256)
 </code></pre>
 
@@ -465,7 +266,7 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 }
 </code></pre>
 
-<h3 id="withdraw-history-user_data">Withdraw History (USER_DATA)</h3>
+<h2 id="withdraw-history-user_data">Withdraw History (USER_DATA)</h2>
 <pre><code>GET /wapi/v3/withdrawHistory.html (HMAC SHA256)
 </code></pre>
 
@@ -548,7 +349,7 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 }
 </code></pre>
 
-<h3 id="deposit-address-user_data">Deposit Address (USER_DATA)</h3>
+<h2 id="deposit-address-user_data">Deposit Address (USER_DATA)</h2>
 <pre><code>GET  /wapi/v3/depositAddress.html (HMAC SHA256)
 </code></pre>
 
@@ -602,7 +403,7 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 
 </code></pre>
 
-<h3 id="account-status-user_data">Account Status (USER_DATA)</h3>
+<h2 id="account-status-user_data">Account Status (USER_DATA)</h2>
 <pre><code>GET /wapi/v3/accountStatus.html
 </code></pre>
 
@@ -644,7 +445,7 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 }
 </code></pre>
 
-<h3 id="system-status-system">System Status (System)</h3>
+<h2 id="system-status-system">System Status (System)</h2>
 <pre><code>GET /wapi/v3/systemStatus.html
 </code></pre>
 
@@ -656,7 +457,7 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 }
 </code></pre>
 
-<h3 id="account-api-trading-status-user_data">Account API Trading Status (USER_DATA)</h3>
+<h2 id="account-api-trading-status-user_data">Account API Trading Status (USER_DATA)</h2>
 <pre><code>GET /wapi/v3/apiTradingStatus.html
 </code></pre>
 
@@ -747,7 +548,7 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 }
 </code></pre>
 
-<h3 id="dustlog-user_data">DustLog (USER_DATA)</h3>
+<h2 id="dustlog-user_data">DustLog (USER_DATA)</h2>
 <pre><code>GET /wapi/v3/userAssetDribbletLog.html   (HMAC SHA256)
 </code></pre>
 
@@ -842,7 +643,7 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 }
 </code></pre>
 
-<h3 id="trade-fee-user_data">Trade Fee (USER_DATA)</h3>
+<h2 id="trade-fee-user_data">Trade Fee (USER_DATA)</h2>
 <pre><code>GET  /wapi/v3/tradeFee.html (HMAC SHA256)
 </code></pre>
 
@@ -895,7 +696,7 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 }
 </code></pre>
 
-<h3 id="asset-detail-user_data">Asset Detail (USER_DATA)</h3>
+<h2 id="asset-detail-user_data">Asset Detail (USER_DATA)</h2>
 <pre><code>GET  /wapi/v3/assetDetail.html (HMAC SHA256)
 </code></pre>
 
@@ -948,7 +749,7 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 }
 </code></pre>
 
-<h3 id="query-sub-account-listfor-master-account">Query Sub-account List(For Master Account)</h3>
+<h2 id="query-sub-account-listfor-master-account">Query Sub-account List(For Master Account)</h2>
 <pre><code>GET   /wapi/v3/sub-account/list.html (HMAC SHA256)
 </code></pre>
 
@@ -1028,7 +829,7 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 }
 </code></pre>
 
-<h3 id="query-sub-account-transfer-historyfor-master-account">Query Sub-account Transfer History(For Master Account)</h3>
+<h2 id="query-sub-account-transfer-historyfor-master-account">Query Sub-account Transfer History(For Master Account)</h2>
 <pre><code>GET   /wapi/v3/sub-account/transfer/history.html (HMAC SHA256)
 </code></pre>
 
@@ -1112,7 +913,7 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 }
 </code></pre>
 
-<h3 id="sub-account-transferfor-master-account">Sub-account Transfer(For Master Account)</h3>
+<h2 id="sub-account-transferfor-master-account">Sub-account Transfer(For Master Account)</h2>
 <pre><code>POST   /wapi/v3/sub-account/transfer.html (HMAC SHA256)
 </code></pre>
 
@@ -1176,7 +977,7 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 
 </code></pre>
 
-<h3 id="query-sub-account-assetsfor-master-account">Query Sub-account Assets(For Master Account)</h3>
+<h2 id="query-sub-account-assetsfor-master-account">Query Sub-account Assets(For Master Account)</h2>
 <pre><code>GET   /wapi/v3/sub-account/assets.html (HMAC SHA256)
 </code></pre>
 
@@ -1251,149 +1052,6 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
             &quot;locked&quot;:0
         }
     ]
-}
-</code></pre>
-
-<h3 id="dust-transfer-user_data">Dust Transfer (USER_DATA)</h3>
-<pre><code>Post /sapi/v1/asset/dust (HMAC SHA256)
-</code></pre>
-
-<p>Convert dust assets to BNB.</p>
-<p><strong>Weight:</strong>
-1</p>
-<p><strong>Parameters:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Mandatory</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>asset</td>
-<td>ARRAY</td>
-<td>YES</td>
-<td>The asset being converted. For example: asset=BTC&amp;asset=USDT</td>
-</tr>
-<tr>
-<td>recvWindow</td>
-<td>LONG</td>
-<td>NO</td>
-<td></td>
-</tr>
-<tr>
-<td>timestamp</td>
-<td>LONG</td>
-<td>YES</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Response:</strong></p>
-<pre><code class="javascript">{
-    &quot;totalServiceCharge&quot;:&quot;0.02102542&quot;,
-    &quot;totalTransfered&quot;:&quot;1.05127099&quot;,
-    &quot;transferResult&quot;:[
-        {
-            &quot;amount&quot;:&quot;0.03000000&quot;,
-            &quot;fromAsset&quot;:&quot;ETH&quot;,
-            &quot;operateTime&quot;:1563368549307,
-            &quot;serviceChargeAmount&quot;:&quot;0.00500000&quot;,
-            &quot;tranId&quot;:2970932918,
-            &quot;transferedAmount&quot;:&quot;0.25000000&quot;
-        },
-        {
-            &quot;amount&quot;:&quot;0.09000000&quot;,
-            &quot;fromAsset&quot;:&quot;LTC&quot;,
-            &quot;operateTime&quot;:1563368549404,
-            &quot;serviceChargeAmount&quot;:&quot;0.01548000&quot;,
-            &quot;tranId&quot;:2970932918,
-            &quot;transferedAmount&quot;:&quot;0.77400000&quot;
-        },
-        {
-            &quot;amount&quot;:&quot;248.61878453&quot;,
-            &quot;fromAsset&quot;:&quot;TRX&quot;,
-            &quot;operateTime&quot;:1563368549489,
-            &quot;serviceChargeAmount&quot;:&quot;0.00054542&quot;,
-            &quot;tranId&quot;:2970932918,
-            &quot;transferedAmount&quot;:&quot;0.02727099&quot;
-        }
-    ]
-}
-</code></pre>
-
-<h3 id="asset-dividend-record-user_data">Asset dividend record (USER_DATA)</h3>
-<pre><code>Get /sapi/v1/asset/assetDividend (HMAC SHA256)
-</code></pre>
-
-<p>Query asset dividend record.</p>
-<p><strong>Weight:</strong>
-1</p>
-<p><strong>Parameters:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Mandatory</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>asset</td>
-<td>STRING</td>
-<td>NO</td>
-<td></td>
-</tr>
-<tr>
-<td>startTime</td>
-<td>LONG</td>
-<td>NO</td>
-<td></td>
-</tr>
-<tr>
-<td>endTime</td>
-<td>LONG</td>
-<td>NO</td>
-<td></td>
-</tr>
-<tr>
-<td>recvWindow</td>
-<td>LONG</td>
-<td>NO</td>
-<td></td>
-</tr>
-<tr>
-<td>timestamp</td>
-<td>LONG</td>
-<td>YES</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Response:</strong></p>
-<pre><code class="javascript">{
-    &quot;rows&quot;:[
-        {
-            &quot;amount&quot;:&quot;10.00000000&quot;,
-            &quot;asset&quot;:&quot;BHFT&quot;,
-            &quot;divTime&quot;:1563189166000,
-            &quot;enInfo&quot;:&quot;BHFT distribution&quot;,
-            &quot;tranId&quot;:2968885920
-        },
-        {
-            &quot;amount&quot;:&quot;10.00000000&quot;,
-            &quot;asset&quot;:&quot;BHFT&quot;,
-            &quot;divTime&quot;:1563189165000,
-            &quot;enInfo&quot;:&quot;BHFT distribution&quot;,
-            &quot;tranId&quot;:2968885920
-        }
-    ],
-    &quot;total&quot;:2
 }
 </code></pre>
               

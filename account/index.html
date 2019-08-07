@@ -1,116 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
-    
-    <link rel="shortcut icon" href="../img/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>WALLET ACCOUNT - Exchange API Docs</title>
-    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
-    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
-    <link href="../css/base.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/highlight.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>WALLET ACCOUNT - Exchange API Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/bootstrap-3.3.7.min.js"></script>
-    <script src="../js/highlight.pack.js"></script>
-    
-    <base target="_top">
-    <script>
-      var base_url = '..';
-      var is_top_frame = false;
-        
-        var pageToc = [
-          {title: "Withdraw", url: "#_top", children: [
-          ]},
-          {title: "Deposit History (USER_DATA)", url: "#deposit-history-user_data", children: [
-          ]},
-          {title: "Withdraw History (USER_DATA)", url: "#withdraw-history-user_data", children: [
-          ]},
-          {title: "Deposit Address (USER_DATA)", url: "#deposit-address-user_data", children: [
-          ]},
-          {title: "Account Status (USER_DATA)", url: "#account-status-user_data", children: [
-          ]},
-          {title: "System Status (System)", url: "#system-status-system", children: [
-          ]},
-          {title: "Account API Trading Status (USER_DATA)", url: "#account-api-trading-status-user_data", children: [
-          ]},
-          {title: "DustLog (USER_DATA)", url: "#dustlog-user_data", children: [
-          ]},
-          {title: "Trade Fee (USER_DATA)", url: "#trade-fee-user_data", children: [
-          ]},
-          {title: "Asset Detail (USER_DATA)", url: "#asset-detail-user_data", children: [
-          ]},
-          {title: "Query Sub-account List(For Master Account)", url: "#query-sub-account-listfor-master-account", children: [
-          ]},
-          {title: "Query Sub-account Transfer History(For Master Account)", url: "#query-sub-account-transfer-historyfor-master-account", children: [
-          ]},
-          {title: "Sub-account Transfer(For Master Account)", url: "#sub-account-transferfor-master-account", children: [
-          ]},
-          {title: "Query Sub-account Assets(For Master Account)", url: "#query-sub-account-assetsfor-master-account", children: [
-          ]},
-          {title: "Dust Transfer (USER_DATA)", url: "#dust-transfer-user_data", children: [
-          ]},
-          {title: "Asset dividend record (USER_DATA)", url: "#asset-dividend-record-user_data", children: [
-          ]},
-        ];
-
-    </script>
-    <script src="../js/base.js"></script> 
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "WALLET ACCOUNT";
+    var mkdocs_page_input_path = "account.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
 </head>
 
-<body>
-<script>
-if (is_top_frame) { $('body').addClass('wm-top-page'); }
-</script>
+<body class="wy-body-for-nav" role="document">
 
-
-
-<div class="container-fluid wm-page-content">
-  <a name="_top"></a>
-    
+  <div class="wy-grid-for-nav">
 
     
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Exchange API Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">GENERAL INFO</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">WALLET ACCOUNT</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#withdraw">Withdraw</a></li>
+    
+
+    <li class="toctree-l2"><a href="#deposit-history-user_data">Deposit History (USER_DATA)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#withdraw-history-user_data">Withdraw History (USER_DATA)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#deposit-address-user_data">Deposit Address (USER_DATA)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#account-status-user_data">Account Status (USER_DATA)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#system-status-system">System Status (System)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#account-api-trading-status-user_data">Account API Trading Status (USER_DATA)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#dustlog-user_data">DustLog (USER_DATA)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#trade-fee-user_data">Trade Fee (USER_DATA)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#asset-detail-user_data">Asset Detail (USER_DATA)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#query-sub-account-listfor-master-account">Query Sub-account List(For Master Account)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#query-sub-account-transfer-historyfor-master-account">Query Sub-account Transfer History(For Master Account)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#sub-account-transferfor-master-account">Sub-account Transfer(For Master Account)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#query-sub-account-assetsfor-master-account">Query Sub-account Assets(For Master Account)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#dust-transfer-user_data">Dust Transfer (USER_DATA)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#asset-dividend-record-user_data">Asset dividend record (USER_DATA)</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Market_Data/">MARKET DATA</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../spot/">SPOT ACCOUNT/TRADE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Margin/">MARGIN TRADE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../error_info/">ERROR INFO</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Exchange API Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
     
       
     
-
-  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
-    
-    <div class="wm-article-nav pull-right">
-      <a href="../Market_Data/" class="btn btn-xs btn-default pull-right">
-        Next
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </a>
-      <a href="../Market_Data/" class="btn btn-xs btn-link">
-        MARKET DATA
-      </a>
-    </div>
-    
-    <div class="wm-article-nav">
-      <a href=".." class="btn btn-xs btn-default pull-left">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href=".." class="btn btn-xs btn-link">
-        GENERAL INFO
-      </a>
-    </div>
-    
-  </div>
-
-    
-
-    <h2 id="withdraw">Withdraw</h2>
+    <li>WALLET ACCOUNT</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="withdraw">Withdraw</h2>
 <pre><code>POST /wapi/v3/withdraw.html (HMAC SHA256)
 </code></pre>
 
@@ -1197,43 +1248,52 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     &quot;total&quot;:2
 }
 </code></pre>
-
-  <br>
-    
-
-    
-    
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-    
+        <a href="../Market_Data/" class="btn btn-neutral float-right" title="MARKET DATA">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="GENERAL INFO"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
-    
-    <div class="wm-article-nav pull-right">
-      <a href="../Market_Data/" class="btn btn-xs btn-default pull-right">
-        Next
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </a>
-      <a href="../Market_Data/" class="btn btn-xs btn-link">
-        MARKET DATA
-      </a>
-    </div>
-    
-    <div class="wm-article-nav">
-      <a href=".." class="btn btn-xs btn-default pull-left">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href=".." class="btn btn-xs btn-link">
-        GENERAL INFO
-      </a>
-    </div>
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
     
   </div>
 
-    <br>
-</div>
-
-<footer class="col-md-12 wm-page-content">
-  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../Market_Data/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
 
 </body>
 </html>

@@ -1,69 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
-    
-    <link rel="shortcut icon" href="../img/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Public Rest API for Margin Trade (DRAFT, under construction) - Exchange API Docs</title>
-    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
-    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
-    <link href="../css/base.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/highlight.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Public Rest API for Margin Trade (DRAFT, under construction) - Exchange API Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/bootstrap-3.3.7.min.js"></script>
-    <script src="../js/highlight.pack.js"></script>
-    
-    <base target="_top">
-    <script>
-      var base_url = '..';
-      var is_top_frame = false;
-        
-        var pageToc = [
-          {title: "Public Rest API for Margin Trade (DRAFT, under construction)", url: "#_top", children: [
-          ]},
-          {title: "General API Information", url: "#general-api-information", children: [
-          ]},
-          {title: "Endpoint security type", url: "#endpoint-security-type", children: [
-          ]},
-          {title: "SIGNED (TRADE\u3001USER_DATA AND MARGIN) Endpoint security", url: "#signed-tradeuser_data-and-margin-endpoint-security", children: [
-              {title: "Timing security", url: "#timing-security" },
-              {title: "SIGNED Endpoint Examples for POST /api/v1/order", url: "#signed-endpoint-examples-for-post-apiv1order" },
-              {title: "General endpoints", url: "#general-endpoints" },
-              {title: "Ping user data stream for margin account  (USER_STREAM)", url: "#ping-user-data-stream-for-margin-account-user_stream" },
-          ]},
-        ];
-
-    </script>
-    <script src="../js/base.js"></script> 
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Public Rest API for Margin Trade (DRAFT, under construction)";
+    var mkdocs_page_input_path = "margin-api.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
 </head>
 
-<body>
-<script>
-if (is_top_frame) { $('body').addClass('wm-top-page'); }
-</script>
+<body class="wy-body-for-nav" role="document">
 
-
-
-<div class="container-fluid wm-page-content">
-  <a name="_top"></a>
-    
+  <div class="wy-grid-for-nav">
 
     
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Exchange API Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
 
-    <h1 id="public-rest-api-for-margin-trade-draft-under-construction">Public Rest API for Margin Trade (DRAFT, under construction)</h1>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">GENERAL INFO</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../account/">WALLET ACCOUNT</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Market_Data/">MARKET DATA</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../spot/">SPOT ACCOUNT/TRADE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Margin/">MARGIN TRADE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../error_info/">ERROR INFO</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Exchange API Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Public Rest API for Margin Trade (DRAFT, under construction)</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="public-rest-api-for-margin-trade-draft-under-construction">Public Rest API for Margin Trade (DRAFT, under construction)</h1>
 <h1 id="general-api-information">General API Information</h1>
 <ul>
 <li>The base endpoint is: <strong>https://api.binance.com</strong></li>
@@ -1499,16 +1546,39 @@ There is no &amp; between "GTC" and "quantity=1".</p>
 <p><strong>Response:</strong></p>
 <pre><code class="javascript">{}
 </code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
 
-  <br>
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
     
+  </div>
 
-    <br>
-</div>
-
-<footer class="col-md-12 wm-page-content">
-  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
 
 </body>
 </html>
