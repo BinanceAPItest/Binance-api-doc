@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>MARGIN TRADE - Exchange API Docs</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "General endpoints", url: "#_top", children: [
+              {title: "Margin account transfer (MARGIN)", url: "#margin-account-transfer-margin" },
+              {title: "Margin account borrow (MARGIN)", url: "#margin-account-borrow-margin" },
+              {title: "Margin account repay (MARGIN)", url: "#margin-account-repay-margin" },
+              {title: "Margin account new order (TRADE)", url: "#margin-account-new-order-trade" },
+              {title: "Margin account cancel order (TRADE)", url: "#margin-account-cancel-order-trade" },
+              {title: "Query loan record (USER_DATA)", url: "#query-loan-record-user_data" },
+              {title: "Query repay record (USER_DATA)", url: "#query-repay-record-user_data" },
+              {title: "Query margin account details (USER_DATA)", url: "#query-margin-account-details-user_data" },
+              {title: "Query margin asset (MARKET_DATA)", url: "#query-margin-asset-market_data" },
+              {title: "Query margin pair (MARKET_DATA)", url: "#query-margin-pair-market_data" },
+              {title: "Query margin priceIndex (MARKET_DATA)", url: "#query-margin-priceindex-market_data" },
+              {title: "Query margin account's order (USER_DATA)", url: "#query-margin-accounts-order-user_data" },
+              {title: "Query margin account's open order (USER_DATA)", url: "#query-margin-accounts-open-order-user_data" },
+              {title: "Query margin account's all order (USER_DATA)", url: "#query-margin-accounts-all-order-user_data" },
+              {title: "Query margin account's trade list (USER_DATA)", url: "#query-margin-accounts-trade-list-user_data" },
+              {title: "Query max borrow (USER_DATA)", url: "#query-max-borrow-user_data" },
+              {title: "Query max transfer-out amount (USER_DATA)", url: "#query-max-transfer-out-amount-user_data" },
+              {title: "Start user data stream for margin account (USER_STREAM)", url: "#start-user-data-stream-for-margin-account-user_stream" },
+              {title: "Delete user data stream for margin account  (USER_STREAM)", url: "#delete-user-data-stream-for-margin-account-user_stream" },
+          ]},
+          {title: "Ping user data stream for margin account  (USER_STREAM)", url: "#ping-user-data-stream-for-margin-account-user_stream", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../error_info/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../error_info/" class="btn btn-xs btn-link">
+        ERROR INFO
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../spot/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../spot/" class="btn btn-xs btn-link">
+        SPOT ACCOUNT/TRADE
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="general-endpoints">General endpoints</h2>
+<h3 id="margin-account-transfer-margin">Margin account transfer (MARGIN)</h3>
+<pre><code>Post /sapi/v1/margin/transfer 
+</code></pre>
+
+<p>Execute transfer between spot account and margin account.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>YES</td>
+<td>The asset being transferred, e.g., BTC</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>DECIMAL</td>
+<td>YES</td>
+<td>The amount to be transferred</td>
+</tr>
+<tr>
+<td>type</td>
+<td>INT</td>
+<td>YES</td>
+<td>1: transfer from main account to margin account 2: transfer from margin account to main account</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+    //transaction id
+    &quot;tranId&quot;: 100000001
+}
+</code></pre>
+
+<h3 id="margin-account-borrow-margin">Margin account borrow (MARGIN)</h3>
+<pre><code>Post /sapi/v1/margin/loan 
+</code></pre>
+
+<p>Apply for a loan.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>DECIMAL</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+    //transaction id
+    &quot;tranId&quot;: 100000001
+}
+</code></pre>
+
+<h3 id="margin-account-repay-margin">Margin account repay (MARGIN)</h3>
+<pre><code>Post /sapi/v1/margin/repay
+</code></pre>
+
+<p>Repay loan for margin account.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>DECIMAL</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+    //transaction id
+    &quot;tranId&quot;: 100000001
+}
+</code></pre>
+
+<h3 id="margin-account-new-order-trade">Margin account new order (TRADE)</h3>
+<pre><code>Post  /sapi/v1/margin/order
+</code></pre>
+
+<p>Post a new order for margin account.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>side</td>
+<td>ENUM</td>
+<td>YES</td>
+<td>BUY<br>SELL</td>
+</tr>
+<tr>
+<td>type</td>
+<td>ENUM</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>DECIMAL</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>price</td>
+<td>DECIMAL</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>stopPrice</td>
+<td>DECIMAL</td>
+<td>NO</td>
+<td>Used with STOP_LOSS, STOP_LOSS_LIMIT, TAKE_PROFIT, and TAKE_PROFIT_LIMIT orders.</td>
+</tr>
+<tr>
+<td>newClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>A unique id for the order. Automatically generated if not sent.</td>
+</tr>
+<tr>
+<td>icebergQty</td>
+<td>DECIMAL</td>
+<td>NO</td>
+<td>Used with LIMIT, STOP_LOSS_LIMIT, and TAKE_PROFIT_LIMIT to create an iceberg order.</td>
+</tr>
+<tr>
+<td>newOrderRespType</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>Set the response JSON. ACK, RESULT, or FULL; MARKET and LIMIT order types default to FULL, all other orders default to ACK.</td>
+</tr>
+<tr>
+<td>timeInForce</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>GTC,IOC,FOK</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response ACK:</strong></p>
+<pre><code class="javascript">{
+  &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+  &quot;orderId&quot;: 28,
+  &quot;clientOrderId&quot;: &quot;6gCrw2kRUAF9CvJDGP16IP&quot;,
+  &quot;transactTime&quot;: 1507725176595
+}
+</code></pre>
+
+<p><strong>Response RESULT:</strong></p>
+<pre><code class="javascript">{
+  &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+  &quot;orderId&quot;: 28,
+  &quot;clientOrderId&quot;: &quot;6gCrw2kRUAF9CvJDGP16IP&quot;,
+  &quot;transactTime&quot;: 1507725176595,
+  &quot;price&quot;: &quot;1.00000000&quot;,
+  &quot;origQty&quot;: &quot;10.00000000&quot;,
+  &quot;executedQty&quot;: &quot;10.00000000&quot;,
+  &quot;cummulativeQuoteQty&quot;: &quot;10.00000000&quot;,
+  &quot;status&quot;: &quot;FILLED&quot;,
+  &quot;timeInForce&quot;: &quot;GTC&quot;,
+  &quot;type&quot;: &quot;MARKET&quot;,
+  &quot;side&quot;: &quot;SELL&quot;
+}
+</code></pre>
+
+<p><strong>Response FULL:</strong></p>
+<pre><code class="javascript">{
+  &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+  &quot;orderId&quot;: 28,
+  &quot;clientOrderId&quot;: &quot;6gCrw2kRUAF9CvJDGP16IP&quot;,
+  &quot;transactTime&quot;: 1507725176595,
+  &quot;price&quot;: &quot;1.00000000&quot;,
+  &quot;origQty&quot;: &quot;10.00000000&quot;,
+  &quot;executedQty&quot;: &quot;10.00000000&quot;,
+  &quot;cummulativeQuoteQty&quot;: &quot;10.00000000&quot;,
+  &quot;status&quot;: &quot;FILLED&quot;,
+  &quot;timeInForce&quot;: &quot;GTC&quot;,
+  &quot;type&quot;: &quot;MARKET&quot;,
+  &quot;side&quot;: &quot;SELL&quot;,
+  &quot;fills&quot;: [
+    {
+      &quot;price&quot;: &quot;4000.00000000&quot;,
+      &quot;qty&quot;: &quot;1.00000000&quot;,
+      &quot;commission&quot;: &quot;4.00000000&quot;,
+      &quot;commissionAsset&quot;: &quot;USDT&quot;
+    },
+    {
+      &quot;price&quot;: &quot;3999.00000000&quot;,
+      &quot;qty&quot;: &quot;5.00000000&quot;,
+      &quot;commission&quot;: &quot;19.99500000&quot;,
+      &quot;commissionAsset&quot;: &quot;USDT&quot;
+    },
+    {
+      &quot;price&quot;: &quot;3998.00000000&quot;,
+      &quot;qty&quot;: &quot;2.00000000&quot;,
+      &quot;commission&quot;: &quot;7.99600000&quot;,
+      &quot;commissionAsset&quot;: &quot;USDT&quot;
+    },
+    {
+      &quot;price&quot;: &quot;3997.00000000&quot;,
+      &quot;qty&quot;: &quot;1.00000000&quot;,
+      &quot;commission&quot;: &quot;3.99700000&quot;,
+      &quot;commissionAsset&quot;: &quot;USDT&quot;
+    },
+    {
+      &quot;price&quot;: &quot;3995.00000000&quot;,
+      &quot;qty&quot;: &quot;1.00000000&quot;,
+      &quot;commission&quot;: &quot;3.99500000&quot;,
+      &quot;commissionAsset&quot;: &quot;USDT&quot;
+    }
+  ]
+}
+</code></pre>
+
+<h3 id="margin-account-cancel-order-trade">Margin account cancel order (TRADE)</h3>
+<pre><code>Delete /sapi/v1/margin/order
+</code></pre>
+
+<p>Cancel an active order for margin account.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>origClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>newClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>Used to uniquely identify this cancel. Automatically generated by default.</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Either orderId or origClientOrderId must be sent.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+  &quot;symbol&quot;: &quot;LTCBTC&quot;,
+  &quot;orderId&quot;: 28,
+  &quot;origClientOrderId&quot;: &quot;myOrder1&quot;,
+  &quot;clientOrderId&quot;: &quot;cancelMyOrder1&quot;,
+  &quot;transactTime&quot;: 1507725176595,
+  &quot;price&quot;: &quot;1.00000000&quot;,
+  &quot;origQty&quot;: &quot;10.00000000&quot;,
+  &quot;executedQty&quot;: &quot;8.00000000&quot;,
+  &quot;cummulativeQuoteQty&quot;: &quot;8.00000000&quot;,
+  &quot;status&quot;: &quot;CANCELED&quot;,
+  &quot;timeInForce&quot;: &quot;GTC&quot;,
+  &quot;type&quot;: &quot;LIMIT&quot;,
+  &quot;side&quot;: &quot;SELL&quot;
+}
+</code></pre>
+
+<h3 id="query-loan-record-user_data">Query loan record (USER_DATA)</h3>
+<pre><code>Get /sapi/v1/margin/loan
+</code></pre>
+
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>txId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>the tranId in POST /sapi/v1/margin/loan</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>current</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Currently querying page. Start from 1. Default:1</td>
+</tr>
+<tr>
+<td>size</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Default:10 Max:100</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>txId or startTime must be sent. txId takes precedence.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+  &quot;rows&quot;: [
+    {
+      &quot;asset&quot;: &quot;BNB&quot;,
+      &quot;principal&quot;: &quot;0.84624403&quot;,
+      &quot;timestamp&quot;: 1555056425000,
+      //one of PENDING (pending to execution), CONFIRMED (successfully loaned), FAILED (execution failed, nothing happened to your account);
+      &quot;status&quot;: &quot;CONFIRMED&quot;
+    }
+  ],
+  &quot;total&quot;: 1
+}
+</code></pre>
+
+<h3 id="query-repay-record-user_data">Query repay record (USER_DATA)</h3>
+<pre><code>Get /sapi/v1/margin/repay
+</code></pre>
+
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>txId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>return of /sapi/v1/margin/repay</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>current</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Currently querying page. Start from 1. Default:1</td>
+</tr>
+<tr>
+<td>size</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Default:10 Max:100</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>txId or startTime must be sent. txId takes precedence.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+     &quot;rows&quot;: [
+         {
+             //Total amount repaid
+             &quot;amount&quot;: &quot;14.00000000&quot;,
+             &quot;asset&quot;: &quot;BNB&quot;,
+             //Interest repaid
+             &quot;interest&quot;: &quot;0.01866667&quot;,
+             //Principal repaid
+             &quot;principal&quot;: &quot;13.98133333&quot;,
+             //one of PENDING (pending to execution), CONFIRMED (successfully loaned), FAILED (execution failed, nothing happened to your account);
+             &quot;status&quot;: &quot;CONFIRMED&quot;,
+             &quot;timestamp&quot;: 1563438204000,
+             &quot;txId&quot;: 2970933056
+         }
+     ],
+     &quot;total&quot;: 1
+}
+</code></pre>
+
+<h3 id="query-margin-account-details-user_data">Query margin account details (USER_DATA)</h3>
+<pre><code>Get /sapi/v1/margin/account
+</code></pre>
+
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<p>None</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+      &quot;borrowEnabled&quot;: true,
+      &quot;marginLevel&quot;: &quot;11.64405625&quot;,
+      &quot;totalAssetOfBtc&quot;: &quot;6.82728457&quot;,
+      &quot;totalLiabilityOfBtc&quot;: &quot;0.58633215&quot;,
+      &quot;totalNetAssetOfBtc&quot;: &quot;6.24095242&quot;,
+      &quot;tradeEnabled&quot;: true,
+      &quot;transferEnabled&quot;: true,
+      &quot;userAssets&quot;: [
+          {
+              &quot;asset&quot;: &quot;BTC&quot;,
+              &quot;borrowed&quot;: &quot;0.00000000&quot;,
+              &quot;free&quot;: &quot;0.00499500&quot;,
+              &quot;interest&quot;: &quot;0.00000000&quot;,
+              &quot;locked&quot;: &quot;0.00000000&quot;,
+              &quot;netAsset&quot;: &quot;0.00499500&quot;
+          },
+          {
+              &quot;asset&quot;: &quot;BNB&quot;,
+              &quot;borrowed&quot;: &quot;201.66666672&quot;,
+              &quot;free&quot;: &quot;2346.50000000&quot;,
+              &quot;interest&quot;: &quot;0.00000000&quot;,
+              &quot;locked&quot;: &quot;0.00000000&quot;,
+              &quot;netAsset&quot;: &quot;2144.83333328&quot;
+          },
+          {
+              &quot;asset&quot;: &quot;ETH&quot;,
+              &quot;borrowed&quot;: &quot;0.00000000&quot;,
+              &quot;free&quot;: &quot;0.00000000&quot;,
+              &quot;interest&quot;: &quot;0.00000000&quot;,
+              &quot;locked&quot;: &quot;0.00000000&quot;,
+              &quot;netAsset&quot;: &quot;0.00000000&quot;
+          },
+          {
+              &quot;asset&quot;: &quot;USDT&quot;,
+              &quot;borrowed&quot;: &quot;0.00000000&quot;,
+              &quot;free&quot;: &quot;0.00000000&quot;,
+              &quot;interest&quot;: &quot;0.00000000&quot;,
+              &quot;locked&quot;: &quot;0.00000000&quot;,
+              &quot;netAsset&quot;: &quot;0.00000000&quot;
+          }
+      ]
+}
+</code></pre>
+
+<h3 id="query-margin-asset-market_data">Query margin asset (MARKET_DATA)</h3>
+<pre><code>Get /sapi/v1/margin/asset 
+</code></pre>
+
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+      &quot;assetFullName&quot;: &quot;Binance Coin&quot;,
+      &quot;assetName&quot;: &quot;BNB&quot;,
+      &quot;isBorrowable&quot;: false,
+      &quot;isMortgageable&quot;: true,
+      &quot;userMinBorrow&quot;: &quot;0.00000000&quot;,
+      &quot;userMinRepay&quot;: &quot;0.00000000&quot;
+}
+</code></pre>
+
+<h3 id="query-margin-pair-market_data">Query margin pair (MARKET_DATA)</h3>
+<pre><code>Get /sapi/v1/margin/pair 
+</code></pre>
+
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+   &quot;id&quot;:323355778339572400,
+   &quot;symbol&quot;:&quot;BTCUSDT&quot;,
+   &quot;base&quot;:&quot;BTC&quot;,
+   &quot;quote&quot;:&quot;USDT&quot;,
+   &quot;isMarginTrade&quot;:true,
+   &quot;isBuyAllowed&quot;:true,
+   &quot;isSellAllowed&quot;:true
+}
+</code></pre>
+
+<h3 id="query-margin-priceindex-market_data">Query margin priceIndex (MARKET_DATA)</h3>
+<pre><code>Get /sapi/v1/margin/priceIndex 
+</code></pre>
+
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+   &quot;calcTime&quot;: 1562046418000,
+   &quot;price&quot;: &quot;0.00333930&quot;,
+   &quot;symbol&quot;: &quot;BNBBTC&quot;
+}
+</code></pre>
+
+<h3 id="query-margin-accounts-order-user_data">Query margin account's order (USER_DATA)</h3>
+<pre><code>Get /sapi/v1/margin/order 
+</code></pre>
+
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>origClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ul>
+<li>Either orderId or origClientOrderId must be sent.</li>
+<li>For some historical orders cummulativeQuoteQty will be &lt; 0, meaning the data is not available at this time.</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+   &quot;clientOrderId&quot;: &quot;ZwfQzuDIGpceVhKW5DvCmO&quot;,
+   &quot;cummulativeQuoteQty&quot;: &quot;0.00000000&quot;,
+   &quot;executedQty&quot;: &quot;0.00000000&quot;,
+   &quot;icebergQty&quot;: &quot;0.00000000&quot;,
+   &quot;isWorking&quot;: true,
+   &quot;orderId&quot;: 213205622,
+   &quot;origQty&quot;: &quot;0.30000000&quot;,
+   &quot;price&quot;: &quot;0.00493630&quot;,
+   &quot;side&quot;: &quot;SELL&quot;,
+   &quot;status&quot;: &quot;NEW&quot;,
+   &quot;stopPrice&quot;: &quot;0.00000000&quot;,
+   &quot;symbol&quot;: &quot;BNBBTC&quot;,
+   &quot;time&quot;: 1562133008725,
+   &quot;timeInForce&quot;: &quot;GTC&quot;,
+   &quot;type&quot;: &quot;LIMIT&quot;,
+   &quot;updateTime&quot;: 1562133008725
+}
+</code></pre>
+
+<h3 id="query-margin-accounts-open-order-user_data">Query margin account's open order (USER_DATA)</h3>
+<pre><code>Get  /sapi/v1/margin/openOrders 
+</code></pre>
+
+<p><strong>Weight:</strong>
+10</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>If the symbol is not sent, orders for all symbols will be returned in an array.</li>
+<li>When all symbols are returned, the number of requests counted against the rate limiter is equal to the number of symbols currently trading on the exchange.</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+   {
+       &quot;clientOrderId&quot;: &quot;qhcZw71gAkCCTv0t0k8LUK&quot;,
+       &quot;cummulativeQuoteQty&quot;: &quot;0.00000000&quot;,
+       &quot;executedQty&quot;: &quot;0.00000000&quot;,
+       &quot;icebergQty&quot;: &quot;0.00000000&quot;,
+       &quot;isWorking&quot;: true,
+       &quot;orderId&quot;: 211842552,
+       &quot;origQty&quot;: &quot;0.30000000&quot;,
+       &quot;price&quot;: &quot;0.00475010&quot;,
+       &quot;side&quot;: &quot;SELL&quot;,
+       &quot;status&quot;: &quot;NEW&quot;,
+       &quot;stopPrice&quot;: &quot;0.00000000&quot;,
+       &quot;symbol&quot;: &quot;BNBBTC&quot;,
+       &quot;time&quot;: 1562040170089,
+       &quot;timeInForce&quot;: &quot;GTC&quot;,
+       &quot;type&quot;: &quot;LIMIT&quot;,
+       &quot;updateTime&quot;: 1562040170089
+      }
+]
+</code></pre>
+
+<h3 id="query-margin-accounts-all-order-user_data">Query margin account's all order (USER_DATA)</h3>
+<pre><code>Get /sapi/v1/margin/allOrders 
+</code></pre>
+
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 500; max 1000.</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ul>
+<li>If orderId is set, it will get orders &gt;= that orderId. Otherwise most recent orders are returned.</li>
+<li>For some historical orders cummulativeQuoteQty will be &lt; 0, meaning the data is not available at this time.</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+      {
+          &quot;id&quot;: 43123876,
+          &quot;price&quot;: &quot;0.00395740&quot;,
+          &quot;qty&quot;: &quot;4.06000000&quot;,
+          &quot;quoteQty&quot;: &quot;0.01606704&quot;,
+          &quot;symbol&quot;: &quot;BNBBTC&quot;,
+          &quot;time&quot;: 1556089977693
+      },
+      {
+          &quot;id&quot;: 43123877,
+          &quot;price&quot;: &quot;0.00395740&quot;,
+          &quot;qty&quot;: &quot;0.77000000&quot;,
+          &quot;quoteQty&quot;: &quot;0.00304719&quot;,
+          &quot;symbol&quot;: &quot;BNBBTC&quot;,
+          &quot;time&quot;: 1556089977693
+      },
+      {
+          &quot;id&quot;: 43253549,
+          &quot;price&quot;: &quot;0.00428930&quot;,
+          &quot;qty&quot;: &quot;23.30000000&quot;,
+          &quot;quoteQty&quot;: &quot;0.09994069&quot;,
+          &quot;symbol&quot;: &quot;BNBBTC&quot;,
+          &quot;time&quot;: 1556163963504
+      }
+]
+</code></pre>
+
+<h3 id="query-margin-accounts-trade-list-user_data">Query margin account's trade list (USER_DATA)</h3>
+<pre><code>Get  /sapi/v1/margin/myTrades 
+</code></pre>
+
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>fromId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>TradeId to fetch from. Default gets most recent trades.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 500; max 1000.</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Notes:
+* If fromId is set, it will get orders &gt;= that fromId. Otherwise most recent orders are returned.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[{
+    &quot;commission&quot;: &quot;0.00006000&quot;,
+    &quot;commissionAsset&quot;: &quot;BTC&quot;,
+    &quot;id&quot;: 34,
+    &quot;isBestMatch&quot;: true,
+    &quot;isBuyer&quot;: false,
+    &quot;isMaker&quot;: false,
+    &quot;orderId&quot;: 39324,
+    &quot;price&quot;: &quot;0.02000000&quot;,
+    &quot;qty&quot;: &quot;3.00000000&quot;,
+    &quot;symbol&quot;: &quot;BNBBTC&quot;,
+    &quot;time&quot;: 1561973357171
+},{
+    &quot;commission&quot;: &quot;0.00002950&quot;,
+    &quot;commissionAsset&quot;: &quot;BTC&quot;,
+    &quot;id&quot;: 32,
+    &quot;isBestMatch&quot;: true,
+    &quot;isBuyer&quot;: false,
+    &quot;isMaker&quot;: true,
+    &quot;orderId&quot;: 39319,
+    &quot;price&quot;: &quot;0.00590000&quot;,
+    &quot;qty&quot;: &quot;5.00000000&quot;,
+    &quot;symbol&quot;: &quot;BNBBTC&quot;,
+    &quot;time&quot;: 1561964645345
+}]
+</code></pre>
+
+<h3 id="query-max-borrow-user_data">Query max borrow (USER_DATA)</h3>
+<pre><code>Get /sapi/v1/margin/maxBorrowable 
+</code></pre>
+
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+    &quot;amount&quot;: &quot;1.69248805&quot;
+}
+</code></pre>
+
+<h3 id="query-max-transfer-out-amount-user_data">Query max transfer-out amount (USER_DATA)</h3>
+<pre><code>Get /sapi/v1/margin/maxTransferable 
+</code></pre>
+
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript"> {
+      &quot;amount&quot;: &quot;3.59498107&quot;
+ }
+</code></pre>
+
+<h3 id="start-user-data-stream-for-margin-account-user_stream">Start user data stream for margin account (USER_STREAM)</h3>
+<pre><code>POST  /sapi/v1/userDataStream
+</code></pre>
+
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<p>NONE</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{&quot;listenKey&quot;:  &quot;T3ee22BIYuWqmvne0HNq2A2WsFlEtLhvWCtItw6ffhhdmjifQ2tRbuKkTHhr&quot;}
+</code></pre>
+
+<h3 id="delete-user-data-stream-for-margin-account-user_stream">Delete user data stream for margin account  (USER_STREAM)</h3>
+<pre><code>DELETE  /sapi/v1/userDataStream
+</code></pre>
+
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>listenKey</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{}
+</code></pre>
+
+<h2 id="ping-user-data-stream-for-margin-account-user_stream">Ping user data stream for margin account  (USER_STREAM)</h2>
+<pre><code>PUT  /sapi/v1/userDataStream
+</code></pre>
+
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>listenKey</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{}
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../error_info/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../error_info/" class="btn btn-xs btn-link">
+        ERROR INFO
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../spot/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../spot/" class="btn btn-xs btn-link">
+        SPOT ACCOUNT/TRADE
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

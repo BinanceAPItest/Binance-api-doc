@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="None">
+    
+    
+    <link rel="shortcut icon" href="./img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Exchange API Docs</title>
+    <link href="./css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="./css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="./css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/bootstrap-3.3.7.min.js"></script>
+    <script src="./js/highlight.pack.js"></script>
+    
+      <script src="./js/elasticlunr.min.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '.';
+      var is_top_frame = (window === window.parent);
+        
+        var pageToc = [
+          {title: "General API Information", url: "#_top", children: [
+          ]},
+          {title: "LIMITS", url: "#limits", children: [
+          ]},
+          {title: "Endpoint security type", url: "#endpoint-security-type", children: [
+          ]},
+          {title: "SIGNED (TRADE\u3001USER_DATA AND MARGIN) Endpoint security", url: "#signed-tradeuser_data-and-margin-endpoint-security", children: [
+              {title: "Timing security", url: "#timing-security" },
+              {title: "SIGNED Endpoint Examples for POST /api/v1/order", url: "#signed-endpoint-examples-for-post-apiv1order" },
+              {title: "SIGNED Endpoint Examples for POST /wapi/v3/withdraw.html", url: "#signed-endpoint-examples-for-post-wapiv3withdrawhtml" },
+          ]},
+          {title: "Public API definitions", url: "#public-api-definitions", children: [
+              {title: "Terminology", url: "#terminology" },
+              {title: "ENUM definitions", url: "#enum-definitions" },
+          ]},
+          {title: "Filters", url: "#filters", children: [
+              {title: "Symbol Filters", url: "#symbol-filters" },
+              {title: "Exchange Filters", url: "#exchange-filters" },
+          ]},
+        ];
+
+    </script>
+    <script src="./js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+<nav class="navbar wm-page-top-frame">
+  <div class="container-fluid wm-top-container">
+    
+    <div class="wm-top-tool pull-right wm-vcenter">
+      <form class="dropdown wm-vcentered" id="wm-search-form" action="./search.html">
+        
+        <button id="wm-search-show" class="btn btn-sm btn-default" type="submit"
+          ><i class="fa fa-search" aria-hidden="true"></i></button>
+
+        <div class="input-group input-group-sm wm-top-search">
+          <input type="text" name="q" class="form-control" id="mkdocs-search-query" placeholder="Search" autocomplete="off">
+          <span class="input-group-btn" role="search">
+            
+            <button class="btn btn-default dropdown-toggle collapse" data-toggle="dropdown" type="button"><span class="caret"></span></button>
+            <ul id="mkdocs-search-results" class="dropdown-menu dropdown-menu-right"></ul>
+            <button id="wm-search-go" class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </span>
+        </div>
+      </form>
+    </div>
+
+    
+    <div class="wm-top-tool wm-vcenter pull-right wm-small-left">
+      <button id="wm-toc-button" type="button" class="btn btn-sm btn-default wm-vcentered"><i class="fa fa-th-list" aria-hidden="true"></i></button>
+    </div>
+
+    
+    
+
+    
+    <a href="" class="wm-top-brand wm-top-link wm-vcenter">
+      
+      <div class="wm-top-title">
+        Exchange API Docs<br>
+        
+      </div>
+    </a>
+  </div>
+</nav>
+
+  <div id="main-content" class="wm-page-top-frame">
+    
+<nav class="wm-toc-pane">
+  
+  <ul class="wm-toctree">
+        <li class="wm-toc-li wm-toc-lev1 "><a href="" class="wm-article-link wm-toc-text">GENERAL INFO</a>
+</li>
+        <li class="wm-toc-li wm-toc-lev1 "><a href="account/" class="wm-article-link wm-toc-text">WALLET ACCOUNT</a>
+</li>
+        <li class="wm-toc-li wm-toc-lev1 "><a href="Market_Data/" class="wm-article-link wm-toc-text">MARKET DATA</a>
+</li>
+        <li class="wm-toc-li wm-toc-lev1 "><a href="spot/" class="wm-article-link wm-toc-text">SPOT ACCOUNT/TRADE</a>
+</li>
+        <li class="wm-toc-li wm-toc-lev1 "><a href="Margin/" class="wm-article-link wm-toc-text">MARGIN TRADE</a>
+</li>
+        <li class="wm-toc-li wm-toc-lev1 "><a href="error_info/" class="wm-article-link wm-toc-text">ERROR INFO</a>
+</li>
+  </ul>
+</nav>
+
+    <div class="wm-content-pane">
+      <iframe class="wm-article" name="article"></iframe>
+    </div>
+  </div>
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="account/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="account/" class="btn btn-xs btn-link">
+        WALLET ACCOUNT
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="general-api-information">General API Information</h1>
+<ul>
+<li>The base endpoint is: <strong>https://api.binance.com</strong></li>
+<li>All endpoints return either a JSON object or array.</li>
+<li>Data is returned in <strong>ascending</strong> order. Oldest first, newest last.</li>
+<li>All time and timestamp related fields are in milliseconds.</li>
+<li>HTTP <code>4XX</code> return codes are used for for malformed requests;
+  the issue is on the sender's side.</li>
+<li>HTTP <code>429</code> return code is used when breaking a request rate limit.</li>
+<li>HTTP <code>418</code> return code is used when an IP has been auto-banned for continuing to send requests after receiving <code>429</code> codes.</li>
+<li>HTTP <code>5XX</code> return codes are used for internal errors; the issue is on
+  Binance's side.
+  And When using <code>/wapi/v3</code> , HTTP <code>504</code> return code is used when the API successfully sent the message
+but not get a response within the timeout period.
+  It is important to <strong>NOT</strong> treat this as a failure operation; the execution status is
+  <strong>UNKNOWN</strong> and could have been a success.</li>
+<li>When using <code>/api/v1</code> and <code>/sapi/v1/margin</code>, any endpoint can return an ERROR; the error payload is as follows:</li>
+</ul>
+<pre><code class="javascript">{
+  &quot;code&quot;: -1121,
+  &quot;msg&quot;: &quot;Invalid symbol.&quot;
+}
+</code></pre>
+
+<ul>
+<li>When using <code>/wapi/v3</code>, any endpoint can retun an ERROR; the error payload is as follows:</li>
+</ul>
+<pre><code class="javascript">{
+  &quot;success&quot;: false,
+  &quot;msg&quot;: &quot;Invalid symbol.&quot;
+}
+</code></pre>
+
+<ul>
+<li>Specific error codes and messages defined in another document.</li>
+<li>For <code>GET</code> endpoints, parameters must be sent as a <code>query string</code>.</li>
+<li>For <code>POST</code>, <code>PUT</code>, and <code>DELETE</code> endpoints, the parameters may be sent as a
+  <code>query string</code> or in the <code>request body</code> with content type
+  <code>application/x-www-form-urlencoded</code>. You may mix parameters between both the
+  <code>query string</code> and <code>request body</code> if you wish to do so.</li>
+<li>Parameters may be sent in any order.</li>
+<li>If a parameter sent in both the <code>query string</code> and <code>request body</code>, the
+  <code>query string</code> parameter will be used.</li>
+</ul>
+<h1 id="limits">LIMITS</h1>
+<ul>
+<li>The <code>/api/v1/exchangeInfo</code> <code>rateLimits</code> array contains objects related to the exchange's <code>RAW_REQUEST</code>, <code>REQUEST_WEIGHT</code>, and <code>ORDER</code> rate limits. These are further defined in the <code>ENUM definitions</code> section under <code>Rate limiters (rateLimitType)</code>.</li>
+<li>The <code>/wapi/v3</code> <code>rateLimits</code> array contains objects related to the exchange's <code>REQUESTS</code> and <code>ORDER</code> rate limits.</li>
+<li>A 429 will be returned when either rate limit is violated.</li>
+<li>Each route has a <code>weight</code> which determines for the number of requests each endpoint counts for. Heavier endpoints and endpoints that do operations on multiple symbols will have a heavier <code>weight</code>.</li>
+<li>Every request will contain a <code>X-MBX-USED-WEIGHT</code> header which has the current used weight for the IP for the current minute.</li>
+<li>When a 429 is recieved, it's your obligation as an API to back off and not spam the API.</li>
+<li><strong>Repeatedly violating rate limits and/or failing to back off after receiving 429s will result in an automated IP ban (http status 418).</strong></li>
+<li>IP bans are tracked and <strong>scale in duration</strong> for repeat offenders, <strong>from 2 minutes to 3 days</strong>.</li>
+<li>A <code>Retry-After</code> header is sent with a 418 or 429 responses and will give the <strong>number of seconds</strong> required to wait, in the case of a 418, to prevent a ban, or, in the case of a 429, until the ban is over.</li>
+</ul>
+<h1 id="endpoint-security-type">Endpoint security type</h1>
+<ul>
+<li>Each endpoint has a security type that determines the how you will
+  interact with it.</li>
+<li>API-keys are passed into the Rest API via the <code>X-MBX-APIKEY</code>
+  header.</li>
+<li>API-keys and secret-keys <strong>are case sensitive</strong>.</li>
+<li>API-keys can be configured to only access certain types of secure endpoints.
+ For example, one API-key could be used for TRADE only, while another API-key
+ can access everything except for TRADE routes.</li>
+<li>By default, API-keys can access all secure routes.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Security Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NONE</td>
+<td>Endpoint can be accessed freely.</td>
+</tr>
+<tr>
+<td>TRADE</td>
+<td>Endpoint requires sending a valid API-Key and signature.</td>
+</tr>
+<tr>
+<td>USER_DATA</td>
+<td>Endpoint requires sending a valid API-Key and signature.</td>
+</tr>
+<tr>
+<td>USER_STREAM</td>
+<td>Endpoint requires sending a valid API-Key.</td>
+</tr>
+<tr>
+<td>MARKET_DATA</td>
+<td>Endpoint requires sending a valid API-Key.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>TRADE</code> and <code>USER_DATA</code> endpoints are <code>SIGNED</code> endpoints.</li>
+</ul>
+<h1 id="signed-tradeuser_data-and-margin-endpoint-security">SIGNED (TRADE、USER_DATA AND MARGIN) Endpoint security</h1>
+<ul>
+<li><code>SIGNED</code> endpoints require an additional parameter, <code>signature</code>, to be
+  sent in the  <code>query string</code> or <code>request body</code>.</li>
+<li>Endpoints use <code>HMAC SHA256</code> signatures. The <code>HMAC SHA256 signature</code> is a keyed <code>HMAC SHA256</code> operation.
+  Use your <code>secretKey</code> as the key and <code>totalParams</code> as the value for the HMAC operation.</li>
+<li>The <code>signature</code> is <strong>not case sensitive</strong>.</li>
+<li><code>totalParams</code> is defined as the <code>query string</code> concatenated with the
+  <code>request body</code>.</li>
+</ul>
+<h2 id="timing-security">Timing security</h2>
+<ul>
+<li>A <code>SIGNED</code> endpoint also requires a parameter, <code>timestamp</code>, to be sent which
+  should be the millisecond timestamp of when the request was created and sent.</li>
+<li>An additional parameter, <code>recvWindow</code>, may be sent to specify the number of
+  milliseconds after <code>timestamp</code> the request is valid for. If <code>recvWindow</code>
+  is not sent, <strong>it defaults to 5000</strong>.</li>
+<li>The logic is as follows:
+  <code>javascript
+  if (timestamp &lt; (serverTime + 1000) &amp;&amp; (serverTime - timestamp) &lt;= recvWindow) {
+    // process request
+  } else {
+    // reject request
+  }</code></li>
+</ul>
+<p><strong>Serious trading is about timing.</strong> Networks can be unstable and unreliable,
+which can lead to requests taking varying amounts of time to reach the
+servers. With <code>recvWindow</code>, you can specify that the request must be
+processed within a certain number of milliseconds or be rejected by the
+server.</p>
+<p><strong>It recommended to use a small recvWindow of 5000 or less!</strong></p>
+<h2 id="signed-endpoint-examples-for-post-apiv1order">SIGNED Endpoint Examples for POST /api/v1/order</h2>
+<p>Here is a step-by-step example of how to send a vaild signed payload from the
+Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A</td>
+</tr>
+<tr>
+<td>secretKey</td>
+<td>NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>LTCBTC</td>
+</tr>
+<tr>
+<td>side</td>
+<td>BUY</td>
+</tr>
+<tr>
+<td>type</td>
+<td>LIMIT</td>
+</tr>
+<tr>
+<td>timeInForce</td>
+<td>GTC</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>1</td>
+</tr>
+<tr>
+<td>price</td>
+<td>0.1</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>1499827319559</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-1-as-a-query-string">Example 1: As a query string</h3>
+<ul>
+<li><strong>queryString:</strong> symbol=LTCBTC&amp;side=BUY&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=0.1&amp;recvWindow=5000&amp;timestamp=1499827319559</li>
+<li>
+<p><strong>HMAC SHA256 signature:</strong></p>
+<p><code>[linux]$ echo -n "symbol=LTCBTC&amp;side=BUY&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=0.1&amp;recvWindow=5000&amp;timestamp=1499827319559" | openssl dgst -sha256 -hmac "NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j"
+(stdin)= c8db56825ae71d6d79447849e617115f4a920fa2acdcab2b053c4b2838bd6b71</code></p>
+</li>
+<li>
+<p><strong>curl command:</strong></p>
+<p><code>(HMAC SHA256)
+[linux]$ curl -H "X-MBX-APIKEY: vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A" -X POST 'https://api.binance.com/api/v3/order?symbol=LTCBTC&amp;side=BUY&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=0.1&amp;recvWindow=5000&amp;timestamp=1499827319559&amp;signature=c8db56825ae71d6d79447849e617115f4a920fa2acdcab2b053c4b2838bd6b71'</code></p>
+</li>
+</ul>
+<h3 id="example-2-as-a-request-body">Example 2: As a request body</h3>
+<ul>
+<li><strong>requestBody:</strong> symbol=LTCBTC&amp;side=BUY&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=0.1&amp;recvWindow=5000&amp;timestamp=1499827319559</li>
+<li>
+<p><strong>HMAC SHA256 signature:</strong></p>
+<p><code>[linux]$ echo -n "symbol=LTCBTC&amp;side=BUY&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=0.1&amp;recvWindow=5000&amp;timestamp=1499827319559" | openssl dgst -sha256 -hmac "NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j"
+(stdin)= c8db56825ae71d6d79447849e617115f4a920fa2acdcab2b053c4b2838bd6b71</code></p>
+</li>
+<li>
+<p><strong>curl command:</strong></p>
+<p><code>(HMAC SHA256)
+[linux]$ curl -H "X-MBX-APIKEY: vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A" -X POST 'https://api.binance.com/api/v3/order' -d 'symbol=LTCBTC&amp;side=BUY&amp;type=LIMIT&amp;timeInForce=GTC&amp;quantity=1&amp;price=0.1&amp;recvWindow=5000&amp;timestamp=1499827319559&amp;signature=c8db56825ae71d6d79447849e617115f4a920fa2acdcab2b053c4b2838bd6b71'</code></p>
+</li>
+</ul>
+<h3 id="example-3-mixed-query-string-and-request-body">Example 3: Mixed query string and request body</h3>
+<ul>
+<li><strong>queryString:</strong> symbol=LTCBTC&amp;side=BUY&amp;type=LIMIT&amp;timeInForce=GTC</li>
+<li><strong>requestBody:</strong> quantity=1&amp;price=0.1&amp;recvWindow=5000&amp;timestamp=1499827319559</li>
+<li>
+<p><strong>HMAC SHA256 signature:</strong></p>
+<p><code>[linux]$ echo -n "symbol=LTCBTC&amp;side=BUY&amp;type=LIMIT&amp;timeInForce=GTCquantity=1&amp;price=0.1&amp;recvWindow=5000&amp;timestamp=1499827319559" | openssl dgst -sha256 -hmac "NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j"
+(stdin)= 0fd168b8ddb4876a0358a8d14d0c9f3da0e9b20c5d52b2a00fcf7d1c602f9a77</code></p>
+</li>
+<li>
+<p><strong>curl command:</strong></p>
+<p><code>(HMAC SHA256)
+[linux]$ curl -H "X-MBX-APIKEY: vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A" -X POST 'https://api.binance.com/api/v3/order?symbol=LTCBTC&amp;side=BUY&amp;type=LIMIT&amp;timeInForce=GTC' -d 'quantity=1&amp;price=0.1&amp;recvWindow=5000&amp;timestamp=1499827319559&amp;signature=0fd168b8ddb4876a0358a8d14d0c9f3da0e9b20c5d52b2a00fcf7d1c602f9a77'</code></p>
+</li>
+</ul>
+<p>Note that the signature is different in example 3.
+There is no &amp; between "GTC" and "quantity=1".</p>
+<h2 id="signed-endpoint-examples-for-post-wapiv3withdrawhtml">SIGNED Endpoint Examples for POST /wapi/v3/withdraw.html</h2>
+<p>Here is a step-by-step example of how to send a vaild signed payload from the
+Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A</td>
+</tr>
+<tr>
+<td>secretKey</td>
+<td>NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asset</td>
+<td>ETH</td>
+</tr>
+<tr>
+<td>address</td>
+<td>0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b</td>
+</tr>
+<tr>
+<td>addressTag</td>
+<td>1 (Secondary address identifier for coins like XRP,XMR etc.)</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>1</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>name</td>
+<td>addressName (Description of the address)</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>1508396497000</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>157fb937ec848b5f802daa4d9f62bea08becbf4f311203bda2bd34cd9853e320</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-1-as-a-query-string_1">Example 1: As a query string</h3>
+<ul>
+<li><strong>queryString:</strong> asset=ETH&amp;address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b&amp;amount=1&amp;recvWindow=5000&amp;name=test&amp;timestamp=1510903211000</li>
+<li>
+<p><strong>HMAC SHA256 signature:</strong></p>
+<p><code>[linux]$ echo -n "asset=ETH&amp;address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b&amp;amount=1&amp;recvWindow=5000&amp;timestamp=1510903211000" | openssl dgst -sha256 -hmac "NhqPtmdSJYdKjVHjA7PZj4Mge3R5YNiP1e3UZjInClVN65XAbvqqM6A7H5fATj0j"
+(stdin)= 157fb937ec848b5f802daa4d9f62bea08becbf4f311203bda2bd34cd9853e320</code></p>
+</li>
+<li>
+<p><strong>curl command:</strong></p>
+<p><code>(HMAC SHA256)
+[linux]$ curl -H "X-MBX-APIKEY: vmPUZE6mv9SD5VNHk4HlWFsOr6aKE2zvsw0MuIgwCIPy6utIco14y7Ju91duEh8A" -X POST 'https://www.binance.com/wapi/v3/withdraw.html?asset=ETH&amp;address=0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b&amp;amount=1&amp;recvWindow=5000&amp;name=addressName&amp;timestamp=1510903211000&amp;signature=157fb937ec848b5f802daa4d9f62bea08becbf4f311203bda2bd34cd9853e320'</code></p>
+</li>
+</ul>
+<p>Note that for <code>wapi</code>, parameters must be sent in query strings.</p>
+<h1 id="public-api-definitions">Public API definitions</h1>
+<h2 id="terminology">Terminology</h2>
+<ul>
+<li><code>base asset</code> refers to the asset that is the <code>quantity</code> of a symbol.</li>
+<li><code>quote asset</code> refers to the asset that is the <code>price</code> of a symbol.</li>
+</ul>
+<h2 id="enum-definitions">ENUM definitions</h2>
+<p><strong>Symbol status (status):</strong></p>
+<ul>
+<li>PRE_TRADING</li>
+<li>TRADING</li>
+<li>POST_TRADING</li>
+<li>END_OF_DAY</li>
+<li>HALT</li>
+<li>AUCTION_MATCH</li>
+<li>BREAK</li>
+</ul>
+<p><strong>Symbol type:</strong></p>
+<ul>
+<li>SPOT</li>
+</ul>
+<p><strong>Order status (status):</strong></p>
+<ul>
+<li>NEW</li>
+<li>PARTIALLY_FILLED</li>
+<li>FILLED</li>
+<li>CANCELED</li>
+<li>PENDING_CANCEL (currently unused)</li>
+<li>REJECTED</li>
+<li>EXPIRED</li>
+</ul>
+<p><strong>Order types (orderTypes, type):</strong></p>
+<ul>
+<li>LIMIT</li>
+<li>MARKET</li>
+<li>STOP_LOSS</li>
+<li>STOP_LOSS_LIMIT</li>
+<li>TAKE_PROFIT</li>
+<li>TAKE_PROFIT_LIMIT</li>
+<li>LIMIT_MAKER</li>
+</ul>
+<p><strong>Order side (side):</strong></p>
+<ul>
+<li>BUY</li>
+<li>SELL</li>
+</ul>
+<p><strong>Time in force (timeInForce):</strong></p>
+<ul>
+<li>GTC</li>
+<li>IOC</li>
+<li>FOK</li>
+</ul>
+<p><strong>Kline/Candlestick chart intervals:</strong></p>
+<p>m -&gt; minutes; h -&gt; hours; d -&gt; days; w -&gt; weeks; M -&gt; months</p>
+<ul>
+<li>1m</li>
+<li>3m</li>
+<li>5m</li>
+<li>15m</li>
+<li>30m</li>
+<li>1h</li>
+<li>2h</li>
+<li>4h</li>
+<li>6h</li>
+<li>8h</li>
+<li>12h</li>
+<li>1d</li>
+<li>3d</li>
+<li>1w</li>
+<li>1M</li>
+</ul>
+<p><strong>Rate limiters (rateLimitType)</strong>
+* REQUEST_WEIGHT</p>
+<pre><code>```json
+{
+  "rateLimitType": "REQUEST_WEIGHT",
+  "interval": "MINUTE",
+  "intervalNum": 1,
+  "limit": 1200
+}
+```
+</code></pre>
+<ul>
+<li>
+<p>ORDERS</p>
+<p><code>json
+{
+  "rateLimitType": "ORDERS",
+  "interval": "SECOND",
+  "intervalNum": 1,
+  "limit": 10
+}</code>
+* RAW_REQUESTS</p>
+<p><code>json
+{
+  "rateLimitType": "RAW_REQUESTS",
+  "interval": "MINUTE",
+  "intervalNum": 5,
+  "limit": 5000
+}</code></p>
+</li>
+</ul>
+<p><strong>Rate limit intervals (interval)</strong></p>
+<ul>
+<li>SECOND</li>
+<li>MINUTE</li>
+<li>DAY</li>
+</ul>
+<h1 id="filters">Filters</h1>
+<p>Filters define trading rules on a symbol or an exchange.
+Filters come in two forms: <code>symbol filters</code> and <code>exchange filters</code>.</p>
+<h2 id="symbol-filters">Symbol Filters</h2>
+<h3 id="price_filter">PRICE_FILTER</h3>
+<p>The <code>PRICE_FILTER</code> defines the <code>price</code> rules for a symbol. There are 3 parts:</p>
+<ul>
+<li><code>minPrice</code> defines the minimum <code>price</code>/<code>stopPrice</code> allowed; disabled on <code>minPrice</code> == 0.</li>
+<li><code>maxPrice</code> defines the maximum <code>price</code>/<code>stopPrice</code> allowed; disabled on <code>maxPrice</code> == 0.</li>
+<li><code>tickSize</code> defines the intervals that a <code>price</code>/<code>stopPrice</code> can be increased/decreased by; disabled on <code>tickSize</code> == 0.</li>
+</ul>
+<p>Any of the above variables can be set to 0, which disables that rule in the <code>price filter</code>. In order to pass the <code>price filter</code>, the following must be true for <code>price</code>/<code>stopPrice</code> of the enabled rules:</p>
+<ul>
+<li><code>price</code> &gt;= <code>minPrice</code> </li>
+<li><code>price</code> &lt;= <code>maxPrice</code></li>
+<li>(<code>price</code>-<code>minPrice</code>) % <code>tickSize</code> == 0</li>
+</ul>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;PRICE_FILTER&quot;,
+    &quot;minPrice&quot;: &quot;0.00000100&quot;,
+    &quot;maxPrice&quot;: &quot;100000.00000000&quot;,
+    &quot;tickSize&quot;: &quot;0.00000100&quot;
+  }
+</code></pre>
+
+<h3 id="percent_price">PERCENT_PRICE</h3>
+<p>The <code>PERCENT_PRICE</code> filter defines valid range for a price based on the average of the previous trades.
+<code>avgPriceMins</code> is the number of minutes the average price is calculated over. 0 means the last price is used.</p>
+<p>In order to pass the <code>percent price</code>, the following must be true for <code>price</code>:
+* <code>price</code> &lt;= <code>weightedAveragePrice</code> * <code>multiplierUp</code>
+* <code>price</code> &gt;= <code>weightedAveragePrice</code> * <code>multiplierDown</code></p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;PERCENT_PRICE&quot;,
+    &quot;multiplierUp&quot;: &quot;1.3000&quot;,
+    &quot;multiplierDown&quot;: &quot;0.7000&quot;,
+    &quot;avgPriceMins&quot;: 5
+  }
+</code></pre>
+
+<h3 id="lot_size">LOT_SIZE</h3>
+<p>The <code>LOT_SIZE</code> filter defines the <code>quantity</code> (aka "lots" in auction terms) rules for a symbol. There are 3 parts:</p>
+<ul>
+<li><code>minQty</code> defines the minimum <code>quantity</code>/<code>icebergQty</code> allowed.</li>
+<li><code>maxQty</code> defines the maximum <code>quantity</code>/<code>icebergQty</code> allowed.</li>
+<li><code>stepSize</code> defines the intervals that a <code>quantity</code>/<code>icebergQty</code> can be increased/decreased by.</li>
+</ul>
+<p>In order to pass the <code>lot size</code>, the following must be true for <code>quantity</code>/<code>icebergQty</code>:</p>
+<ul>
+<li><code>quantity</code> &gt;= <code>minQty</code></li>
+<li><code>quantity</code> &lt;= <code>maxQty</code></li>
+<li>(<code>quantity</code>-<code>minQty</code>) % <code>stepSize</code> == 0</li>
+</ul>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;LOT_SIZE&quot;,
+    &quot;minQty&quot;: &quot;0.00100000&quot;,
+    &quot;maxQty&quot;: &quot;100000.00000000&quot;,
+    &quot;stepSize&quot;: &quot;0.00100000&quot;
+  }
+</code></pre>
+
+<h3 id="min_notional">MIN_NOTIONAL</h3>
+<p>The <code>MIN_NOTIONAL</code> filter defines the minimum notional value allowed for an order on a symbol.
+An order's notional value is the <code>price</code> * <code>quantity</code>.
+<code>applyToMarket</code> determines whether or not the <code>MIN_NOTIONAL</code> filter will also be applied to <code>MARKET</code> orders.
+Since <code>MARKET</code> orders have no price, the average price is used over the last <code>avgPriceMins</code> minutes.
+<code>avgPriceMins</code> is the number of minutes the average price is calculated over. 0 means the last price is used.</p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;MIN_NOTIONAL&quot;,
+    &quot;minNotional&quot;: &quot;0.00100000&quot;,
+    &quot;applyToMarket&quot;: true,
+    &quot;avgPriceMins&quot;: 5
+  }
+</code></pre>
+
+<h3 id="iceberg_parts">ICEBERG_PARTS</h3>
+<p>The <code>ICEBERG_PARTS</code> filter defines the maximum parts an iceberg order can have. The number of <code>ICEBERG_PARTS</code> is defined as <code>CEIL(qty / icebergQty)</code>.</p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;ICEBERG_PARTS&quot;,
+    &quot;limit&quot;: 10
+  }
+</code></pre>
+
+<h3 id="market_lot_size">MARKET_LOT_SIZE</h3>
+<p>The <code>MARKET_LOT_SIZE</code> filter defines the <code>quantity</code> (aka "lots" in auction terms) rules for <code>MARKET</code> orders on a symbol. There are 3 parts:</p>
+<ul>
+<li><code>minQty</code> defines the minimum <code>quantity</code> allowed.</li>
+<li><code>maxQty</code> defines the maximum <code>quantity</code> allowed.</li>
+<li><code>stepSize</code> defines the intervals that a <code>quantity</code> can be increased/decreased by.</li>
+</ul>
+<p>In order to pass the <code>market lot size</code>, the following must be true for <code>quantity</code>:</p>
+<ul>
+<li><code>quantity</code> &gt;= <code>minQty</code></li>
+<li><code>quantity</code> &lt;= <code>maxQty</code></li>
+<li>(<code>quantity</code>-<code>minQty</code>) % <code>stepSize</code> == 0</li>
+</ul>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;MARKET_LOT_SIZE&quot;,
+    &quot;minQty&quot;: &quot;0.00100000&quot;,
+    &quot;maxQty&quot;: &quot;100000.00000000&quot;,
+    &quot;stepSize&quot;: &quot;0.00100000&quot;
+  }
+</code></pre>
+
+<h3 id="max_num_orders">MAX_NUM_ORDERS</h3>
+<p>The <code>MAX_NUM_ORDERS</code> filter defines the maximum number of orders an account is allowed to have open on a symbol.
+Note that both "algo" orders and normal orders are counted for this filter.</p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;MAX_NUM_ORDERS&quot;,
+    &quot;limit&quot;: 25
+  }
+</code></pre>
+
+<h3 id="max_num_algo_orders">MAX_NUM_ALGO_ORDERS</h3>
+<p>The <code>MAX_NUM_ALGO_ORDERS</code> filter defines the maximum number of "algo" orders an account is allowed to have open on a symbol.
+"Algo" orders are <code>STOP_LOSS</code>, <code>STOP_LOSS_LIMIT</code>, <code>TAKE_PROFIT</code>, and <code>TAKE_PROFIT_LIMIT</code> orders.</p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;MAX_NUM_ALGO_ORDERS&quot;,
+    &quot;maxNumAlgoOrders&quot;: 5
+  }
+</code></pre>
+
+<h3 id="max_num_iceberg_orders">MAX_NUM_ICEBERG_ORDERS</h3>
+<p>The <code>MAX_NUM_ICEBERG_ORDERS</code> filter defines the maximum number of <code>ICEBERG</code> orders an account is allowed to have open on a symbol.
+An <code>ICEBERG</code> order is any order where the <code>icebergQty</code> is &gt; 0.</p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;MAX_NUM_ICEBERG_ORDERS&quot;,
+    &quot;maxNumIcebergOrders&quot;: 5
+  }
+</code></pre>
+
+<h2 id="exchange-filters">Exchange Filters</h2>
+<h3 id="exchange_max_num_orders">EXCHANGE_MAX_NUM_ORDERS</h3>
+<p>The <code>MAX_NUM_ORDERS</code> filter defines the maximum number of orders an account is allowed to have open on the exchange.
+Note that both "algo" orders and normal orders are counted for this filter.</p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;EXCHANGE_MAX_NUM_ORDERS&quot;,
+    &quot;maxNumOrders&quot;: 1000
+  }
+</code></pre>
+
+<h3 id="exchange_max_num_algo_orders">EXCHANGE_MAX_NUM_ALGO_ORDERS</h3>
+<p>The <code>MAX_ALGO_ORDERS</code> filter defines the maximum number of "algo" orders an account is allowed to have open on the exchange.
+"Algo" orders are <code>STOP_LOSS</code>, <code>STOP_LOSS_LIMIT</code>, <code>TAKE_PROFIT</code>, and <code>TAKE_PROFIT_LIMIT</code> orders.</p>
+<p><strong>/exchangeInfo format:</strong></p>
+<pre><code class="javascript">  {
+    &quot;filterType&quot;: &quot;EXCHANGE_MAX_ALGO_ORDERS&quot;,
+    &quot;maxNumAlgoOrders&quot;: 200
+  }
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="account/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="account/" class="btn btn-xs btn-link">
+        WALLET ACCOUNT
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2019-08-07 07:45:39
+-->

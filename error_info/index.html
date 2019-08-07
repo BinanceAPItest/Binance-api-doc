@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>ERROR INFO - Exchange API Docs</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "10xx - General Server or Network issues", url: "#_top", children: [
+              {title: "-1000 UNKNOWN", url: "#-1000-unknown" },
+              {title: "-1001 DISCONNECTED", url: "#-1001-disconnected" },
+              {title: "-1002 UNAUTHORIZED", url: "#-1002-unauthorized" },
+              {title: "-1003 TOO_MANY_REQUESTS", url: "#-1003-too_many_requests" },
+              {title: "-1006 UNEXPECTED_RESP", url: "#-1006-unexpected_resp" },
+              {title: "-1007 TIMEOUT", url: "#-1007-timeout" },
+              {title: "-1014 UNKNOWN_ORDER_COMPOSITION", url: "#-1014-unknown_order_composition" },
+              {title: "-1015 TOO_MANY_ORDERS", url: "#-1015-too_many_orders" },
+              {title: "-1016 SERVICE_SHUTTING_DOWN", url: "#-1016-service_shutting_down" },
+              {title: "-1020 UNSUPPORTED_OPERATION", url: "#-1020-unsupported_operation" },
+              {title: "-1021 INVALID_TIMESTAMP", url: "#-1021-invalid_timestamp" },
+              {title: "-1022 INVALID_SIGNATURE", url: "#-1022-invalid_signature" },
+          ]},
+          {title: "11xx - Request issues", url: "#11xx-request-issues", children: [
+              {title: "-1100 ILLEGAL_CHARS", url: "#-1100-illegal_chars" },
+              {title: "-1101 TOO_MANY_PARAMETERS", url: "#-1101-too_many_parameters" },
+              {title: "-1102 MANDATORY_PARAM_EMPTY_OR_MALFORMED", url: "#-1102-mandatory_param_empty_or_malformed" },
+              {title: "-1103 UNKNOWN_PARAM", url: "#-1103-unknown_param" },
+              {title: "-1104 UNREAD_PARAMETERS", url: "#-1104-unread_parameters" },
+              {title: "-1105 PARAM_EMPTY", url: "#-1105-param_empty" },
+              {title: "-1106 PARAM_NOT_REQUIRED", url: "#-1106-param_not_required" },
+              {title: "-1111 BAD_PRECISION", url: "#-1111-bad_precision" },
+              {title: "-1112 NO_DEPTH", url: "#-1112-no_depth" },
+              {title: "-1114 TIF_NOT_REQUIRED", url: "#-1114-tif_not_required" },
+              {title: "-1115 INVALID_TIF", url: "#-1115-invalid_tif" },
+              {title: "-1116 INVALID_ORDER_TYPE", url: "#-1116-invalid_order_type" },
+              {title: "-1117 INVALID_SIDE", url: "#-1117-invalid_side" },
+              {title: "-1118 EMPTY_NEW_CL_ORD_ID", url: "#-1118-empty_new_cl_ord_id" },
+              {title: "-1119 EMPTY_ORG_CL_ORD_ID", url: "#-1119-empty_org_cl_ord_id" },
+              {title: "-1120 BAD_INTERVAL", url: "#-1120-bad_interval" },
+              {title: "-1121 BAD_SYMBOL", url: "#-1121-bad_symbol" },
+              {title: "-1125 INVALID_LISTEN_KEY", url: "#-1125-invalid_listen_key" },
+              {title: "-1127 MORE_THAN_XX_HOURS", url: "#-1127-more_than_xx_hours" },
+              {title: "-1128 OPTIONAL_PARAMS_BAD_COMBO", url: "#-1128-optional_params_bad_combo" },
+              {title: "-1130 INVALID_PARAMETER", url: "#-1130-invalid_parameter" },
+              {title: "-2010 NEW_ORDER_REJECTED", url: "#-2010-new_order_rejected" },
+              {title: "-2011 CANCEL_REJECTED", url: "#-2011-cancel_rejected" },
+              {title: "-2013 NO_SUCH_ORDER", url: "#-2013-no_such_order" },
+              {title: "-2014 BAD_API_KEY_FMT", url: "#-2014-bad_api_key_fmt" },
+              {title: "-2015 REJECTED_MBX_KEY", url: "#-2015-rejected_mbx_key" },
+              {title: "-2016 NO_TRADING_WINDOW", url: "#-2016-no_trading_window" },
+          ]},
+          {title: "Messages for -1010 ERROR_MSG_RECEIVED, -2010 NEW_ORDER_REJECTED, and -2011 CANCEL_REJECTED", url: "#messages-for-1010-error_msg_received-2010-new_order_rejected-and-2011-cancel_rejected", children: [
+          ]},
+          {title: "-9xxx Filter failures", url: "#-9xxx-filter-failures", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav">
+      <a href="../Margin/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Margin/" class="btn btn-xs btn-link">
+        MARGIN TRADE
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <p>Errors consist of two parts: an error code and a message. Codes are universal,
+ but messages can vary. Here is the error JSON payload:</p>
+<pre><code class="javascript">{
+  &quot;code&quot;:-1121,
+  &quot;msg&quot;:&quot;Invalid symbol.&quot;
+}
+</code></pre>
+
+<h2 id="10xx-general-server-or-network-issues">10xx - General Server or Network issues</h2>
+<h4 id="-1000-unknown">-1000 UNKNOWN</h4>
+<ul>
+<li>An unknown error occured while processing the request.</li>
+</ul>
+<h4 id="-1001-disconnected">-1001 DISCONNECTED</h4>
+<ul>
+<li>Internal error; unable to process your request. Please try again.</li>
+</ul>
+<h4 id="-1002-unauthorized">-1002 UNAUTHORIZED</h4>
+<ul>
+<li>You are not authorized to execute this request.</li>
+</ul>
+<h4 id="-1003-too_many_requests">-1003 TOO_MANY_REQUESTS</h4>
+<ul>
+<li>Too many requests queued.</li>
+<li>Too many requests; please use the websocket for live updates.</li>
+<li>Too many requests; current limit is %s requests per minute. Please use the websocket for live updates to avoid polling the API.</li>
+<li>Way too many requests; IP banned until %s. Please use the websocket for live updates to avoid bans.</li>
+</ul>
+<h4 id="-1006-unexpected_resp">-1006 UNEXPECTED_RESP</h4>
+<ul>
+<li>An unexpected response was received from the message bus. Execution status unknown.</li>
+</ul>
+<h4 id="-1007-timeout">-1007 TIMEOUT</h4>
+<ul>
+<li>Timeout waiting for response from backend server. Send status unknown; execution status unknown.</li>
+</ul>
+<h4 id="-1014-unknown_order_composition">-1014 UNKNOWN_ORDER_COMPOSITION</h4>
+<ul>
+<li>Unsupported order combination.</li>
+</ul>
+<h4 id="-1015-too_many_orders">-1015 TOO_MANY_ORDERS</h4>
+<ul>
+<li>Too many new orders.</li>
+<li>Too many new orders; current limit is %s orders per %s.</li>
+</ul>
+<h4 id="-1016-service_shutting_down">-1016 SERVICE_SHUTTING_DOWN</h4>
+<ul>
+<li>This service is no longer available.</li>
+</ul>
+<h4 id="-1020-unsupported_operation">-1020 UNSUPPORTED_OPERATION</h4>
+<ul>
+<li>This operation is not supported.</li>
+</ul>
+<h4 id="-1021-invalid_timestamp">-1021 INVALID_TIMESTAMP</h4>
+<ul>
+<li>Timestamp for this request is outside of the recvWindow.</li>
+<li>Timestamp for this request was 1000ms ahead of the server's time.</li>
+</ul>
+<h4 id="-1022-invalid_signature">-1022 INVALID_SIGNATURE</h4>
+<ul>
+<li>Signature for this request is not valid.</li>
+</ul>
+<h2 id="11xx-request-issues">11xx - Request issues</h2>
+<h4 id="-1100-illegal_chars">-1100 ILLEGAL_CHARS</h4>
+<ul>
+<li>Illegal characters found in a parameter.</li>
+<li>Illegal characters found in parameter '%s'; legal range is '%s'.</li>
+</ul>
+<h4 id="-1101-too_many_parameters">-1101 TOO_MANY_PARAMETERS</h4>
+<ul>
+<li>Too many parameters sent for this endpoint.</li>
+<li>Too many parameters; expected '%s' and received '%s'.</li>
+<li>Duplicate values for a parameter detected.</li>
+</ul>
+<h4 id="-1102-mandatory_param_empty_or_malformed">-1102 MANDATORY_PARAM_EMPTY_OR_MALFORMED</h4>
+<ul>
+<li>A mandatory parameter was not sent, was empty/null, or malformed.</li>
+<li>Mandatory parameter '%s' was not sent, was empty/null, or malformed.</li>
+<li>Param '%s' or '%s' must be sent, but both were empty/null!</li>
+</ul>
+<h4 id="-1103-unknown_param">-1103 UNKNOWN_PARAM</h4>
+<ul>
+<li>An unknown parameter was sent.</li>
+</ul>
+<h4 id="-1104-unread_parameters">-1104 UNREAD_PARAMETERS</h4>
+<ul>
+<li>Not all sent parameters were read.</li>
+<li>Not all sent parameters were read; read '%s' parameter(s) but was sent '%s'.</li>
+</ul>
+<h4 id="-1105-param_empty">-1105 PARAM_EMPTY</h4>
+<ul>
+<li>A parameter was empty.</li>
+<li>Parameter '%s' was empty.</li>
+</ul>
+<h4 id="-1106-param_not_required">-1106 PARAM_NOT_REQUIRED</h4>
+<ul>
+<li>A parameter was sent when not required.</li>
+<li>Parameter '%s' sent when not required.</li>
+</ul>
+<h4 id="-1111-bad_precision">-1111 BAD_PRECISION</h4>
+<ul>
+<li>Precision is over the maximum defined for this asset.</li>
+</ul>
+<h4 id="-1112-no_depth">-1112 NO_DEPTH</h4>
+<ul>
+<li>No orders on book for symbol.</li>
+</ul>
+<h4 id="-1114-tif_not_required">-1114 TIF_NOT_REQUIRED</h4>
+<ul>
+<li>TimeInForce parameter sent when not required.</li>
+</ul>
+<h4 id="-1115-invalid_tif">-1115 INVALID_TIF</h4>
+<ul>
+<li>Invalid timeInForce.</li>
+</ul>
+<h4 id="-1116-invalid_order_type">-1116 INVALID_ORDER_TYPE</h4>
+<ul>
+<li>Invalid orderType.</li>
+</ul>
+<h4 id="-1117-invalid_side">-1117 INVALID_SIDE</h4>
+<ul>
+<li>Invalid side.</li>
+</ul>
+<h4 id="-1118-empty_new_cl_ord_id">-1118 EMPTY_NEW_CL_ORD_ID</h4>
+<ul>
+<li>New client order ID was empty.</li>
+</ul>
+<h4 id="-1119-empty_org_cl_ord_id">-1119 EMPTY_ORG_CL_ORD_ID</h4>
+<ul>
+<li>Original client order ID was empty.</li>
+</ul>
+<h4 id="-1120-bad_interval">-1120 BAD_INTERVAL</h4>
+<ul>
+<li>Invalid interval.</li>
+</ul>
+<h4 id="-1121-bad_symbol">-1121 BAD_SYMBOL</h4>
+<ul>
+<li>Invalid symbol.</li>
+</ul>
+<h4 id="-1125-invalid_listen_key">-1125 INVALID_LISTEN_KEY</h4>
+<ul>
+<li>This listenKey does not exist.</li>
+</ul>
+<h4 id="-1127-more_than_xx_hours">-1127 MORE_THAN_XX_HOURS</h4>
+<ul>
+<li>Lookup interval is too big.</li>
+<li>More than %s hours between startTime and endTime.</li>
+</ul>
+<h4 id="-1128-optional_params_bad_combo">-1128 OPTIONAL_PARAMS_BAD_COMBO</h4>
+<ul>
+<li>Combination of optional parameters invalid.</li>
+</ul>
+<h4 id="-1130-invalid_parameter">-1130 INVALID_PARAMETER</h4>
+<ul>
+<li>Invalid data sent for a parameter.</li>
+<li>Data sent for paramter '%s' is not valid.</li>
+</ul>
+<h4 id="-2010-new_order_rejected">-2010 NEW_ORDER_REJECTED</h4>
+<ul>
+<li>NEW_ORDER_REJECTED</li>
+</ul>
+<h4 id="-2011-cancel_rejected">-2011 CANCEL_REJECTED</h4>
+<ul>
+<li>CANCEL_REJECTED</li>
+</ul>
+<h4 id="-2013-no_such_order">-2013 NO_SUCH_ORDER</h4>
+<ul>
+<li>Order does not exist.</li>
+</ul>
+<h4 id="-2014-bad_api_key_fmt">-2014 BAD_API_KEY_FMT</h4>
+<ul>
+<li>API-key format invalid.</li>
+</ul>
+<h4 id="-2015-rejected_mbx_key">-2015 REJECTED_MBX_KEY</h4>
+<ul>
+<li>Invalid API-key, IP, or permissions for action.</li>
+</ul>
+<h4 id="-2016-no_trading_window">-2016 NO_TRADING_WINDOW</h4>
+<ul>
+<li>No trading window could be found for the symbol. Try ticker/24hrs instead.</li>
+</ul>
+<h2 id="messages-for-1010-error_msg_received-2010-new_order_rejected-and-2011-cancel_rejected">Messages for -1010 ERROR_MSG_RECEIVED, -2010 NEW_ORDER_REJECTED, and -2011 CANCEL_REJECTED</h2>
+<p>This code is sent when an error has been returned by the matching engine.
+The following messages which will indicate the specific error:</p>
+<table>
+<thead>
+<tr>
+<th>Error message</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Unknown order sent."</td>
+<td>The order (by either <code>orderId</code>, <code>clOrdId</code>, <code>origClOrdId</code>) could not be found</td>
+</tr>
+<tr>
+<td>"Duplicate order sent."</td>
+<td>The <code>clOrdId</code> is already in use</td>
+</tr>
+<tr>
+<td>"Market is closed."</td>
+<td>The symbol is not trading</td>
+</tr>
+<tr>
+<td>"Account has insufficient balance for requested action."</td>
+<td>Not enough funds to complete the action</td>
+</tr>
+<tr>
+<td>"Market orders are not supported for this symbol."</td>
+<td><code>MARKET</code> is not enabled on the symbol</td>
+</tr>
+<tr>
+<td>"Iceberg orders are not supported for this symbol."</td>
+<td><code>icebergQty</code> is not enabled on the symbol</td>
+</tr>
+<tr>
+<td>"Stop loss orders are not supported for this symbol."</td>
+<td><code>STOP_LOSS</code> is not enabled on the symbol</td>
+</tr>
+<tr>
+<td>"Stop loss limit orders are not supported for this symbol."</td>
+<td><code>STOP_LOSS_LIMIT</code> is not enabled on the symbol</td>
+</tr>
+<tr>
+<td>"Take profit orders are not supported for this symbol."</td>
+<td><code>TAKE_PROFIT</code> is not enabled on the symbol</td>
+</tr>
+<tr>
+<td>"Take profit limit orders are not supported for this symbol."</td>
+<td><code>TAKE_PROFIT_LIMIT</code> is not enabled on the symbol</td>
+</tr>
+<tr>
+<td>"Price * QTY is zero or less."</td>
+<td><code>price</code> * <code>quantity</code> is too low</td>
+</tr>
+<tr>
+<td>"IcebergQty exceeds QTY."</td>
+<td><code>icebergQty</code> must be less than the order quantity</td>
+</tr>
+<tr>
+<td>"This action disabled is on this account."</td>
+<td>Contact customer support; some actions have been disabled on the account.</td>
+</tr>
+<tr>
+<td>"Unsupported order combination"</td>
+<td>The <code>orderType</code>, <code>timeInForce</code>, <code>stopPrice</code>, and/or <code>icebergQty</code> combination isn't allowed.</td>
+</tr>
+<tr>
+<td>"Order would trigger immediately."</td>
+<td>The order's stop price is not valid when compared to the last traded price.</td>
+</tr>
+<tr>
+<td>"Cancel order is invalid. Check origClOrdId and orderId."</td>
+<td>No <code>origClOrdId</code> or <code>orderId</code> was sent in.</td>
+</tr>
+<tr>
+<td>"Order would immediately match and take."</td>
+<td><code>LIMIT_MAKER</code> order type would immediately match and trade, and not be a pure maker order.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-9xxx-filter-failures">-9xxx Filter failures</h2>
+<table>
+<thead>
+<tr>
+<th>Error message</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Filter failure: PRICE_FILTER"</td>
+<td><code>price</code> is too high, too low, and/or not following the tick size rule for the symbol.</td>
+</tr>
+<tr>
+<td>"Filter failure: PERCENT_PRICE"</td>
+<td><code>price</code> is X% too high or X% too low from the average weighted price over the last Y minutes.</td>
+</tr>
+<tr>
+<td>"Filter failure: LOT_SIZE"</td>
+<td><code>quantity</code> is too high, too low, and/or not following the step size rule for the symbol.</td>
+</tr>
+<tr>
+<td>"Filter failure: MIN_NOTIONAL"</td>
+<td><code>price</code> * <code>quantity</code> is too low to be a valid order for the symbol.</td>
+</tr>
+<tr>
+<td>"Filter failure: ICEBERG_PARTS"</td>
+<td><code>ICEBERG</code> order would break into too many parts; icebergQty is too small.</td>
+</tr>
+<tr>
+<td>"Filter failure: MARKET_LOT_SIZE"</td>
+<td><code>MARKET</code> order's <code>quantity</code> is too high, too low, and/or not following the step size rule for the symbol.</td>
+</tr>
+<tr>
+<td>"Filter failure: MAX_NUM_ORDERS"</td>
+<td>Account has too many open orders on the symbol.</td>
+</tr>
+<tr>
+<td>"Filter failure: MAX_ALGO_ORDERS"</td>
+<td>Account has too many open stop loss and/or take profit orders on the symbol.</td>
+</tr>
+<tr>
+<td>"Filter failure: MAX_NUM_ICEBERG_ORDERS"</td>
+<td>Account has too many open iceberg orders on the symbol.</td>
+</tr>
+<tr>
+<td>"Filter failure: EXCHANGE_MAX_NUM_ORDERS"</td>
+<td>Account has too many open orders on the exchange.</td>
+</tr>
+<tr>
+<td>"Filter failure: EXCHANGE_MAX_ALGO_ORDERS"</td>
+<td>Account has too many open stop loss and/or take profit orders on the exchange.</td>
+</tr>
+</tbody>
+</table>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav">
+      <a href="../Margin/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Margin/" class="btn btn-xs btn-link">
+        MARGIN TRADE
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

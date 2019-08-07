@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>SPOT ACCOUNT/TRADE - Exchange API Docs</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Rest API", url: "#_top", children: [
+              {title: "Account endpoints", url: "#account-endpoints" },
+          ]},
+          {title: "Web-Socket Streams", url: "#web-socket-streams", children: [
+              {title: "General WSS information", url: "#general-wss-information" },
+              {title: "API Endpoints", url: "#api-endpoints" },
+              {title: "Web Socket Payloads", url: "#web-socket-payloads" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Margin/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Margin/" class="btn btn-xs btn-link">
+        MARGIN TRADE
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Market_Data/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Market_Data/" class="btn btn-xs btn-link">
+        MARKET DATA
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="rest-api">Rest API</h1>
+<h2 id="account-endpoints">Account endpoints</h2>
+<h3 id="new-order-trade">New order  (TRADE)</h3>
+<pre><code>POST /api/v3/order  (HMAC SHA256)
+</code></pre>
+
+<p>Send in a new order.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>side</td>
+<td>ENUM</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>ENUM</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>timeInForce</td>
+<td>ENUM</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>DECIMAL</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>price</td>
+<td>DECIMAL</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>newClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>A unique id for the order. Automatically generated if not sent.</td>
+</tr>
+<tr>
+<td>stopPrice</td>
+<td>DECIMAL</td>
+<td>NO</td>
+<td>Used with <code>STOP_LOSS</code>, <code>STOP_LOSS_LIMIT</code>, <code>TAKE_PROFIT</code>, and <code>TAKE_PROFIT_LIMIT</code> orders.</td>
+</tr>
+<tr>
+<td>icebergQty</td>
+<td>DECIMAL</td>
+<td>NO</td>
+<td>Used with <code>LIMIT</code>, <code>STOP_LOSS_LIMIT</code>, and <code>TAKE_PROFIT_LIMIT</code> to create an iceberg order.</td>
+</tr>
+<tr>
+<td>newOrderRespType</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>Set the response JSON. <code>ACK</code>, <code>RESULT</code>, or <code>FULL</code>; <code>MARKET</code> and <code>LIMIT</code> order types default to <code>FULL</code>, all other orders default to <code>ACK</code>.</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Additional mandatory parameters based on <code>type</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Additional mandatory parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LIMIT</code></td>
+<td><code>timeInForce</code>, <code>quantity</code>, <code>price</code></td>
+</tr>
+<tr>
+<td><code>MARKET</code></td>
+<td><code>quantity</code></td>
+</tr>
+<tr>
+<td><code>STOP_LOSS</code></td>
+<td><code>quantity</code>, <code>stopPrice</code></td>
+</tr>
+<tr>
+<td><code>STOP_LOSS_LIMIT</code></td>
+<td><code>timeInForce</code>, <code>quantity</code>,  <code>price</code>, <code>stopPrice</code></td>
+</tr>
+<tr>
+<td><code>TAKE_PROFIT</code></td>
+<td><code>quantity</code>, <code>stopPrice</code></td>
+</tr>
+<tr>
+<td><code>TAKE_PROFIT_LIMIT</code></td>
+<td><code>timeInForce</code>, <code>quantity</code>, <code>price</code>, <code>stopPrice</code></td>
+</tr>
+<tr>
+<td><code>LIMIT_MAKER</code></td>
+<td><code>quantity</code>, <code>price</code></td>
+</tr>
+</tbody>
+</table>
+<p>Other info:</p>
+<ul>
+<li><code>LIMIT_MAKER</code> are <code>LIMIT</code> orders that will be rejected if they would immediately match and trade as a taker.</li>
+<li><code>STOP_LOSS</code> and <code>TAKE_PROFIT</code> will execute a <code>MARKET</code> order when the <code>stopPrice</code> is reached.</li>
+<li>Any <code>LIMIT</code> or <code>LIMIT_MAKER</code> type order can be made an iceberg order by sending an <code>icebergQty</code>.</li>
+<li>Any order with an <code>icebergQty</code> MUST have <code>timeInForce</code> set to <code>GTC</code>.</li>
+</ul>
+<p>Trigger order price rules against market price for both MARKET and LIMIT versions:</p>
+<ul>
+<li>Price above market price: <code>STOP_LOSS</code> <code>BUY</code>, <code>TAKE_PROFIT</code> <code>SELL</code></li>
+<li>Price below market price: <code>STOP_LOSS</code> <code>SELL</code>, <code>TAKE_PROFIT</code> <code>BUY</code></li>
+</ul>
+<p><strong>Response ACK:</strong></p>
+<pre><code class="javascript">{
+  &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+  &quot;orderId&quot;: 28,
+  &quot;clientOrderId&quot;: &quot;6gCrw2kRUAF9CvJDGP16IP&quot;,
+  &quot;transactTime&quot;: 1507725176595
+}
+</code></pre>
+
+<p><strong>Response RESULT:</strong></p>
+<pre><code class="javascript">{
+  &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+  &quot;orderId&quot;: 28,
+  &quot;clientOrderId&quot;: &quot;6gCrw2kRUAF9CvJDGP16IP&quot;,
+  &quot;transactTime&quot;: 1507725176595,
+  &quot;price&quot;: &quot;1.00000000&quot;,
+  &quot;origQty&quot;: &quot;10.00000000&quot;,
+  &quot;executedQty&quot;: &quot;10.00000000&quot;,
+  &quot;cummulativeQuoteQty&quot;: &quot;10.00000000&quot;,
+  &quot;status&quot;: &quot;FILLED&quot;,
+  &quot;timeInForce&quot;: &quot;GTC&quot;,
+  &quot;type&quot;: &quot;MARKET&quot;,
+  &quot;side&quot;: &quot;SELL&quot;
+}
+</code></pre>
+
+<p><strong>Response FULL:</strong></p>
+<pre><code class="javascript">{
+  &quot;symbol&quot;: &quot;BTCUSDT&quot;,
+  &quot;orderId&quot;: 28,
+  &quot;clientOrderId&quot;: &quot;6gCrw2kRUAF9CvJDGP16IP&quot;,
+  &quot;transactTime&quot;: 1507725176595,
+  &quot;price&quot;: &quot;1.00000000&quot;,
+  &quot;origQty&quot;: &quot;10.00000000&quot;,
+  &quot;executedQty&quot;: &quot;10.00000000&quot;,
+  &quot;cummulativeQuoteQty&quot;: &quot;10.00000000&quot;,
+  &quot;status&quot;: &quot;FILLED&quot;,
+  &quot;timeInForce&quot;: &quot;GTC&quot;,
+  &quot;type&quot;: &quot;MARKET&quot;,
+  &quot;side&quot;: &quot;SELL&quot;,
+  &quot;fills&quot;: [
+    {
+      &quot;price&quot;: &quot;4000.00000000&quot;,
+      &quot;qty&quot;: &quot;1.00000000&quot;,
+      &quot;commission&quot;: &quot;4.00000000&quot;,
+      &quot;commissionAsset&quot;: &quot;USDT&quot;
+    },
+    {
+      &quot;price&quot;: &quot;3999.00000000&quot;,
+      &quot;qty&quot;: &quot;5.00000000&quot;,
+      &quot;commission&quot;: &quot;19.99500000&quot;,
+      &quot;commissionAsset&quot;: &quot;USDT&quot;
+    },
+    {
+      &quot;price&quot;: &quot;3998.00000000&quot;,
+      &quot;qty&quot;: &quot;2.00000000&quot;,
+      &quot;commission&quot;: &quot;7.99600000&quot;,
+      &quot;commissionAsset&quot;: &quot;USDT&quot;
+    },
+    {
+      &quot;price&quot;: &quot;3997.00000000&quot;,
+      &quot;qty&quot;: &quot;1.00000000&quot;,
+      &quot;commission&quot;: &quot;3.99700000&quot;,
+      &quot;commissionAsset&quot;: &quot;USDT&quot;
+    },
+    {
+      &quot;price&quot;: &quot;3995.00000000&quot;,
+      &quot;qty&quot;: &quot;1.00000000&quot;,
+      &quot;commission&quot;: &quot;3.99500000&quot;,
+      &quot;commissionAsset&quot;: &quot;USDT&quot;
+    }
+  ]
+}
+</code></pre>
+
+<h3 id="test-new-order-trade">Test new order (TRADE)</h3>
+<pre><code>POST /api/v3/order/test (HMAC SHA256)
+</code></pre>
+
+<p>Test new order creation and signature/recvWindow long.
+Creates and validates a new order but does not send it into the matching engine.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<p>Same as <code>POST /api/v3/order</code></p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{}
+</code></pre>
+
+<h3 id="query-order-user_data">Query order (USER_DATA)</h3>
+<pre><code>GET /api/v3/order (HMAC SHA256)
+</code></pre>
+
+<p>Check an order's status.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>origClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Notes:
+* Either <code>orderId</code> or <code>origClientOrderId</code> must be sent.
+* For some historical orders <code>cummulativeQuoteQty</code> will be &lt; 0, meaning the data is not available at this time.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+  &quot;symbol&quot;: &quot;LTCBTC&quot;,
+  &quot;orderId&quot;: 1,
+  &quot;clientOrderId&quot;: &quot;myOrder1&quot;,
+  &quot;price&quot;: &quot;0.1&quot;,
+  &quot;origQty&quot;: &quot;1.0&quot;,
+  &quot;executedQty&quot;: &quot;0.0&quot;,
+  &quot;cummulativeQuoteQty&quot;: &quot;0.0&quot;,
+  &quot;status&quot;: &quot;NEW&quot;,
+  &quot;timeInForce&quot;: &quot;GTC&quot;,
+  &quot;type&quot;: &quot;LIMIT&quot;,
+  &quot;side&quot;: &quot;BUY&quot;,
+  &quot;stopPrice&quot;: &quot;0.0&quot;,
+  &quot;icebergQty&quot;: &quot;0.0&quot;,
+  &quot;time&quot;: 1499827319559,
+  &quot;updateTime&quot;: 1499827319559,
+  &quot;isWorking&quot;: true
+}
+</code></pre>
+
+<h3 id="cancel-order-trade">Cancel order (TRADE)</h3>
+<pre><code>DELETE /api/v3/order  (HMAC SHA256)
+</code></pre>
+
+<p>Cancel an active order.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>origClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>newClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>Used to uniquely identify this cancel. Automatically generated by default.</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Either <code>orderId</code> or <code>origClientOrderId</code> must be sent.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+  &quot;symbol&quot;: &quot;LTCBTC&quot;,
+  &quot;orderId&quot;: 28,
+  &quot;origClientOrderId&quot;: &quot;myOrder1&quot;,
+  &quot;clientOrderId&quot;: &quot;cancelMyOrder1&quot;,
+  &quot;transactTime&quot;: 1507725176595,
+  &quot;price&quot;: &quot;1.00000000&quot;,
+  &quot;origQty&quot;: &quot;10.00000000&quot;,
+  &quot;executedQty&quot;: &quot;8.00000000&quot;,
+  &quot;cummulativeQuoteQty&quot;: &quot;8.00000000&quot;,
+  &quot;status&quot;: &quot;CANCELED&quot;,
+  &quot;timeInForce&quot;: &quot;GTC&quot;,
+  &quot;type&quot;: &quot;LIMIT&quot;,
+  &quot;side&quot;: &quot;SELL&quot;
+}
+</code></pre>
+
+<h3 id="current-open-orders-user_data">Current open orders (USER_DATA)</h3>
+<pre><code>GET /api/v3/openOrders  (HMAC SHA256)
+</code></pre>
+
+<p>Get all open orders on a symbol. <strong>Careful</strong> when accessing this with no symbol.</p>
+<p><strong>Weight:</strong>
+1 for a single symbol; <strong>40</strong> when the symbol parameter is omitted</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>If the symbol is not sent, orders for all symbols will be returned in an array.</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+  {
+    &quot;symbol&quot;: &quot;LTCBTC&quot;,
+    &quot;orderId&quot;: 1,
+    &quot;clientOrderId&quot;: &quot;myOrder1&quot;,
+    &quot;price&quot;: &quot;0.1&quot;,
+    &quot;origQty&quot;: &quot;1.0&quot;,
+    &quot;executedQty&quot;: &quot;0.0&quot;,
+    &quot;cummulativeQuoteQty&quot;: &quot;0.0&quot;,
+    &quot;status&quot;: &quot;NEW&quot;,
+    &quot;timeInForce&quot;: &quot;GTC&quot;,
+    &quot;type&quot;: &quot;LIMIT&quot;,
+    &quot;side&quot;: &quot;BUY&quot;,
+    &quot;stopPrice&quot;: &quot;0.0&quot;,
+    &quot;icebergQty&quot;: &quot;0.0&quot;,
+    &quot;time&quot;: 1499827319559,
+    &quot;updateTime&quot;: 1499827319559,
+    &quot;isWorking&quot;: true
+  }
+]
+</code></pre>
+
+<h3 id="all-orders-user_data">All orders (USER_DATA)</h3>
+<pre><code>GET /api/v3/allOrders (HMAC SHA256)
+</code></pre>
+
+<p>Get all account orders; active, canceled, or filled.</p>
+<p><strong>Weight:</strong>
+5 with symbol</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 500; max 1000.</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes:</strong>
+* If <code>orderId</code> is set, it will get orders &gt;= that <code>orderId</code>. Otherwise most recent orders are returned.
+* For some historical orders <code>cummulativeQuoteQty</code> will be &lt; 0, meaning the data is not available at this time.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+  {
+    &quot;symbol&quot;: &quot;LTCBTC&quot;,
+    &quot;orderId&quot;: 1,
+    &quot;clientOrderId&quot;: &quot;myOrder1&quot;,
+    &quot;price&quot;: &quot;0.1&quot;,
+    &quot;origQty&quot;: &quot;1.0&quot;,
+    &quot;executedQty&quot;: &quot;0.0&quot;,
+    &quot;cummulativeQuoteQty&quot;: &quot;0.0&quot;,
+    &quot;status&quot;: &quot;NEW&quot;,
+    &quot;timeInForce&quot;: &quot;GTC&quot;,
+    &quot;type&quot;: &quot;LIMIT&quot;,
+    &quot;side&quot;: &quot;BUY&quot;,
+    &quot;stopPrice&quot;: &quot;0.0&quot;,
+    &quot;icebergQty&quot;: &quot;0.0&quot;,
+    &quot;time&quot;: 1499827319559,
+    &quot;updateTime&quot;: 1499827319559,
+    &quot;isWorking&quot;: true
+  }
+]
+</code></pre>
+
+<h3 id="account-information-user_data">Account information (USER_DATA)</h3>
+<pre><code>GET /api/v3/account (HMAC SHA256)
+</code></pre>
+
+<p>Get current account information.</p>
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+  &quot;makerCommission&quot;: 15,
+  &quot;takerCommission&quot;: 15,
+  &quot;buyerCommission&quot;: 0,
+  &quot;sellerCommission&quot;: 0,
+  &quot;canTrade&quot;: true,
+  &quot;canWithdraw&quot;: true,
+  &quot;canDeposit&quot;: true,
+  &quot;updateTime&quot;: 123456789,
+  &quot;balances&quot;: [
+    {
+      &quot;asset&quot;: &quot;BTC&quot;,
+      &quot;free&quot;: &quot;4723846.89208129&quot;,
+      &quot;locked&quot;: &quot;0.00000000&quot;
+    },
+    {
+      &quot;asset&quot;: &quot;LTC&quot;,
+      &quot;free&quot;: &quot;4763368.68006011&quot;,
+      &quot;locked&quot;: &quot;0.00000000&quot;
+    }
+  ]
+}
+</code></pre>
+
+<h3 id="account-trade-list-user_data">Account trade list (USER_DATA)</h3>
+<pre><code>GET /api/v3/myTrades  (HMAC SHA256)
+</code></pre>
+
+<p>Get trades for a specific account and symbol.</p>
+<p><strong>Weight:</strong>
+5 with symbol</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>fromId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>TradeId to fetch from. Default gets most recent trades.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default 500; max 1000.</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes:</strong>
+* If <code>fromId</code> is set, it will get orders &gt;= that <code>fromId</code>.
+Otherwise most recent orders are returned.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+  {
+    &quot;symbol&quot;: &quot;BNBBTC&quot;,
+    &quot;id&quot;: 28457,
+    &quot;orderId&quot;: 100234,
+    &quot;price&quot;: &quot;4.00000100&quot;,
+    &quot;qty&quot;: &quot;12.00000000&quot;,
+    &quot;quoteQty&quot;: &quot;48.000012&quot;,
+    &quot;commission&quot;: &quot;10.10000000&quot;,
+    &quot;commissionAsset&quot;: &quot;BNB&quot;,
+    &quot;time&quot;: 1499865549590,
+    &quot;isBuyer&quot;: true,
+    &quot;isMaker&quot;: false,
+    &quot;isBestMatch&quot;: true
+  }
+]
+</code></pre>
+
+<h1 id="web-socket-streams">Web-Socket Streams</h1>
+<h2 id="general-wss-information">General WSS information</h2>
+<ul>
+<li>The base API endpoint is: <strong>https://api.binance.com</strong></li>
+<li>A User Data Stream <code>listenKey</code> is valid for 60 minutes after creation.</li>
+<li>Doing a <code>PUT</code> on a <code>listenKey</code> will extend its validity for 60 minutes.</li>
+<li>Doing a <code>DELETE</code> on a <code>listenKey</code> will close the stream.</li>
+<li>The base websocket endpoint is: <strong>wss://stream.binance.com:9443</strong></li>
+<li>User Data Streams are accessed at <strong>/ws/\&lt;listenKey></strong></li>
+<li>A single connection to <strong>stream.binance.com</strong> is only valid for 24 hours; expect to be disconnected at the 24 hour mark</li>
+<li>User data stream payloads are <strong>not guaranteed</strong> to be in order during heavy periods; <strong>make sure to order your updates using E</strong></li>
+</ul>
+<h2 id="api-endpoints">API Endpoints</h2>
+<h3 id="create-a-listenkey">Create a listenKey</h3>
+<pre><code>POST /api/v1/userDataStream
+</code></pre>
+
+<p>Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong>
+NONE</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+  &quot;listenKey&quot;: &quot;pqia91ma19a5s61cv6a81va65sdf19v8a65a1a5s61cv6a81va65sdf19v8a65a1&quot;
+}
+</code></pre>
+
+<h3 id="pingkeep-alive-a-listenkey">Ping/Keep-alive a listenKey</h3>
+<pre><code>PUT /api/v1/userDataStream
+</code></pre>
+
+<p>Keepalive a user data stream to prevent a time out. User data streams will close after 60 minutes. It's recommended to send a ping about every 30 minutes.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>listenKey</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{}
+</code></pre>
+
+<h3 id="close-a-listenkey">Close a listenKey</h3>
+<pre><code>DELETE /api/v1/userDataStream
+</code></pre>
+
+<p>Close out a user data stream.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>listenKey</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{}
+</code></pre>
+
+<h2 id="web-socket-payloads">Web Socket Payloads</h2>
+<h3 id="account-update">Account Update</h3>
+<p>Account state is updated with the <code>outboundAccountInfo</code> event.</p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">{
+  &quot;e&quot;: &quot;outboundAccountInfo&quot;,   // Event type
+  &quot;E&quot;: 1499405658849,           // Event time
+  &quot;m&quot;: 0,                       // Maker commission rate (bips)
+  &quot;t&quot;: 0,                       // Taker commission rate (bips)
+  &quot;b&quot;: 0,                       // Buyer commission rate (bips)
+  &quot;s&quot;: 0,                       // Seller commission rate (bips)
+  &quot;T&quot;: true,                    // Can trade?
+  &quot;W&quot;: true,                    // Can withdraw?
+  &quot;D&quot;: true,                    // Can deposit?
+  &quot;u&quot;: 1499405658848,           // Time of last account update
+  &quot;B&quot;: [                        // Balances array
+    {
+      &quot;a&quot;: &quot;LTC&quot;,               // Asset
+      &quot;f&quot;: &quot;17366.18538083&quot;,    // Free amount
+      &quot;l&quot;: &quot;0.00000000&quot;         // Locked amount
+    },
+    {
+      &quot;a&quot;: &quot;BTC&quot;,
+      &quot;f&quot;: &quot;10537.85314051&quot;,
+      &quot;l&quot;: &quot;2.19464093&quot;
+    },
+    {
+      &quot;a&quot;: &quot;ETH&quot;,
+      &quot;f&quot;: &quot;17902.35190619&quot;,
+      &quot;l&quot;: &quot;0.00000000&quot;
+    },
+    {
+      &quot;a&quot;: &quot;BNC&quot;,
+      &quot;f&quot;: &quot;1114503.29769312&quot;,
+      &quot;l&quot;: &quot;0.00000000&quot;
+    },
+    {
+      &quot;a&quot;: &quot;NEO&quot;,
+      &quot;f&quot;: &quot;0.00000000&quot;,
+      &quot;l&quot;: &quot;0.00000000&quot;
+    }
+  ]
+}
+</code></pre>
+
+<h3 id="order-update">Order Update</h3>
+<p>Orders are updated with the <code>executionReport</code> event. Check the API documentation and below for relevant enum definitions.
+Average price can be found by doing <code>Z</code> divided by <code>z</code>.</p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">{
+  &quot;e&quot;: &quot;executionReport&quot;,        // Event type
+  &quot;E&quot;: 1499405658658,            // Event time
+  &quot;s&quot;: &quot;ETHBTC&quot;,                 // Symbol
+  &quot;c&quot;: &quot;mUvoqJxFIILMdfAW5iGSOW&quot;, // Client order ID
+  &quot;S&quot;: &quot;BUY&quot;,                    // Side
+  &quot;o&quot;: &quot;LIMIT&quot;,                  // Order type
+  &quot;f&quot;: &quot;GTC&quot;,                    // Time in force
+  &quot;q&quot;: &quot;1.00000000&quot;,             // Order quantity
+  &quot;p&quot;: &quot;0.10264410&quot;,             // Order price
+  &quot;P&quot;: &quot;0.00000000&quot;,             // Stop price
+  &quot;F&quot;: &quot;0.00000000&quot;,             // Iceberg quantity
+  &quot;g&quot;: -1,                       // Ignore
+  &quot;C&quot;: &quot;null&quot;,                   // Original client order ID; This is the ID of the order being canceled
+  &quot;x&quot;: &quot;NEW&quot;,                    // Current execution type
+  &quot;X&quot;: &quot;NEW&quot;,                    // Current order status
+  &quot;r&quot;: &quot;NONE&quot;,                   // Order reject reason; will be an error code.
+  &quot;i&quot;: 4293153,                  // Order ID
+  &quot;l&quot;: &quot;0.00000000&quot;,             // Last executed quantity
+  &quot;z&quot;: &quot;0.00000000&quot;,             // Cumulative filled quantity
+  &quot;L&quot;: &quot;0.00000000&quot;,             // Last executed price
+  &quot;n&quot;: &quot;0&quot;,                      // Commission amount
+  &quot;N&quot;: null,                     // Commission asset
+  &quot;T&quot;: 1499405658657,            // Transaction time
+  &quot;t&quot;: -1,                       // Trade ID
+  &quot;I&quot;: 8641984,                  // Ignore
+  &quot;w&quot;: true,                     // Is the order working? Stops will have
+  &quot;m&quot;: false,                    // Is this trade the maker side?
+  &quot;M&quot;: false,                    // Ignore
+  &quot;O&quot;: 1499405658657,            // Order creation time
+  &quot;Z&quot;: &quot;0.00000000&quot;,             // Cumulative quote asset transacted quantity
+  &quot;Y&quot;: &quot;0.00000000&quot;              // Last quote asset transacted quantity (i.e. lastPrice * lastQty)
+}
+</code></pre>
+
+<p><strong>Execution types:</strong></p>
+<ul>
+<li>NEW</li>
+<li>CANCELED</li>
+<li>REPLACED (currently unused)</li>
+<li>REJECTED</li>
+<li>TRADE</li>
+<li>EXPIRED</li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Margin/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Margin/" class="btn btn-xs btn-link">
+        MARGIN TRADE
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Market_Data/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Market_Data/" class="btn btn-xs btn-link">
+        MARKET DATA
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>User Data Streams for Binance (2018-11-13) - Exchange API Docs</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "User Data Streams for Binance (2018-11-13)", url: "#_top", children: [
+          ]},
+          {title: "General WSS information", url: "#general-wss-information", children: [
+          ]},
+          {title: "API Endpoints", url: "#api-endpoints", children: [
+              {title: "Create a listenKey", url: "#create-a-listenkey" },
+              {title: "Ping/Keep-alive a listenKey", url: "#pingkeep-alive-a-listenkey" },
+              {title: "Close a listenKey", url: "#close-a-listenkey" },
+          ]},
+          {title: "Web Socket Payloads", url: "#web-socket-payloads", children: [
+              {title: "Account Update", url: "#account-update" },
+              {title: "Order Update", url: "#order-update" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+
+    <h1 id="user-data-streams-for-binance-2018-11-13">User Data Streams for Binance (2018-11-13)</h1>
+<h1 id="general-wss-information">General WSS information</h1>
+<ul>
+<li>The base API endpoint is: <strong>https://api.binance.com</strong></li>
+<li>A User Data Stream <code>listenKey</code> is valid for 60 minutes after creation.</li>
+<li>Doing a <code>PUT</code> on a <code>listenKey</code> will extend its validity for 60 minutes.</li>
+<li>Doing a <code>DELETE</code> on a <code>listenKey</code> will close the stream.</li>
+<li>The base websocket endpoint is: <strong>wss://stream.binance.com:9443</strong></li>
+<li>User Data Streams are accessed at <strong>/ws/\&lt;listenKey></strong></li>
+<li>A single connection to <strong>stream.binance.com</strong> is only valid for 24 hours; expect to be disconnected at the 24 hour mark</li>
+<li>User data stream payloads are <strong>not guaranteed</strong> to be in order during heavy periods; <strong>make sure to order your updates using E</strong></li>
+</ul>
+<h1 id="api-endpoints">API Endpoints</h1>
+<h2 id="create-a-listenkey">Create a listenKey</h2>
+<pre><code>POST /api/v1/userDataStream
+</code></pre>
+
+<p>Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong>
+NONE</p>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+  &quot;listenKey&quot;: &quot;pqia91ma19a5s61cv6a81va65sdf19v8a65a1a5s61cv6a81va65sdf19v8a65a1&quot;
+}
+</code></pre>
+
+<h2 id="pingkeep-alive-a-listenkey">Ping/Keep-alive a listenKey</h2>
+<pre><code>PUT /api/v1/userDataStream
+</code></pre>
+
+<p>Keepalive a user data stream to prevent a time out. User data streams will close after 60 minutes. It's recommended to send a ping about every 30 minutes.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>listenKey</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{}
+</code></pre>
+
+<h2 id="close-a-listenkey">Close a listenKey</h2>
+<pre><code>DELETE /api/v1/userDataStream
+</code></pre>
+
+<p>Close out a user data stream.</p>
+<p><strong>Weight:</strong>
+1</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>listenKey</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{}
+</code></pre>
+
+<h1 id="web-socket-payloads">Web Socket Payloads</h1>
+<h2 id="account-update">Account Update</h2>
+<p>Account state is updated with the <code>outboundAccountInfo</code> event.</p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">{
+  &quot;e&quot;: &quot;outboundAccountInfo&quot;,   // Event type
+  &quot;E&quot;: 1499405658849,           // Event time
+  &quot;m&quot;: 0,                       // Maker commission rate (bips)
+  &quot;t&quot;: 0,                       // Taker commission rate (bips)
+  &quot;b&quot;: 0,                       // Buyer commission rate (bips)
+  &quot;s&quot;: 0,                       // Seller commission rate (bips)
+  &quot;T&quot;: true,                    // Can trade?
+  &quot;W&quot;: true,                    // Can withdraw?
+  &quot;D&quot;: true,                    // Can deposit?
+  &quot;u&quot;: 1499405658848,           // Time of last account update
+  &quot;B&quot;: [                        // Balances array
+    {
+      &quot;a&quot;: &quot;LTC&quot;,               // Asset
+      &quot;f&quot;: &quot;17366.18538083&quot;,    // Free amount
+      &quot;l&quot;: &quot;0.00000000&quot;         // Locked amount
+    },
+    {
+      &quot;a&quot;: &quot;BTC&quot;,
+      &quot;f&quot;: &quot;10537.85314051&quot;,
+      &quot;l&quot;: &quot;2.19464093&quot;
+    },
+    {
+      &quot;a&quot;: &quot;ETH&quot;,
+      &quot;f&quot;: &quot;17902.35190619&quot;,
+      &quot;l&quot;: &quot;0.00000000&quot;
+    },
+    {
+      &quot;a&quot;: &quot;BNC&quot;,
+      &quot;f&quot;: &quot;1114503.29769312&quot;,
+      &quot;l&quot;: &quot;0.00000000&quot;
+    },
+    {
+      &quot;a&quot;: &quot;NEO&quot;,
+      &quot;f&quot;: &quot;0.00000000&quot;,
+      &quot;l&quot;: &quot;0.00000000&quot;
+    }
+  ]
+}
+</code></pre>
+
+<h2 id="order-update">Order Update</h2>
+<p>Orders are updated with the <code>executionReport</code> event. Check the API documentation and below for relevant enum definitions.
+Average price can be found by doing <code>Z</code> divided by <code>z</code>.</p>
+<p><strong>Payload:</strong></p>
+<pre><code class="javascript">{
+  &quot;e&quot;: &quot;executionReport&quot;,        // Event type
+  &quot;E&quot;: 1499405658658,            // Event time
+  &quot;s&quot;: &quot;ETHBTC&quot;,                 // Symbol
+  &quot;c&quot;: &quot;mUvoqJxFIILMdfAW5iGSOW&quot;, // Client order ID
+  &quot;S&quot;: &quot;BUY&quot;,                    // Side
+  &quot;o&quot;: &quot;LIMIT&quot;,                  // Order type
+  &quot;f&quot;: &quot;GTC&quot;,                    // Time in force
+  &quot;q&quot;: &quot;1.00000000&quot;,             // Order quantity
+  &quot;p&quot;: &quot;0.10264410&quot;,             // Order price
+  &quot;P&quot;: &quot;0.00000000&quot;,             // Stop price
+  &quot;F&quot;: &quot;0.00000000&quot;,             // Iceberg quantity
+  &quot;g&quot;: -1,                       // Ignore
+  &quot;C&quot;: &quot;null&quot;,                   // Original client order ID; This is the ID of the order being canceled
+  &quot;x&quot;: &quot;NEW&quot;,                    // Current execution type
+  &quot;X&quot;: &quot;NEW&quot;,                    // Current order status
+  &quot;r&quot;: &quot;NONE&quot;,                   // Order reject reason; will be an error code.
+  &quot;i&quot;: 4293153,                  // Order ID
+  &quot;l&quot;: &quot;0.00000000&quot;,             // Last executed quantity
+  &quot;z&quot;: &quot;0.00000000&quot;,             // Cumulative filled quantity
+  &quot;L&quot;: &quot;0.00000000&quot;,             // Last executed price
+  &quot;n&quot;: &quot;0&quot;,                      // Commission amount
+  &quot;N&quot;: null,                     // Commission asset
+  &quot;T&quot;: 1499405658657,            // Transaction time
+  &quot;t&quot;: -1,                       // Trade ID
+  &quot;I&quot;: 8641984,                  // Ignore
+  &quot;w&quot;: true,                     // Is the order working? Stops will have
+  &quot;m&quot;: false,                    // Is this trade the maker side?
+  &quot;M&quot;: false,                    // Ignore
+  &quot;O&quot;: 1499405658657,            // Order creation time
+  &quot;Z&quot;: &quot;0.00000000&quot;,             // Cumulative quote asset transacted quantity
+  &quot;Y&quot;: &quot;0.00000000&quot;              // Last quote asset transacted quantity (i.e. lastPrice * lastQty)
+}
+</code></pre>
+
+<p><strong>Execution types:</strong></p>
+<ul>
+<li>NEW</li>
+<li>CANCELED</li>
+<li>REPLACED (currently unused)</li>
+<li>REJECTED</li>
+<li>TRADE</li>
+<li>EXPIRED</li>
+</ul>
+
+  <br>
+    
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
