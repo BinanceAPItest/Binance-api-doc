@@ -1,126 +1,17 @@
+# Rest API
 
 
-Rest API
-=====
-
-## Terminology
-* `base asset` refers to the asset that is the `quantity` of a symbol.
-* `quote asset` refers to the asset that is the `price` of a symbol.
 
 
-## ENUM definitions
-**Symbol status (status):**
-
-* PRE_TRADING
-* TRADING
-* POST_TRADING
-* END_OF_DAY
-* HALT
-* AUCTION_MATCH
-* BREAK
-
-**Symbol type:**
-
-* SPOT
-
-**Order status (status):**
-
-* NEW
-* PARTIALLY_FILLED
-* FILLED
-* CANCELED
-* PENDING_CANCEL (currently unused)
-* REJECTED
-* EXPIRED
-
-**Order types (orderTypes, type):**
-
-* LIMIT
-* MARKET
-* STOP_LOSS
-* STOP\_LOSS\_LIMIT
-* TAKE_PROFIT
-* TAKE\_PROFIT\_LIMIT
-* LIMIT_MAKER
-
-**Order side (side):**
-
-* BUY
-* SELL
-
-**Time in force (timeInForce):**
-
-* GTC
-* IOC
-* FOK
-
-**Kline/Candlestick chart intervals:**
-
-m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
-
-* 1m
-* 3m
-* 5m
-* 15m
-* 30m
-* 1h
-* 2h
-* 4h
-* 6h
-* 8h
-* 12h
-* 1d
-* 3d
-* 1w
-* 1M
-
-**Rate limiters (rateLimitType)**
-* REQUEST_WEIGHT
-
-    ```json
-    {
-      "rateLimitType": "REQUEST_WEIGHT",
-      "interval": "MINUTE",
-      "intervalNum": 1,
-      "limit": 1200
-    }
-    ```
-
-* ORDERS
-
-    ```json
-    {
-      "rateLimitType": "ORDERS",
-      "interval": "SECOND",
-      "intervalNum": 1,
-      "limit": 10
-    }
-    ```
-* RAW_REQUESTS
-
-    ```json
-    {
-      "rateLimitType": "RAW_REQUESTS",
-      "interval": "MINUTE",
-      "intervalNum": 5,
-      "limit": 5000
-    }
-    ```
-
-**Rate limit intervals (interval)**
-
-* SECOND
-* MINUTE
-* DAY
 
 ## General endpoints
 ### Test connectivity
 ```
-GET /api/v1/ping
+GET /api/v3/ping
 ```
 Test connectivity to the Rest API.
 
-**Weight:**
+**Weight:**/api/v3
 1
 
 **Parameters:**
@@ -133,7 +24,7 @@ NONE
 
 ### Check server time
 ```
-GET /api/v1/time
+GET /api/v3/time
 ```
 Test connectivity to the Rest API and get the current server time.
 
@@ -152,7 +43,7 @@ NONE
 
 ### Exchange information
 ```
-GET /api/v1/exchangeInfo
+GET /api/v3/exchangeInfo
 ```
 Current exchange trading rules and symbol information
 
@@ -199,7 +90,7 @@ NONE
 ## Market Data endpoints
 ### Order book
 ```
-GET /api/v1/depth
+GET /api/v3/depth
 ```
 
 **Weight:**
@@ -242,7 +133,7 @@ limit | INT | NO | Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500,
 
 ### Recent trades list
 ```
-GET /api/v1/trades
+GET /api/v3/trades
 ```
 Get recent trades (up to last 500).
 
@@ -272,7 +163,7 @@ limit | INT | NO | Default 500; max 1000.
 
 ### Old trade lookup (MARKET_DATA)
 ```
-GET /api/v1/historicalTrades
+GET /api/v3/historicalTrades
 ```
 Get older trades.
 
@@ -303,7 +194,7 @@ fromId | LONG | NO | TradeId to fetch from. Default gets most recent trades.
 
 ### Compressed/Aggregate trades list
 ```
-GET /api/v1/aggTrades
+GET /api/v3/aggTrades
 ```
 Get compressed, aggregate trades. Trades that fill at the time, from the same
 order, with the same price will have the quantity aggregated.
@@ -342,7 +233,7 @@ limit | INT | NO | Default 500; max 1000.
 
 ### Kline/Candlestick data
 ```
-GET /api/v1/klines
+GET /api/v3/klines
 ```
 Kline/candlestick bars for a symbol.
 Klines are uniquely identified by their open time.
@@ -409,7 +300,7 @@ symbol | STRING | YES |
 
 ### 24hr ticker price change statistics
 ```
-GET /api/v1/ticker/24hr
+GET /api/v3/ticker/24hr
 ```
 24 hour rolling window price change statistics. **Careful** when accessing this with no symbol.
 
@@ -562,11 +453,21 @@ OR
 ```
 
 
+# Web-Socket Streams
 
 
 
-Web Socket Streams
-=====
+
+## General WSS information
+* The base endpoint is: **wss://stream.binance.com:9443**
+* Streams can be access either in a single raw stream or a combined stream
+* Raw streams are accessed at **/ws/\<streamName\>**
+* Combined streams are accessed at **/stream?streams=\<streamName1\>/\<streamName2\>/\<streamName3\>**
+* Combined stream events are wrapped as follows: **{"stream":"\<streamName\>","data":\<rawPayload\>}**
+* All symbols for streams are **lowercase**
+* A single connection to **stream.binance.com** is only valid for 24 hours; expect to be disconnected at the 24 hour mark
+* The websocket server will send a `ping frame` every 3 minutes. If the websocket server does not receive a `pong frame` back from the connection within a 10 minute period, the connection will be disconnected. Unsolicited `pong frames` are allowed.
+
 ## Aggregate Trade Streams
 The Aggregate Trade Streams push trade information that is aggregated for a single taker order.
 
@@ -801,7 +702,7 @@ Order book price and quantity depth updates used to locally manage an order book
 ## How to manage a local order book correctly
 1. Open a stream to **wss://stream.binance.com:9443/ws/bnbbtc@depth**
 2. Buffer the events you receive from the stream
-3. Get a depth snapshot from **https://www.binance.com/api/v1/depth?symbol=BNBBTC&limit=1000**
+3. Get a depth snapshot from **https://www.binance.com/api/v3/depth?symbol=BNBBTC&limit=1000**
 4. Drop any event where `u` is <= `lastUpdateId` in the snapshot
 5. The first processed should have `U` <= `lastUpdateId`+1 **AND** `u` >= `lastUpdateId`+1
 6. While listening to the stream, each new event's `U` should be equal to the previous event's `u`+1

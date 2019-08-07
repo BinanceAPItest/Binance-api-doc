@@ -72,7 +72,7 @@ USER_STREAM | Endpoint requires sending a valid API-Key.
 MARKET_DATA | Endpoint requires sending a valid API-Key.
 
 
-* `TRADE` and `USER_DATA` endpoints are `SIGNED` endpoints.
+* `TRADE`, `MARGIN` and `USER_DATA` endpoints are `SIGNED` endpoints.
 
 
 # SIGNED (TRADE、USER_DATA AND MARGIN) Endpoint security
