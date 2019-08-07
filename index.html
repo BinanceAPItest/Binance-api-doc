@@ -42,7 +42,7 @@
           ]},
           {title: "SIGNED (TRADE\u3001USER_DATA AND MARGIN) Endpoint security", url: "#signed-tradeuser_data-and-margin-endpoint-security", children: [
               {title: "Timing security", url: "#timing-security" },
-              {title: "SIGNED Endpoint Examples for POST /api/v1/order", url: "#signed-endpoint-examples-for-post-apiv1order" },
+              {title: "SIGNED Endpoint Examples for POST /api/v3/order", url: "#signed-endpoint-examples-for-post-apiv3order" },
               {title: "SIGNED Endpoint Examples for POST /wapi/v3/withdraw.html", url: "#signed-endpoint-examples-for-post-wapiv3withdrawhtml" },
           ]},
           {title: "Public API definitions", url: "#public-api-definitions", children: [
@@ -170,7 +170,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 but not get a response within the timeout period.
   It is important to <strong>NOT</strong> treat this as a failure operation; the execution status is
   <strong>UNKNOWN</strong> and could have been a success.</li>
-<li>When using <code>/api/v1</code> and <code>/sapi/v1/margin</code>, any endpoint can return an ERROR; the error payload is as follows:</li>
+<li>When using <code>/api/v3</code> and <code>/sapi/v1/margin</code>, any endpoint can return an ERROR; the error payload is as follows:</li>
 </ul>
 <pre><code class="javascript">{
   &quot;code&quot;: -1121,
@@ -200,7 +200,7 @@ but not get a response within the timeout period.
 </ul>
 <h1 id="limits">LIMITS</h1>
 <ul>
-<li>The <code>/api/v1/exchangeInfo</code> <code>rateLimits</code> array contains objects related to the exchange's <code>RAW_REQUEST</code>, <code>REQUEST_WEIGHT</code>, and <code>ORDER</code> rate limits. These are further defined in the <code>ENUM definitions</code> section under <code>Rate limiters (rateLimitType)</code>.</li>
+<li>The <code>/api/v3/exchangeInfo</code> <code>rateLimits</code> array contains objects related to the exchange's <code>RAW_REQUEST</code>, <code>REQUEST_WEIGHT</code>, and <code>ORDER</code> rate limits. These are further defined in the <code>ENUM definitions</code> section under <code>Rate limiters (rateLimitType)</code>.</li>
 <li>The <code>/wapi/v3</code> <code>rateLimits</code> array contains objects related to the exchange's <code>REQUESTS</code> and <code>ORDER</code> rate limits.</li>
 <li>A 429 will be returned when either rate limit is violated.</li>
 <li>Each route has a <code>weight</code> which determines for the number of requests each endpoint counts for. Heavier endpoints and endpoints that do operations on multiple symbols will have a heavier <code>weight</code>.</li>
@@ -286,7 +286,7 @@ servers. With <code>recvWindow</code>, you can specify that the request must be
 processed within a certain number of milliseconds or be rejected by the
 server.</p>
 <p><strong>It recommended to use a small recvWindow of 5000 or less!</strong></p>
-<h2 id="signed-endpoint-examples-for-post-apiv1order">SIGNED Endpoint Examples for POST /api/v1/order</h2>
+<h2 id="signed-endpoint-examples-for-post-apiv3order">SIGNED Endpoint Examples for POST /api/v3/order</h2>
 <p>Here is a step-by-step example of how to send a vaild signed payload from the
 Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl</code>.</p>
 <table>
@@ -773,5 +773,5 @@ Note that both "algo" orders and normal orders are counted for this filter.</p>
 </html>
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-08-07 07:45:39
+Build Date UTC : 2019-08-07 08:57:53
 -->

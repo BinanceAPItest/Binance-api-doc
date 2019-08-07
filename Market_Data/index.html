@@ -98,11 +98,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h1 id="rest-api">Rest API</h1>
 <h2 id="general-endpoints">General endpoints</h2>
 <h3 id="test-connectivity">Test connectivity</h3>
-<pre><code>GET /api/v1/ping
+<pre><code>GET /api/v3/ping
 </code></pre>
 
 <p>Test connectivity to the Rest API.</p>
-<p><strong>Weight:</strong>
+<p><strong>Weight:</strong>/api/v3
 1</p>
 <p><strong>Parameters:</strong>
 NONE</p>
@@ -111,7 +111,7 @@ NONE</p>
 </code></pre>
 
 <h3 id="check-server-time">Check server time</h3>
-<pre><code>GET /api/v1/time
+<pre><code>GET /api/v3/time
 </code></pre>
 
 <p>Test connectivity to the Rest API and get the current server time.</p>
@@ -126,7 +126,7 @@ NONE</p>
 </code></pre>
 
 <h3 id="exchange-information">Exchange information</h3>
-<pre><code>GET /api/v1/exchangeInfo
+<pre><code>GET /api/v3/exchangeInfo
 </code></pre>
 
 <p>Current exchange trading rules and symbol information</p>
@@ -168,7 +168,7 @@ NONE</p>
 
 <h2 id="market-data-endpoints">Market Data endpoints</h2>
 <h3 id="order-book">Order book</h3>
-<pre><code>GET /api/v1/depth
+<pre><code>GET /api/v3/depth
 </code></pre>
 
 <p><strong>Weight:</strong>
@@ -240,7 +240,7 @@ Adjusted based on the limit:</p>
 </code></pre>
 
 <h3 id="recent-trades-list">Recent trades list</h3>
-<pre><code>GET /api/v1/trades
+<pre><code>GET /api/v3/trades
 </code></pre>
 
 <p>Get recent trades (up to last 500).</p>
@@ -285,7 +285,7 @@ Adjusted based on the limit:</p>
 </code></pre>
 
 <h3 id="old-trade-lookup-market_data">Old trade lookup (MARKET_DATA)</h3>
-<pre><code>GET /api/v1/historicalTrades
+<pre><code>GET /api/v3/historicalTrades
 </code></pre>
 
 <p>Get older trades.</p>
@@ -336,7 +336,7 @@ Adjusted based on the limit:</p>
 </code></pre>
 
 <h3 id="compressedaggregate-trades-list">Compressed/Aggregate trades list</h3>
-<pre><code>GET /api/v1/aggTrades
+<pre><code>GET /api/v3/aggTrades
 </code></pre>
 
 <p>Get compressed, aggregate trades. Trades that fill at the time, from the same
@@ -406,7 +406,7 @@ order, with the same price will have the quantity aggregated.</p>
 </code></pre>
 
 <h3 id="klinecandlestick-data">Kline/Candlestick data</h3>
-<pre><code>GET /api/v1/klines
+<pre><code>GET /api/v3/klines
 </code></pre>
 
 <p>Kline/candlestick bars for a symbol.
@@ -512,7 +512,7 @@ Klines are uniquely identified by their open time.</p>
 </code></pre>
 
 <h3 id="24hr-ticker-price-change-statistics">24hr ticker price change statistics</h3>
-<pre><code>GET /api/v1/ticker/24hr
+<pre><code>GET /api/v3/ticker/24hr
 </code></pre>
 
 <p>24 hour rolling window price change statistics. <strong>Careful</strong> when accessing this with no symbol.</p>
@@ -916,7 +916,7 @@ Klines are uniquely identified by their open time.</p>
 <ol>
 <li>Open a stream to <strong>wss://stream.binance.com:9443/ws/bnbbtc@depth</strong></li>
 <li>Buffer the events you receive from the stream</li>
-<li>Get a depth snapshot from <strong>https://www.binance.com/api/v1/depth?symbol=BNBBTC&amp;limit=1000</strong></li>
+<li>Get a depth snapshot from <strong>https://www.binance.com/api/v3/depth?symbol=BNBBTC&amp;limit=1000</strong></li>
 <li>Drop any event where <code>u</code> is &lt;= <code>lastUpdateId</code> in the snapshot</li>
 <li>The first processed should have <code>U</code> &lt;= <code>lastUpdateId</code>+1 <strong>AND</strong> <code>u</code> &gt;= <code>lastUpdateId</code>+1</li>
 <li>While listening to the stream, each new event's <code>U</code> should be equal to the previous event's <code>u</code>+1</li>

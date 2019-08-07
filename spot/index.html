@@ -776,7 +776,7 @@ Otherwise most recent orders are returned.</p>
 </ul>
 <h2 id="api-endpoints">API Endpoints</h2>
 <h3 id="create-a-listenkey">Create a listenKey</h3>
-<pre><code>POST /api/v1/userDataStream
+<pre><code>POST /api/v3/userDataStream
 </code></pre>
 
 <p>Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent.</p>
@@ -791,7 +791,7 @@ NONE</p>
 </code></pre>
 
 <h3 id="pingkeep-alive-a-listenkey">Ping/Keep-alive a listenKey</h3>
-<pre><code>PUT /api/v1/userDataStream
+<pre><code>PUT /api/v3/userDataStream
 </code></pre>
 
 <p>Keepalive a user data stream to prevent a time out. User data streams will close after 60 minutes. It's recommended to send a ping about every 30 minutes.</p>
@@ -821,7 +821,7 @@ NONE</p>
 </code></pre>
 
 <h3 id="close-a-listenkey">Close a listenKey</h3>
-<pre><code>DELETE /api/v1/userDataStream
+<pre><code>DELETE /api/v3/userDataStream
 </code></pre>
 
 <p>Close out a user data stream.</p>
