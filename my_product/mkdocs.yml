@@ -12,5 +12,5 @@ nav:
     - ERROR INFO: error_info.md
      
 #theme: rtd-dropdown
-theme: windmill
+theme: readthedocs
 #extra_css: [extra.css]
