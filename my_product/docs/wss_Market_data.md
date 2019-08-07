@@ -1,4 +1,8 @@
-# General WSS information
+
+
+
+
+## General WSS information
 * The base endpoint is: **wss://stream.binance.com:9443**
 * Streams can be access either in a single raw stream or a combined stream
 * Raw streams are accessed at **/ws/\<streamName\>**
@@ -8,7 +12,6 @@
 * A single connection to **stream.binance.com** is only valid for 24 hours; expect to be disconnected at the 24 hour mark
 * The websocket server will send a `ping frame` every 3 minutes. If the websocket server does not receive a `pong frame` back from the connection within a 10 minute period, the connection will be disconnected. Unsolicited `pong frames` are allowed.
 
-# Detailed Stream information
 ## Aggregate Trade Streams
 The Aggregate Trade Streams push trade information that is aggregated for a single taker order.
 
@@ -250,4 +253,9 @@ Order book price and quantity depth updates used to locally manage an order book
 7. The data in each event is the **absolute** quantity for a price level
 8. If the quantity is 0, **remove** the price level
 9. Receiving an event that removes a price level that is not in your local order book can happen and is normal.
+
+
+
+
+
 

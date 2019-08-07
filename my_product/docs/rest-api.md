@@ -1,4 +1,3 @@
-# Public Rest API for Binance (2018-11-13)
 # General API Information
 * The base endpoint is: **https://api.binance.com**
 * All endpoints return either a JSON object or array.
