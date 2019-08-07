@@ -1,16 +1,12 @@
 site_name: Exchange API Docs
 nav:
     - GENERAL INFO: index.md
-    - WALLET ACCOUNT: account.md
-    - MARKET DATA: 
-        - Rest API: rest_Market_data.md 
-        - Web Socket Streams: wss_Market_data.md 
-    - SPOT ACCOUNT/TRADE: 
-        - Rest API: rest_spot.md
-        - Web Scoket Streams: wss_spot.md
+    - WALLET: account.md
+    - MARKET DATA: Market_Data.md 
+    - SPOT ACCOUNT/TRADE: spot.md 
     - MARGIN TRADE: Margin.md
     - ERROR INFO: error_info.md
      
-#theme: rtd-dropdown
 theme: readthedocs
+#theme: windmill
 #extra_css: [extra.css]
