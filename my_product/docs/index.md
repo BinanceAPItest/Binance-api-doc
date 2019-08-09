@@ -9,11 +9,11 @@
 * HTTP `418` return code is used when an IP has been auto-banned for continuing to send requests after receiving `429` codes.
 * HTTP `5XX` return codes are used for internal errors; the issue is on
   Binance's side.
-  And When using `/wapi/v3` , HTTP `504` return code is used when the API successfully sent the message
+  With using `/wapi/v3` , HTTP `504` return code is used when the API successfully sent the message
 but not get a response within the timeout period.
   It is important to **NOT** treat this as a failure operation; the execution status is
   **UNKNOWN** and could have been a success.
-* When using `/api/v1` and `/sapi/v1/margin`, any endpoint can return an ERROR; the error payload is as follows:
+* When using `/api/v3` and `/sapi/v1/margin`, any endpoint can return an ERROR; the error payload is as follows:
 ```javascript
 {
   "code": -1121,
@@ -42,7 +42,7 @@ but not get a response within the timeout period.
   `query string` parameter will be used.
 
 # LIMITS
-* The `/api/v1/exchangeInfo` `rateLimits` array contains objects related to the exchange's `RAW_REQUEST`, `REQUEST_WEIGHT`, and `ORDER` rate limits. These are further defined in the `ENUM definitions` section under `Rate limiters (rateLimitType)`.
+* The `/api/v3/exchangeInfo` `rateLimits` array contains objects related to the exchange's `RAW_REQUEST`, `REQUEST_WEIGHT`, and `ORDER` rate limits. These are further defined in the `ENUM definitions` section under `Rate limiters (rateLimitType)`.
 * The `/wapi/v3` `rateLimits` array contains objects related to the exchange's `REQUESTS` and `ORDER` rate limits.
 * A 429 will be returned when either rate limit is violated.
 * Each route has a `weight` which determines for the number of requests each endpoint counts for. Heavier endpoints and endpoints that do operations on multiple symbols will have a heavier `weight`.
@@ -109,7 +109,7 @@ server.
 **It recommended to use a small recvWindow of 5000 or less!**
 
 
-## SIGNED Endpoint Examples for POST /api/v1/order
+## SIGNED Endpoint Examples for POST /api/v3/order
 Here is a step-by-step example of how to send a vaild signed payload from the
 Linux command line using `echo`, `openssl`, and `curl`.
 
@@ -524,3 +524,4 @@ The `MAX_ALGO_ORDERS` filter defines the maximum number of "algo" orders an acco
   }
 ```
 
+/api/v3
