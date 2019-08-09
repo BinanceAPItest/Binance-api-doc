@@ -1,4 +1,3 @@
 # BN-api-doc
 
-* mkdocs is required
-* mkdocs-windmill is required 
+* mkdocs is required 
