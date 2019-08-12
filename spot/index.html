@@ -644,9 +644,11 @@ Creates and validates a new order but does not send it into the matching engine.
 </tr>
 </tbody>
 </table>
-<p><strong>Notes:</strong>
-* If <code>orderId</code> is set, it will get orders &gt;= that <code>orderId</code>. Otherwise most recent orders are returned.
-* For some historical orders <code>cummulativeQuoteQty</code> will be &lt; 0, meaning the data is not available at this time.</p>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>If <code>orderId</code> is set, it will get orders &gt;= that <code>orderId</code>. Otherwise most recent orders are returned.</li>
+<li>For some historical orders <code>cummulativeQuoteQty</code> will be &lt; 0, meaning the data is not available at this time.</li>
+</ul>
 <p><strong>Response:</strong></p>
 <pre><code class="javascript">[
   {
