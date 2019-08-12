@@ -170,6 +170,7 @@ recvWindow | LONG | NO |
 timestamp | LONG | YES |
 
 Notes:
+
 * Either `orderId` or `origClientOrderId` must be sent.
 * For some historical orders `cummulativeQuoteQty` will be < 0, meaning the data is not available at this time.
 
@@ -302,6 +303,7 @@ recvWindow | LONG | NO |
 timestamp | LONG | YES |
 
 **Notes:**
+
 * If `orderId` is set, it will get orders >= that `orderId`. Otherwise most recent orders are returned.
 * For some historical orders `cummulativeQuoteQty` will be < 0, meaning the data is not available at this time.
 
@@ -441,7 +443,11 @@ Start a new user data stream. The stream will close after 60 minutes unless a ke
 1
 
 **Parameters:**
-NONE
+
+Name | Type | Mandatory | Description
+------------ | ------------ | ------------ | ------------
+recvWindow | LONG | NO |
+timestamp | LONG | YES |
 
 **Response:**
 ```javascript
