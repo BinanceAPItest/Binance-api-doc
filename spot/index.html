@@ -831,8 +831,31 @@ Otherwise most recent orders are returned.</p>
 <p>Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent.</p>
 <p><strong>Weight:</strong>
 1</p>
-<p><strong>Parameters:</strong>
-NONE</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p><strong>Response:</strong></p>
 <pre><code class="javascript">{
   &quot;listenKey&quot;: &quot;pqia91ma19a5s61cv6a81va65sdf19v8a65a1a5s61cv6a81va65sdf19v8a65a1&quot;
