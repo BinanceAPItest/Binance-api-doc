@@ -1,5 +1,5 @@
-# BN-api-doc
+# Binance-api-doc
 
 * mkdocs is required 
-* view https://kiwimeucci.github.io/BN-api-doc/
+* view https://binanceapitest.github.io/Binance-api-doc/
 
