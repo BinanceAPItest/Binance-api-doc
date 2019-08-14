@@ -4,8 +4,8 @@
 
 
 
-## General endpoints
-### Test connectivity
+## Test connectivity
+
 ```
 GET /api/v3/ping
 ```
@@ -18,11 +18,12 @@ Test connectivity to the Rest API.
 NONE
 
 **Response:**
+
 ```javascript
 {}
 ```
 
-### Check server time
+## Check server time
 ```
 GET /api/v3/time
 ```
@@ -35,13 +36,14 @@ Test connectivity to the Rest API and get the current server time.
 NONE
 
 **Response:**
+
 ```javascript
 {
   "serverTime": 1499827319559
 }
 ```
 
-### Exchange information
+## Exchange information
 ```
 GET /api/v3/exchangeInfo
 ```
@@ -54,6 +56,7 @@ Current exchange trading rules and symbol information
 NONE
 
 **Response:**
+
 ```javascript
 {
   "timezone": "UTC",
@@ -87,8 +90,8 @@ NONE
 ```
 
 
-## Market Data endpoints
-### Order book
+
+## Order book
 ```
 GET /api/v3/depth
 ```
@@ -113,6 +116,7 @@ limit | INT | NO | Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500,
 **Caution:** setting limit=0 can return a lot of data.
 
 **Response:**
+
 ```javascript
 {
   "lastUpdateId": 1027024,
@@ -131,7 +135,7 @@ limit | INT | NO | Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500,
 }
 ```
 
-### Recent trades list
+## Recent trades list
 ```
 GET /api/v3/trades
 ```
@@ -148,6 +152,7 @@ symbol | STRING | YES |
 limit | INT | NO | Default 500; max 1000.
 
 **Response:**
+
 ```javascript
 [
   {
@@ -161,11 +166,11 @@ limit | INT | NO | Default 500; max 1000.
 ]
 ```
 
-### Old trade lookup (MARKET_DATA)
+## Old trade lookup
 ```
 GET /api/v3/historicalTrades
 ```
-Get older trades.
+Get older market trades.
 
 **Weight:**
 5
@@ -179,6 +184,7 @@ limit | INT | NO | Default 500; max 1000.
 fromId | LONG | NO | TradeId to fetch from. Default gets most recent trades.
 
 **Response:**
+
 ```javascript
 [
   {
@@ -192,7 +198,7 @@ fromId | LONG | NO | TradeId to fetch from. Default gets most recent trades.
 ]
 ```
 
-### Compressed/Aggregate trades list
+## Compressed/Aggregate trades list
 ```
 GET /api/v3/aggTrades
 ```
@@ -216,6 +222,7 @@ limit | INT | NO | Default 500; max 1000.
 * If fromId, startTime, and endTime are not sent, the most recent aggregate trades will be returned.
 
 **Response:**
+
 ```javascript
 [
   {
@@ -231,7 +238,7 @@ limit | INT | NO | Default 500; max 1000.
 ]
 ```
 
-### Kline/Candlestick data
+## Kline/Candlestick data
 ```
 GET /api/v3/klines
 ```
@@ -254,6 +261,7 @@ limit | INT | NO | Default 500; max 1000.
 * If startTime and endTime are not sent, the most recent klines are returned.
 
 **Response:**
+
 ```javascript
 [
   [
@@ -274,7 +282,7 @@ limit | INT | NO | Default 500; max 1000.
 ```
 
 
-### Current average price
+## Current average price
 Current average price for a symbol.
 ```
 GET /api/v3/avgPrice
@@ -290,6 +298,7 @@ symbol | STRING | YES |
 
 
 **Response:**
+
 ```javascript
 {
   "mins": 5,
@@ -298,7 +307,7 @@ symbol | STRING | YES |
 ```
 
 
-### 24hr ticker price change statistics
+## 24hr ticker price change statistics
 ```
 GET /api/v3/ticker/24hr
 ```
@@ -316,6 +325,7 @@ symbol | STRING | NO |
 * If the symbol is not sent, tickers for all symbols will be returned in an array.
 
 **Response:**
+
 ```javascript
 {
   "symbol": "BNBBTC",
@@ -340,6 +350,7 @@ symbol | STRING | NO |
 }
 ```
 OR
+
 ```javascript
 [
   {
@@ -367,7 +378,7 @@ OR
 ```
 
 
-### Symbol price ticker
+## Symbol price ticker
 ```
 GET /api/v3/ticker/price
 ```
@@ -385,6 +396,7 @@ symbol | STRING | NO |
 * If the symbol is not sent, prices for all symbols will be returned in an array.
 
 **Response:**
+
 ```javascript
 {
   "symbol": "LTCBTC",
@@ -392,6 +404,7 @@ symbol | STRING | NO |
 }
 ```
 OR
+
 ```javascript
 [
   {
@@ -405,7 +418,7 @@ OR
 ]
 ```
 
-### Symbol order book ticker
+## Symbol order book ticker
 ```
 GET /api/v3/ticker/bookTicker
 ```
@@ -423,6 +436,7 @@ symbol | STRING | NO |
 * If the symbol is not sent, bookTickers for all symbols will be returned in an array.
 
 **Response:**
+
 ```javascript
 {
   "symbol": "LTCBTC",
@@ -433,6 +447,7 @@ symbol | STRING | NO |
 }
 ```
 OR
+
 ```javascript
 [
   {
@@ -456,9 +471,6 @@ OR
 # Web-Socket Streams
 
 
-
-
-## General WSS information
 * The base endpoint is: **wss://stream.binance.com:9443**
 * Streams can be access either in a single raw stream or a combined stream
 * Raw streams are accessed at **/ws/\<streamName\>**
@@ -474,6 +486,7 @@ The Aggregate Trade Streams push trade information that is aggregated for a sing
 **Stream Name:** \<symbol\>@aggTrade
 
 **Payload:**
+
 ```javascript
 {
   "e": "aggTrade",  // Event type
@@ -496,6 +509,7 @@ The Trade Streams push raw trade information; each trade has a unique buyer and 
 **Stream Name:** \<symbol\>@trade
 
 **Payload:**
+
 ```javascript
 {
   "e": "trade",     // Event type
@@ -538,6 +552,7 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 **Stream Name:** \<symbol\>@kline_\<interval\>
 
 **Payload:**
+
 ```javascript
 {
   "e": "kline",     // Event type
@@ -571,6 +586,7 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 **Stream Name:** \<symbol\>@miniTicker
 
 **Payload:**
+
 ```javascript
   {
     "e": "24hrMiniTicker",  // Event type
@@ -591,6 +607,7 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 **Stream Name:** !miniTicker@arr
 
 **Payload:**
+
 ```javascript
 [
   {
@@ -605,6 +622,7 @@ m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
 **Stream Name:** \<symbol\>@ticker
 
 **Payload:**
+
 ```javascript
 {
   "e": "24hrTicker",  // Event type
@@ -653,6 +671,7 @@ Top **\<levels\>** bids and asks, pushed every second. Valid **\<levels\>** are 
 **Stream Name:** \<symbol\>@depth\<levels\>
 
 **Payload:**
+
 ```javascript
 {
   "lastUpdateId": 160,  // Last update ID
@@ -677,6 +696,7 @@ Order book price and quantity depth updates used to locally manage an order book
 **Stream Name:** \<symbol\>@depth
 
 **Payload:**
+
 ```javascript
 {
   "e": "depthUpdate", // Event type

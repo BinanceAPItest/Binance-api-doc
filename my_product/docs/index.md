@@ -14,6 +14,7 @@ but not get a response within the timeout period.
   It is important to **NOT** treat this as a failure operation; the execution status is
   **UNKNOWN** and could have been a success.
 * When using `/api/v3` and `/sapi/v1/margin`, any endpoint can return an ERROR; the error payload is as follows:
+* 
 ```javascript
 {
   "code": -1121,
@@ -22,6 +23,7 @@ but not get a response within the timeout period.
 ```
 
 * When using `/wapi/v3`, any endpoint can retun an ERROR; the error payload is as follows:
+* 
 ```javascript
 {
   "success": false,
@@ -91,6 +93,7 @@ MARKET_DATA | Endpoint requires sending a valid API-Key.
   milliseconds after `timestamp` the request is valid for. If `recvWindow`
   is not sent, **it defaults to 5000**.
 * The logic is as follows:
+
   ```javascript
   if (timestamp < (serverTime + 1000) && (serverTime - timestamp) <= recvWindow) {
     // process request
@@ -361,6 +364,7 @@ Any of the above variables can be set to 0, which disables that rule in the `pri
 * (`price`-`minPrice`) % `tickSize` == 0
 
 **/exchangeInfo format:**
+
 ```javascript
   {
     "filterType": "PRICE_FILTER",
@@ -379,6 +383,7 @@ In order to pass the `percent price`, the following must be true for `price`:
 * `price` >= `weightedAveragePrice` * `multiplierDown`
 
 **/exchangeInfo format:**
+
 ```javascript
   {
     "filterType": "PERCENT_PRICE",
@@ -402,6 +407,7 @@ In order to pass the `lot size`, the following must be true for `quantity`/`iceb
 * (`quantity`-`minQty`) % `stepSize` == 0
 
 **/exchangeInfo format:**
+
 ```javascript
   {
     "filterType": "LOT_SIZE",
@@ -420,6 +426,7 @@ Since `MARKET` orders have no price, the average price is used over the last `av
 
 
 **/exchangeInfo format:**
+
 ```javascript
   {
     "filterType": "MIN_NOTIONAL",
@@ -433,6 +440,7 @@ Since `MARKET` orders have no price, the average price is used over the last `av
 The `ICEBERG_PARTS` filter defines the maximum parts an iceberg order can have. The number of `ICEBERG_PARTS` is defined as `CEIL(qty / icebergQty)`.
 
 **/exchangeInfo format:**
+
 ```javascript
   {
     "filterType": "ICEBERG_PARTS",
@@ -454,6 +462,7 @@ In order to pass the `market lot size`, the following must be true for `quantity
 * (`quantity`-`minQty`) % `stepSize` == 0
 
 **/exchangeInfo format:**
+
 ```javascript
   {
     "filterType": "MARKET_LOT_SIZE",
@@ -468,6 +477,7 @@ The `MAX_NUM_ORDERS` filter defines the maximum number of orders an account is a
 Note that both "algo" orders and normal orders are counted for this filter.
 
 **/exchangeInfo format:**
+
 ```javascript
   {
     "filterType": "MAX_NUM_ORDERS",
@@ -480,6 +490,7 @@ The `MAX_NUM_ALGO_ORDERS` filter defines the maximum number of "algo" orders an 
 "Algo" orders are `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.
 
 **/exchangeInfo format:**
+
 ```javascript
   {
     "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -492,6 +503,7 @@ The `MAX_NUM_ICEBERG_ORDERS` filter defines the maximum number of `ICEBERG` orde
 An `ICEBERG` order is any order where the `icebergQty` is > 0.
 
 **/exchangeInfo format:**
+
 ```javascript
   {
     "filterType": "MAX_NUM_ICEBERG_ORDERS",
@@ -505,6 +517,7 @@ The `MAX_NUM_ORDERS` filter defines the maximum number of orders an account is a
 Note that both "algo" orders and normal orders are counted for this filter.
 
 **/exchangeInfo format:**
+
 ```javascript
   {
     "filterType": "EXCHANGE_MAX_NUM_ORDERS",
@@ -517,6 +530,7 @@ The `MAX_ALGO_ORDERS` filter defines the maximum number of "algo" orders an acco
 "Algo" orders are `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.
 
 **/exchangeInfo format:**
+
 ```javascript
   {
     "filterType": "EXCHANGE_MAX_ALGO_ORDERS",
@@ -524,4 +538,3 @@ The `MAX_ALGO_ORDERS` filter defines the maximum number of "algo" orders an acco
   }
 ```
 
-/api/v3

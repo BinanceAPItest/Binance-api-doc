@@ -1,8 +1,8 @@
 
 
 
-## General endpoints
-### Margin account transfer (MARGIN)
+
+## Margin account transfer (MARGIN)
 ```
 Post /sapi/v1/margin/transfer 
 ```
@@ -23,6 +23,7 @@ timestamp | LONG | YES
 
 
 **Response:**
+
 ```javascript
 {
     //transaction id
@@ -30,7 +31,7 @@ timestamp | LONG | YES
 }
 ```
 
-### Margin account borrow (MARGIN)
+## Margin account borrow (MARGIN)
 ```
 Post /sapi/v1/margin/loan 
 ```
@@ -49,6 +50,7 @@ recvWindow | LONG | NO
 timestamp | LONG | YES
 
 **Response:**
+
 ```javascript
 {
     //transaction id
@@ -56,7 +58,7 @@ timestamp | LONG | YES
 }
 ```
 
-### Margin account repay (MARGIN)
+## Margin account repay (MARGIN)
 ```
 Post /sapi/v1/margin/repay
 ```
@@ -75,6 +77,7 @@ recvWindow | LONG | NO
 timestamp | LONG | YES
 
 **Response:**
+
 ```javascript
 {
     //transaction id
@@ -82,7 +85,97 @@ timestamp | LONG | YES
 }
 ```
 
-### Margin account new order (TRADE)
+
+
+
+## Query margin asset (MARKET_DATA)
+
+```
+Get /sapi/v1/margin/asset 
+```
+
+**Weight:**
+5
+
+**Parameters:**
+
+Name | Type | Mandatory | Description
+------------ | ------------ | ------------ | ------------
+asset | STRING | YES |
+
+**Response:**
+
+```javascript
+{
+      "assetFullName": "Binance Coin",
+      "assetName": "BNB",
+      "isBorrowable": false,
+      "isMortgageable": true,
+      "userMinBorrow": "0.00000000",
+      "userMinRepay": "0.00000000"
+}
+```
+
+## Query margin pair (MARKET_DATA)
+```
+Get /sapi/v1/margin/pair 
+```
+
+**Weight:**
+5
+
+**Parameters:**
+
+Name | Type | Mandatory | Description
+------------ | ------------ | ------------ | ------------
+symbol | STRING | YES |
+
+**Response:**
+
+```javascript
+{
+   "id":323355778339572400,
+   "symbol":"BTCUSDT",
+   "base":"BTC",
+   "quote":"USDT",
+   "isMarginTrade":true,
+   "isBuyAllowed":true,
+   "isSellAllowed":true
+}
+```
+
+## Query margin priceIndex (MARKET_DATA)
+```
+Get /sapi/v1/margin/priceIndex 
+```
+
+**Weight:**
+5
+
+**Parameters:**
+
+Name | Type | Mandatory | Description
+------------ | ------------ | ------------ | ------------
+symbol | STRING | YES |
+
+**Response:**
+
+```javascript
+{
+   "calcTime": 1562046418000,
+   "price": "0.00333930",
+   "symbol": "BNBBTC"
+}
+```
+
+
+
+
+
+
+
+
+## Margin account new order (TRADE)
 ```
 Post  /sapi/v1/margin/order
 ```
@@ -109,6 +202,7 @@ recvWindow | LONG | NO
 timestamp | LONG | YES
 
 **Response ACK:**
+
 ```javascript
 {
   "symbol": "BTCUSDT",
@@ -118,6 +212,7 @@ timestamp | LONG | YES
 }
 ```
 **Response RESULT:**
+
 ```javascript
 {
   "symbol": "BTCUSDT",
@@ -135,6 +230,7 @@ timestamp | LONG | YES
 }
 ```
 **Response FULL:**
+
 ```javascript
 {
   "symbol": "BTCUSDT",
@@ -184,7 +280,7 @@ timestamp | LONG | YES
 }
 ```
 
-### Margin account cancel order (TRADE)
+## Margin account cancel order (TRADE)
 ```
 Delete /sapi/v1/margin/order
 ```
@@ -207,6 +303,7 @@ timestamp | LONG | YES
 Either orderId or origClientOrderId must be sent.
 
 **Response:**
+
 ```javascript
 {
   "symbol": "LTCBTC",
@@ -225,7 +322,7 @@ Either orderId or origClientOrderId must be sent.
 }
 ```
 
-### Query loan record (USER_DATA)
+## Query loan record (USER_DATA)
 ```
 Get /sapi/v1/margin/loan
 ```
@@ -249,6 +346,7 @@ timestamp | LONG | YES
 txId or startTime must be sent. txId takes precedence.
 
 **Response:**
+
 ```javascript
 {
   "rows": [
@@ -264,7 +362,7 @@ txId or startTime must be sent. txId takes precedence.
 }
 ```
 
-### Query repay record (USER_DATA)
+## Query repay record (USER_DATA)
 ```
 Get /sapi/v1/margin/repay
 ```
@@ -289,6 +387,7 @@ txId or startTime must be sent. txId takes precedence.
 
 
 **Response:**
+
 ```javascript
 {
      "rows": [
@@ -310,7 +409,7 @@ txId or startTime must be sent. txId takes precedence.
 }
 ```
 
-### Query margin account details (USER_DATA)
+## Query margin account details (USER_DATA)
 ```
 Get /sapi/v1/margin/account
 ```
@@ -323,6 +422,7 @@ Get /sapi/v1/margin/account
 None
 
 **Response:**
+
 ```javascript
 {
       "borrowEnabled": true,
@@ -370,85 +470,7 @@ None
 ```
 
 
-### Query margin asset (MARKET_DATA)
-
-```
-Get /sapi/v1/margin/asset 
-```
-
-**Weight:**
-5
-
-**Parameters:**
-
-Name | Type | Mandatory | Description
------------- | ------------ | ------------ | ------------
-asset | STRING | YES |
-
-**Response:**
-```javascript
-{
-      "assetFullName": "Binance Coin",
-      "assetName": "BNB",
-      "isBorrowable": false,
-      "isMortgageable": true,
-      "userMinBorrow": "0.00000000",
-      "userMinRepay": "0.00000000"
-}
-```
-
-### Query margin pair (MARKET_DATA)
-```
-Get /sapi/v1/margin/pair 
-```
-
-**Weight:**
-5
-
-**Parameters:**
-
-Name | Type | Mandatory | Description
------------- | ------------ | ------------ | ------------
-symbol | STRING | YES |
-
-**Response:**
-```javascript
-{
-   "id":323355778339572400,
-   "symbol":"BTCUSDT",
-   "base":"BTC",
-   "quote":"USDT",
-   "isMarginTrade":true,
-   "isBuyAllowed":true,
-   "isSellAllowed":true
-}
-```
-
-### Query margin priceIndex (MARKET_DATA)
-```
-Get /sapi/v1/margin/priceIndex 
-```
-
-**Weight:**
-5
-
-**Parameters:**
-
-Name | Type | Mandatory | Description
------------- | ------------ | ------------ | ------------
-symbol | STRING | YES |
-
-**Response:**
-```javascript
-{
-   "calcTime": 1562046418000,
-   "price": "0.00333930",
-   "symbol": "BNBBTC"
-}
-```
-
-
-### Query margin account's order (USER_DATA)
+## Query margin account's order (USER_DATA)
 
 ```
 Get /sapi/v1/margin/order 
@@ -473,6 +495,7 @@ Notes:
 * For some historical orders cummulativeQuoteQty will be < 0, meaning the data is not available at this time.
 
 **Response:**
+
 ```javascript
 {
    "clientOrderId": "ZwfQzuDIGpceVhKW5DvCmO",
@@ -494,7 +517,7 @@ Notes:
 }
 ```
 
-### Query margin account's open order (USER_DATA)
+## Query margin account's open order (USER_DATA)
 ```
 Get  /sapi/v1/margin/openOrders 
 ```
@@ -514,6 +537,7 @@ timestamp | LONG | YES
 * When all symbols are returned, the number of requests counted against the rate limiter is equal to the number of symbols currently trading on the exchange.
 
 **Response:**
+
 ```javascript
 [
    {
@@ -538,7 +562,7 @@ timestamp | LONG | YES
 ```
 
 
-### Query margin account's all order (USER_DATA)
+## Query margin account's all order (USER_DATA)
 ```
 Get /sapi/v1/margin/allOrders 
 ```
@@ -564,6 +588,7 @@ Notes:
 * For some historical orders cummulativeQuoteQty will be < 0, meaning the data is not available at this time.
 
 **Response:**
+
 ```javascript
 [
       {
@@ -593,7 +618,7 @@ Notes:
 ]
 ```
 
-### Query margin account's trade list (USER_DATA)
+## Query margin account's trade list (USER_DATA)
 ```
 Get  /sapi/v1/margin/myTrades 
 ```
@@ -618,6 +643,7 @@ Notes:
 
 
 **Response:**
+
 ```javascript
 [{
 	"commission": "0.00006000",
@@ -646,7 +672,7 @@ Notes:
 }]
 ```
 
-### Query max borrow (USER_DATA)
+## Query max borrow (USER_DATA)
 ```
 Get /sapi/v1/margin/maxBorrowable 
 ```
@@ -663,13 +689,14 @@ recvWindow | LONG | NO
 timestamp | LONG | YES
 
 **Response:**
+
 ```javascript
 {
     "amount": "1.69248805"
 }
 ```
 
-### Query max transfer-out amount (USER_DATA)
+## Query max transfer-out amount (USER_DATA)
 ```
 Get /sapi/v1/margin/maxTransferable 
 ```
@@ -686,13 +713,14 @@ recvWindow | LONG | NO
 timestamp | LONG | YES
 
 **Response:**
+
 ```javascript
  {
       "amount": "3.59498107"
  }
 ```
 
-### Start user data stream for margin account (USER_STREAM)
+## Start user data stream for margin account (USER_STREAM)
 ```
 POST  /sapi/v1/userDataStream
 ```
@@ -702,14 +730,18 @@ POST  /sapi/v1/userDataStream
 
 **Parameters:**
 
-NONE
+Name | Type | Mandatory | Description
+------------ | ------------ | ------------ | ------------
+recvWindow | LONG | NO |
+timestamp | LONG | YES |
 
 **Response:**
+
 ```javascript
 {"listenKey":  "T3ee22BIYuWqmvne0HNq2A2WsFlEtLhvWCtItw6ffhhdmjifQ2tRbuKkTHhr"}
 ```
 
-### Delete user data stream for margin account  (USER_STREAM)
+## Delete user data stream for margin account  (USER_STREAM)
 ```
 DELETE  /sapi/v1/userDataStream
 ```
@@ -724,6 +756,7 @@ Name | Type | Mandatory | Description
 listenKey | STRING | YES |
 
 **Response:**
+
 ```javascript
 {}
 ```

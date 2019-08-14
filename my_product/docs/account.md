@@ -21,6 +21,7 @@ name | STRING | NO | Description of the address
 recvWindow | LONG | NO	
 timestamp | LONG | YES	
 **Response:**
+
 ```javascript
 {
     "msg": "success",
@@ -52,6 +53,7 @@ timestamp | LONG | YES
 
 
 **Response:**
+
 ```javascript
 {
     "depositList": [
@@ -99,6 +101,7 @@ timestamp | LONG | YES
 
 
 **Response:**
+
 ```javascript
 {
     "withdrawList": [
@@ -148,6 +151,7 @@ recvWindow | LONG | NO
 timestamp | LONG | YES	
 
 **Response:**
+
 ```javascript
 {
     "address": "0x6915f16f8791d0a1cc2bf47c13a6b2a92000504b",
@@ -175,6 +179,7 @@ recvWindow | LONG | NO
 timestamp | LONG | YES	
 
 **Response:**
+
 ```javascript
 {
     "msg": "Order failed:Low Order fill rate! Will be reactivated after 5 minutes.",
@@ -297,6 +302,7 @@ recvWindow | LONG | NO
 timestamp | LONG | YES  
 
 **Response:**
+
 ```javascript
 {
     "success": true, 
@@ -380,6 +386,7 @@ timestamp | LONG | YES
 symbol | STRING | NO
 
 **Response:**
+
 ```javascript
 {
 	"tradeFee": [{
@@ -415,6 +422,7 @@ recvWindow | LONG | NO
 timestamp | LONG | YES  
 
 **Response:**
+
 ```javascript
 {
     "success": true,
@@ -460,6 +468,7 @@ recvWindow | LONG | NO
 timestamp | LONG | YES  
 
 **Response:**
+
 ```javascript
 {
     "success":true,
@@ -508,6 +517,7 @@ recvWindow | LONG | NO
 timestamp | LONG | YES  
 
 **Response:**
+
 ```javascript
 {
     "success":true,
@@ -553,6 +563,7 @@ recvWindow | LONG | NO
 timestamp | LONG | YES  
 
 **Response:**
+
 ```javascript
 {
     "success":true,
@@ -687,6 +698,7 @@ recvWindow | LONG | NO |
 timestamp | LONG | YES |
 
 **Response:**
+
 ```javascript
 {
     "rows":[
