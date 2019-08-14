@@ -419,7 +419,10 @@ Get /sapi/v1/margin/account
 
 **Parameters:**
 
-None
+Name | Type | Mandatory | Description
+------------ | ------------ | ------------ | ------------
+recvWindow | LONG | NO | The value cannot be greater than ```60000```
+timestamp | LONG | YES |
 
 **Response:**
 
