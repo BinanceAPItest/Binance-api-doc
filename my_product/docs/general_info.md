@@ -33,7 +33,7 @@ but not get a response within the timeout period.
 
 
 
-* Specific error codes and messages defined in another document.
+* Specific error codes and messages defined in [Error Info](error_info.md).
 * For `GET` endpoints, parameters must be sent as a `query string`.
 * For `POST`, `PUT`, and `DELETE` endpoints, the parameters may be sent as a
   `query string` or in the `request body` with content type
