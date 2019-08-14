@@ -220,175 +220,175 @@
 </code></pre>
 
 <h2 id="10xx-general-server-or-network-issues">10xx - General Server or Network issues</h2>
-<h4 id="-1000-unknown">-1000 UNKNOWN</h4>
+<h3 id="-1000-unknown">-1000 UNKNOWN</h3>
 <ul>
 <li>An unknown error occured while processing the request.</li>
 </ul>
-<h4 id="-1001-disconnected">-1001 DISCONNECTED</h4>
+<h3 id="-1001-disconnected">-1001 DISCONNECTED</h3>
 <ul>
 <li>Internal error; unable to process your request. Please try again.</li>
 </ul>
-<h4 id="-1002-unauthorized">-1002 UNAUTHORIZED</h4>
+<h3 id="-1002-unauthorized">-1002 UNAUTHORIZED</h3>
 <ul>
 <li>You are not authorized to execute this request.</li>
 </ul>
-<h4 id="-1003-too_many_requests">-1003 TOO_MANY_REQUESTS</h4>
+<h3 id="-1003-too_many_requests">-1003 TOO_MANY_REQUESTS</h3>
 <ul>
 <li>Too many requests queued.</li>
 <li>Too many requests; please use the websocket for live updates.</li>
 <li>Too many requests; current limit is %s requests per minute. Please use the websocket for live updates to avoid polling the API.</li>
 <li>Way too many requests; IP banned until %s. Please use the websocket for live updates to avoid bans.</li>
 </ul>
-<h4 id="-1006-unexpected_resp">-1006 UNEXPECTED_RESP</h4>
+<h3 id="-1006-unexpected_resp">-1006 UNEXPECTED_RESP</h3>
 <ul>
 <li>An unexpected response was received from the message bus. Execution status unknown.</li>
 </ul>
-<h4 id="-1007-timeout">-1007 TIMEOUT</h4>
+<h3 id="-1007-timeout">-1007 TIMEOUT</h3>
 <ul>
 <li>Timeout waiting for response from backend server. Send status unknown; execution status unknown.</li>
 </ul>
-<h4 id="-1014-unknown_order_composition">-1014 UNKNOWN_ORDER_COMPOSITION</h4>
+<h3 id="-1014-unknown_order_composition">-1014 UNKNOWN_ORDER_COMPOSITION</h3>
 <ul>
 <li>Unsupported order combination.</li>
 </ul>
-<h4 id="-1015-too_many_orders">-1015 TOO_MANY_ORDERS</h4>
+<h3 id="-1015-too_many_orders">-1015 TOO_MANY_ORDERS</h3>
 <ul>
 <li>Too many new orders.</li>
 <li>Too many new orders; current limit is %s orders per %s.</li>
 </ul>
-<h4 id="-1016-service_shutting_down">-1016 SERVICE_SHUTTING_DOWN</h4>
+<h3 id="-1016-service_shutting_down">-1016 SERVICE_SHUTTING_DOWN</h3>
 <ul>
 <li>This service is no longer available.</li>
 </ul>
-<h4 id="-1020-unsupported_operation">-1020 UNSUPPORTED_OPERATION</h4>
+<h3 id="-1020-unsupported_operation">-1020 UNSUPPORTED_OPERATION</h3>
 <ul>
 <li>This operation is not supported.</li>
 </ul>
-<h4 id="-1021-invalid_timestamp">-1021 INVALID_TIMESTAMP</h4>
+<h3 id="-1021-invalid_timestamp">-1021 INVALID_TIMESTAMP</h3>
 <ul>
 <li>Timestamp for this request is outside of the recvWindow.</li>
 <li>Timestamp for this request was 1000ms ahead of the server's time.</li>
 </ul>
-<h4 id="-1022-invalid_signature">-1022 INVALID_SIGNATURE</h4>
+<h3 id="-1022-invalid_signature">-1022 INVALID_SIGNATURE</h3>
 <ul>
 <li>Signature for this request is not valid.</li>
 </ul>
 <h2 id="11xx-request-issues">11xx - Request issues</h2>
-<h4 id="-1100-illegal_chars">-1100 ILLEGAL_CHARS</h4>
+<h3 id="-1100-illegal_chars">-1100 ILLEGAL_CHARS</h3>
 <ul>
 <li>Illegal characters found in a parameter.</li>
 <li>Illegal characters found in parameter '%s'; legal range is '%s'.</li>
 </ul>
-<h4 id="-1101-too_many_parameters">-1101 TOO_MANY_PARAMETERS</h4>
+<h3 id="-1101-too_many_parameters">-1101 TOO_MANY_PARAMETERS</h3>
 <ul>
 <li>Too many parameters sent for this endpoint.</li>
 <li>Too many parameters; expected '%s' and received '%s'.</li>
 <li>Duplicate values for a parameter detected.</li>
 </ul>
-<h4 id="-1102-mandatory_param_empty_or_malformed">-1102 MANDATORY_PARAM_EMPTY_OR_MALFORMED</h4>
+<h3 id="-1102-mandatory_param_empty_or_malformed">-1102 MANDATORY_PARAM_EMPTY_OR_MALFORMED</h3>
 <ul>
 <li>A mandatory parameter was not sent, was empty/null, or malformed.</li>
 <li>Mandatory parameter '%s' was not sent, was empty/null, or malformed.</li>
 <li>Param '%s' or '%s' must be sent, but both were empty/null!</li>
 </ul>
-<h4 id="-1103-unknown_param">-1103 UNKNOWN_PARAM</h4>
+<h3 id="-1103-unknown_param">-1103 UNKNOWN_PARAM</h3>
 <ul>
 <li>An unknown parameter was sent.</li>
 </ul>
-<h4 id="-1104-unread_parameters">-1104 UNREAD_PARAMETERS</h4>
+<h3 id="-1104-unread_parameters">-1104 UNREAD_PARAMETERS</h3>
 <ul>
 <li>Not all sent parameters were read.</li>
 <li>Not all sent parameters were read; read '%s' parameter(s) but was sent '%s'.</li>
 </ul>
-<h4 id="-1105-param_empty">-1105 PARAM_EMPTY</h4>
+<h3 id="-1105-param_empty">-1105 PARAM_EMPTY</h3>
 <ul>
 <li>A parameter was empty.</li>
 <li>Parameter '%s' was empty.</li>
 </ul>
-<h4 id="-1106-param_not_required">-1106 PARAM_NOT_REQUIRED</h4>
+<h3 id="-1106-param_not_required">-1106 PARAM_NOT_REQUIRED</h3>
 <ul>
 <li>A parameter was sent when not required.</li>
 <li>Parameter '%s' sent when not required.</li>
 </ul>
-<h4 id="-1111-bad_precision">-1111 BAD_PRECISION</h4>
+<h3 id="-1111-bad_precision">-1111 BAD_PRECISION</h3>
 <ul>
 <li>Precision is over the maximum defined for this asset.</li>
 </ul>
-<h4 id="-1112-no_depth">-1112 NO_DEPTH</h4>
+<h3 id="-1112-no_depth">-1112 NO_DEPTH</h3>
 <ul>
 <li>No orders on book for symbol.</li>
 </ul>
-<h4 id="-1114-tif_not_required">-1114 TIF_NOT_REQUIRED</h4>
+<h3 id="-1114-tif_not_required">-1114 TIF_NOT_REQUIRED</h3>
 <ul>
 <li>TimeInForce parameter sent when not required.</li>
 </ul>
-<h4 id="-1115-invalid_tif">-1115 INVALID_TIF</h4>
+<h3 id="-1115-invalid_tif">-1115 INVALID_TIF</h3>
 <ul>
 <li>Invalid timeInForce.</li>
 </ul>
-<h4 id="-1116-invalid_order_type">-1116 INVALID_ORDER_TYPE</h4>
+<h3 id="-1116-invalid_order_type">-1116 INVALID_ORDER_TYPE</h3>
 <ul>
 <li>Invalid orderType.</li>
 </ul>
-<h4 id="-1117-invalid_side">-1117 INVALID_SIDE</h4>
+<h3 id="-1117-invalid_side">-1117 INVALID_SIDE</h3>
 <ul>
 <li>Invalid side.</li>
 </ul>
-<h4 id="-1118-empty_new_cl_ord_id">-1118 EMPTY_NEW_CL_ORD_ID</h4>
+<h3 id="-1118-empty_new_cl_ord_id">-1118 EMPTY_NEW_CL_ORD_ID</h3>
 <ul>
 <li>New client order ID was empty.</li>
 </ul>
-<h4 id="-1119-empty_org_cl_ord_id">-1119 EMPTY_ORG_CL_ORD_ID</h4>
+<h3 id="-1119-empty_org_cl_ord_id">-1119 EMPTY_ORG_CL_ORD_ID</h3>
 <ul>
 <li>Original client order ID was empty.</li>
 </ul>
-<h4 id="-1120-bad_interval">-1120 BAD_INTERVAL</h4>
+<h3 id="-1120-bad_interval">-1120 BAD_INTERVAL</h3>
 <ul>
 <li>Invalid interval.</li>
 </ul>
-<h4 id="-1121-bad_symbol">-1121 BAD_SYMBOL</h4>
+<h3 id="-1121-bad_symbol">-1121 BAD_SYMBOL</h3>
 <ul>
 <li>Invalid symbol.</li>
 </ul>
-<h4 id="-1125-invalid_listen_key">-1125 INVALID_LISTEN_KEY</h4>
+<h3 id="-1125-invalid_listen_key">-1125 INVALID_LISTEN_KEY</h3>
 <ul>
 <li>This listenKey does not exist.</li>
 </ul>
-<h4 id="-1127-more_than_xx_hours">-1127 MORE_THAN_XX_HOURS</h4>
+<h3 id="-1127-more_than_xx_hours">-1127 MORE_THAN_XX_HOURS</h3>
 <ul>
 <li>Lookup interval is too big.</li>
 <li>More than %s hours between startTime and endTime.</li>
 </ul>
-<h4 id="-1128-optional_params_bad_combo">-1128 OPTIONAL_PARAMS_BAD_COMBO</h4>
+<h3 id="-1128-optional_params_bad_combo">-1128 OPTIONAL_PARAMS_BAD_COMBO</h3>
 <ul>
 <li>Combination of optional parameters invalid.</li>
 </ul>
-<h4 id="-1130-invalid_parameter">-1130 INVALID_PARAMETER</h4>
+<h3 id="-1130-invalid_parameter">-1130 INVALID_PARAMETER</h3>
 <ul>
 <li>Invalid data sent for a parameter.</li>
 <li>Data sent for paramter '%s' is not valid.</li>
 </ul>
-<h4 id="-2010-new_order_rejected">-2010 NEW_ORDER_REJECTED</h4>
+<h3 id="-2010-new_order_rejected">-2010 NEW_ORDER_REJECTED</h3>
 <ul>
 <li>NEW_ORDER_REJECTED</li>
 </ul>
-<h4 id="-2011-cancel_rejected">-2011 CANCEL_REJECTED</h4>
+<h3 id="-2011-cancel_rejected">-2011 CANCEL_REJECTED</h3>
 <ul>
 <li>CANCEL_REJECTED</li>
 </ul>
-<h4 id="-2013-no_such_order">-2013 NO_SUCH_ORDER</h4>
+<h3 id="-2013-no_such_order">-2013 NO_SUCH_ORDER</h3>
 <ul>
 <li>Order does not exist.</li>
 </ul>
-<h4 id="-2014-bad_api_key_fmt">-2014 BAD_API_KEY_FMT</h4>
+<h3 id="-2014-bad_api_key_fmt">-2014 BAD_API_KEY_FMT</h3>
 <ul>
 <li>API-key format invalid.</li>
 </ul>
-<h4 id="-2015-rejected_mbx_key">-2015 REJECTED_MBX_KEY</h4>
+<h3 id="-2015-rejected_mbx_key">-2015 REJECTED_MBX_KEY</h3>
 <ul>
 <li>Invalid API-key, IP, or permissions for action.</li>
 </ul>
-<h4 id="-2016-no_trading_window">-2016 NO_TRADING_WINDOW</h4>
+<h3 id="-2016-no_trading_window">-2016 NO_TRADING_WINDOW</h3>
 <ul>
 <li>No trading window could be found for the symbol. Try ticker/24hrs instead.</li>
 </ul>
