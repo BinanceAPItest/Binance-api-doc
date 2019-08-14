@@ -833,7 +833,7 @@ Otherwise most recent orders are returned.</p>
 <li>Doing a <code>PUT</code> on a <code>listenKey</code> will extend its validity for 60 minutes.</li>
 <li>Doing a <code>DELETE</code> on a <code>listenKey</code> will close the stream.</li>
 <li>The base websocket endpoint is: <strong>wss://stream.binance.com:9443</strong></li>
-<li>User Data Streams are accessed at <strong>/ws/\&lt;listenKey></strong></li>
+<li>User Data Streams are accessed at <strong>/ws/&lt;listenKey></strong></li>
 <li>A single connection to <strong>stream.binance.com</strong> is only valid for 24 hours; expect to be disconnected at the 24 hour mark</li>
 <li>User data stream payloads are <strong>not guaranteed</strong> to be in order during heavy periods; <strong>make sure to order your updates using E</strong></li>
 </ul>

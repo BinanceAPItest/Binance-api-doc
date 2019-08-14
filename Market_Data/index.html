@@ -775,16 +775,16 @@ Klines are uniquely identified by their open time.</p>
 <ul>
 <li>The base endpoint is: <strong>wss://stream.binance.com:9443</strong></li>
 <li>Streams can be access either in a single raw stream or a combined stream</li>
-<li>Raw streams are accessed at <strong>/ws/\&lt;streamName></strong></li>
-<li>Combined streams are accessed at <strong>/stream?streams=\&lt;streamName1>/\&lt;streamName2>/\&lt;streamName3></strong></li>
-<li>Combined stream events are wrapped as follows: <strong>{"stream":"\&lt;streamName>","data":\&lt;rawPayload>}</strong></li>
+<li>Raw streams are accessed at <strong>/ws/&lt;streamName></strong></li>
+<li>Combined streams are accessed at <strong>/stream?streams=&lt;streamName1>/&lt;streamName2>/&lt;streamName3></strong></li>
+<li>Combined stream events are wrapped as follows: <strong>{"stream":"&lt;streamName>","data":&lt;rawPayload>}</strong></li>
 <li>All symbols for streams are <strong>lowercase</strong></li>
 <li>A single connection to <strong>stream.binance.com</strong> is only valid for 24 hours; expect to be disconnected at the 24 hour mark</li>
 <li>The websocket server will send a <code>ping frame</code> every 3 minutes. If the websocket server does not receive a <code>pong frame</code> back from the connection within a 10 minute period, the connection will be disconnected. Unsolicited <code>pong frames</code> are allowed.</li>
 </ul>
 <h2 id="aggregate-trade-streams">Aggregate Trade Streams</h2>
 <p>The Aggregate Trade Streams push trade information that is aggregated for a single taker order.</p>
-<p><strong>Stream Name:</strong> \&lt;symbol>@aggTrade</p>
+<p><strong>Stream Name:</strong> &lt;symbol>@aggTrade</p>
 <p><strong>Payload:</strong></p>
 <pre><code class="javascript">{
   &quot;e&quot;: &quot;aggTrade&quot;,  // Event type
@@ -803,7 +803,7 @@ Klines are uniquely identified by their open time.</p>
 
 <h2 id="trade-streams">Trade Streams</h2>
 <p>The Trade Streams push raw trade information; each trade has a unique buyer and seller.</p>
-<p><strong>Stream Name:</strong> \&lt;symbol>@trade</p>
+<p><strong>Stream Name:</strong> &lt;symbol>@trade</p>
 <p><strong>Payload:</strong></p>
 <pre><code class="javascript">{
   &quot;e&quot;: &quot;trade&quot;,     // Event type
@@ -841,7 +841,7 @@ Klines are uniquely identified by their open time.</p>
 <li>1w</li>
 <li>1M</li>
 </ul>
-<p><strong>Stream Name:</strong> \&lt;symbol>@kline_\&lt;interval></p>
+<p><strong>Stream Name:</strong> &lt;symbol>@kline_&lt;interval></p>
 <p><strong>Payload:</strong></p>
 <pre><code class="javascript">{
   &quot;e&quot;: &quot;kline&quot;,     // Event type
@@ -871,7 +871,7 @@ Klines are uniquely identified by their open time.</p>
 
 <h2 id="individual-symbol-mini-ticker-stream">Individual Symbol Mini Ticker Stream</h2>
 <p>24hr rolling window mini-ticker statistics for a single symbol pushed every second. These are NOT the statistics of the UTC day, but a 24hr rolling window from requestTime to 24hrs before.</p>
-<p><strong>Stream Name:</strong> \&lt;symbol>@miniTicker</p>
+<p><strong>Stream Name:</strong> &lt;symbol>@miniTicker</p>
 <p><strong>Payload:</strong></p>
 <pre><code class="javascript">  {
     &quot;e&quot;: &quot;24hrMiniTicker&quot;,  // Event type
@@ -899,7 +899,7 @@ Klines are uniquely identified by their open time.</p>
 
 <h2 id="individual-symbol-ticker-streams">Individual Symbol Ticker Streams</h2>
 <p>24hr rollwing window ticker statistics for a single symbol pushed every second. These are NOT the statistics of the UTC day, but a 24hr rolling window from requestTime to 24hrs before.</p>
-<p><strong>Stream Name:</strong> \&lt;symbol>@ticker</p>
+<p><strong>Stream Name:</strong> &lt;symbol>@ticker</p>
 <p><strong>Payload:</strong></p>
 <pre><code class="javascript">{
   &quot;e&quot;: &quot;24hrTicker&quot;,  // Event type
@@ -940,8 +940,8 @@ Klines are uniquely identified by their open time.</p>
 </code></pre>
 
 <h2 id="partial-book-depth-streams">Partial Book Depth Streams</h2>
-<p>Top <strong>\&lt;levels></strong> bids and asks, pushed every second. Valid <strong>\&lt;levels></strong> are 5, 10, or 20.</p>
-<p><strong>Stream Name:</strong> \&lt;symbol>@depth\&lt;levels></p>
+<p>Top <strong>&lt;levels></strong> bids and asks, pushed every second. Valid <strong>&lt;levels></strong> are 5, 10, or 20.</p>
+<p><strong>Stream Name:</strong> &lt;symbol>@depth&lt;levels></p>
 <p><strong>Payload:</strong></p>
 <pre><code class="javascript">{
   &quot;lastUpdateId&quot;: 160,  // Last update ID
@@ -962,7 +962,7 @@ Klines are uniquely identified by their open time.</p>
 
 <h2 id="diff-depth-stream">Diff. Depth Stream</h2>
 <p>Order book price and quantity depth updates used to locally manage an order book pushed every second.</p>
-<p><strong>Stream Name:</strong> \&lt;symbol>@depth</p>
+<p><strong>Stream Name:</strong> &lt;symbol>@depth</p>
 <p><strong>Payload:</strong></p>
 <pre><code class="javascript">{
   &quot;e&quot;: &quot;depthUpdate&quot;, // Event type
