@@ -84,6 +84,16 @@
         
             <li><a class="toctree-l3" href="#all-orders-user_data">All orders (USER_DATA)</a></li>
         
+            <li><a class="toctree-l3" href="#new-oco-trade">New OCO (TRADE)</a></li>
+        
+            <li><a class="toctree-l3" href="#cancel-oco-trade">Cancel OCO (TRADE)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-oco-user_data">Query OCO (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-all-oco-user_data">Query all OCO (USER_DATA)</a></li>
+        
+            <li><a class="toctree-l3" href="#query-open-oco-user_data">Query Open OCO (USER_DATA)</a></li>
+        
             <li><a class="toctree-l3" href="#account-information-user_data">Account information (USER_DATA)</a></li>
         
             <li><a class="toctree-l3" href="#account-trade-list-user_data">Account trade list (USER_DATA)</a></li>
@@ -244,7 +254,7 @@ Creates and validates a new order but does not send it into the matching engine.
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -309,6 +319,7 @@ Creates and validates a new order but does not send it into the matching engine.
 <pre><code class="javascript">{
   &quot;symbol&quot;: &quot;BTCUSDT&quot;,
   &quot;orderId&quot;: 28,
+  &quot;orderListId&quot;: -1, //Unless OCO, value will be -1
   &quot;clientOrderId&quot;: &quot;6gCrw2kRUAF9CvJDGP16IP&quot;,
   &quot;transactTime&quot;: 1507725176595
 }
@@ -318,6 +329,7 @@ Creates and validates a new order but does not send it into the matching engine.
 <pre><code class="javascript">{
   &quot;symbol&quot;: &quot;BTCUSDT&quot;,
   &quot;orderId&quot;: 28,
+  &quot;orderListId&quot;: -1, //Unless OCO, value will be -1
   &quot;clientOrderId&quot;: &quot;6gCrw2kRUAF9CvJDGP16IP&quot;,
   &quot;transactTime&quot;: 1507725176595,
   &quot;price&quot;: &quot;1.00000000&quot;,
@@ -335,6 +347,7 @@ Creates and validates a new order but does not send it into the matching engine.
 <pre><code class="javascript">{
   &quot;symbol&quot;: &quot;BTCUSDT&quot;,
   &quot;orderId&quot;: 28,
+  &quot;orderListId&quot;: -1, //Unless OCO, value will be -1
   &quot;clientOrderId&quot;: &quot;6gCrw2kRUAF9CvJDGP16IP&quot;,
   &quot;transactTime&quot;: 1507725176595,
   &quot;price&quot;: &quot;1.00000000&quot;,
@@ -426,7 +439,7 @@ Creates and validates a new order but does not send it into the matching engine.
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -439,19 +452,19 @@ Creates and validates a new order but does not send it into the matching engine.
 <p>Either <code>orderId</code> or <code>origClientOrderId</code> must be sent.</p>
 <p><strong>Response:</strong></p>
 <pre><code class="javascript">{
-  &quot;symbol&quot;: &quot;LTCBTC&quot;,
-  &quot;orderId&quot;: 28,
-  &quot;origClientOrderId&quot;: &quot;myOrder1&quot;,
-  &quot;clientOrderId&quot;: &quot;cancelMyOrder1&quot;,
-  &quot;transactTime&quot;: 1507725176595,
-  &quot;price&quot;: &quot;1.00000000&quot;,
-  &quot;origQty&quot;: &quot;10.00000000&quot;,
-  &quot;executedQty&quot;: &quot;8.00000000&quot;,
-  &quot;cummulativeQuoteQty&quot;: &quot;8.00000000&quot;,
-  &quot;status&quot;: &quot;CANCELED&quot;,
-  &quot;timeInForce&quot;: &quot;GTC&quot;,
-  &quot;type&quot;: &quot;LIMIT&quot;,
-  &quot;side&quot;: &quot;SELL&quot;
+    &quot;symbol&quot;: &quot;LTCBTC&quot;,
+    &quot;origClientOrderId&quot;: &quot;myOrder1&quot;,
+    &quot;orderId&quot;: 4,
+    &quot;orderListId&quot;: -1, //Unless part of an OCO, the value will always be -1.
+    &quot;clientOrderId&quot;: &quot;cancelMyOrder1&quot;,
+    &quot;price&quot;: &quot;2.00000000&quot;,
+    &quot;origQty&quot;: &quot;1.00000000&quot;,
+    &quot;executedQty&quot;: &quot;0.00000000&quot;,
+    &quot;cummulativeQuoteQty&quot;: &quot;0.00000000&quot;,
+    &quot;status&quot;: &quot;CANCELED&quot;,
+    &quot;timeInForce&quot;: &quot;GTC&quot;,
+    &quot;type&quot;: &quot;LIMIT&quot;,
+    &quot;side&quot;: &quot;BUY&quot;
 }
 </code></pre>
 
@@ -495,7 +508,7 @@ Creates and validates a new order but does not send it into the matching engine.
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -514,6 +527,7 @@ Creates and validates a new order but does not send it into the matching engine.
 <pre><code class="javascript">{
   &quot;symbol&quot;: &quot;LTCBTC&quot;,
   &quot;orderId&quot;: 1,
+  &quot;orderListId&quot;: -1, //Unless OCO, value will be -1
   &quot;clientOrderId&quot;: &quot;myOrder1&quot;,
   &quot;price&quot;: &quot;0.1&quot;,
   &quot;origQty&quot;: &quot;1.0&quot;,
@@ -559,7 +573,7 @@ Creates and validates a new order but does not send it into the matching engine.
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -577,6 +591,7 @@ Creates and validates a new order but does not send it into the matching engine.
   {
     &quot;symbol&quot;: &quot;LTCBTC&quot;,
     &quot;orderId&quot;: 1,
+    &quot;orderListId&quot;: -1, //Unless OCO, the value will always be -1
     &quot;clientOrderId&quot;: &quot;myOrder1&quot;,
     &quot;price&quot;: &quot;0.1&quot;,
     &quot;origQty&quot;: &quot;1.0&quot;,
@@ -647,7 +662,7 @@ Creates and validates a new order but does not send it into the matching engine.
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -667,6 +682,7 @@ Creates and validates a new order but does not send it into the matching engine.
   {
     &quot;symbol&quot;: &quot;LTCBTC&quot;,
     &quot;orderId&quot;: 1,
+    &quot;orderListId&quot;: -1, //Unless OCO, the value will always be -1
     &quot;clientOrderId&quot;: &quot;myOrder1&quot;,
     &quot;price&quot;: &quot;0.1&quot;,
     &quot;origQty&quot;: &quot;1.0&quot;,
@@ -682,6 +698,461 @@ Creates and validates a new order but does not send it into the matching engine.
     &quot;updateTime&quot;: 1499827319559,
     &quot;isWorking&quot;: true
   }
+]
+</code></pre>
+
+<h2 id="new-oco-trade">New OCO (TRADE)</h2>
+<pre><code>POST /api/v3/order/oco (HMAC SHA256)
+</code></pre>
+
+<p><strong>Weight</strong>: 1</p>
+<p>Send in a new OCO</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Descirption</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>listClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>A unique Id for the entire orderList</td>
+</tr>
+<tr>
+<td>side</td>
+<td>ENUM</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>DECIMAL</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>limitClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>A unique Id for the limit order</td>
+</tr>
+<tr>
+<td>price</td>
+<td>DECIMAL</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>limitIcebergQty</td>
+<td>DECIMAL</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>stopClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>A unique Id for the stop loss/stop loss limit leg</td>
+</tr>
+<tr>
+<td>stopPrice</td>
+<td>DECIMAL</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>stopLimitPrice</td>
+<td>DECIMAL</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>stopIcebergQty</td>
+<td>DECIMAL</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>stopLimitTimeInForce</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>Valid values are <code>GTC</code>/<code>FOK</code>/<code>IOC</code></td>
+</tr>
+<tr>
+<td>newOrderRespType</td>
+<td>ENUM</td>
+<td>NO</td>
+<td>Set the response JSON.</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>The value cannot be greater than <code>60000</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Other Info:
+* Price Restrictions:
+    * <code>SELL</code>: Limit Price &gt; Last Price &gt; Stop Price
+    * <code>BUY</code>: Limit Price &lt; Last Price &lt; Stop Price
+* Quantity Restrictions:
+    * Both legs must have the same quantity
+    * <code>ICEBERG</code> quantities however do not have to be the same</p>
+<p><strong>Response:</strong></p>
+<pre><code class="json">{
+  &quot;orderListId&quot;: 0,
+  &quot;contingencyType&quot;: &quot;OCO&quot;,
+  &quot;listStatusType&quot;: &quot;EXEC_STARTED&quot;,
+  &quot;listOrderStatus&quot;: &quot;EXECUTING&quot;,
+  &quot;listClientOrderId&quot;: &quot;JYVpp3F0f5CAG15DhtrqLp&quot;,
+  &quot;transactionTime&quot;: 1563417480525,
+  &quot;symbol&quot;: &quot;LTCBTC&quot;,
+  &quot;orders&quot;: [
+    {
+      &quot;symbol&quot;: &quot;LTCBTC&quot;,
+      &quot;orderId&quot;: 2,
+      &quot;clientOrderId&quot;: &quot;Kk7sqHb9J6mJWTMDVW7Vos&quot;
+    },
+    {
+      &quot;symbol&quot;: &quot;LTCBTC&quot;,
+      &quot;orderId&quot;: 3,
+      &quot;clientOrderId&quot;: &quot;xTXKaGYd4bluPVp78IVRvl&quot;
+    }
+  ],
+  &quot;orderReports&quot;: [
+    {
+      &quot;symbol&quot;: &quot;LTCBTC&quot;,
+      &quot;orderId&quot;: 2,
+      &quot;orderListId&quot;: 0,
+      &quot;clientOrderId&quot;: &quot;Kk7sqHb9J6mJWTMDVW7Vos&quot;,
+      &quot;transactTime&quot;: 1563417480525,
+      &quot;price&quot;: &quot;0.000000&quot;,
+      &quot;origQty&quot;: &quot;0.624363&quot;,
+      &quot;executedQty&quot;: &quot;0.000000&quot;,
+      &quot;cummulativeQuoteQty&quot;: &quot;0.000000&quot;,
+      &quot;status&quot;: &quot;NEW&quot;,
+      &quot;timeInForce&quot;: &quot;GTC&quot;,
+      &quot;type&quot;: &quot;STOP_LOSS&quot;,
+      &quot;side&quot;: &quot;BUY&quot;,
+      &quot;stopPrice&quot;: &quot;0.960664&quot;
+    },
+    {
+      &quot;symbol&quot;: &quot;LTCBTC&quot;,
+      &quot;orderId&quot;: 3,
+      &quot;orderListId&quot;: 0,
+      &quot;clientOrderId&quot;: &quot;xTXKaGYd4bluPVp78IVRvl&quot;,
+      &quot;transactTime&quot;: 1563417480525,
+      &quot;price&quot;: &quot;0.036435&quot;,
+      &quot;origQty&quot;: &quot;0.624363&quot;,
+      &quot;executedQty&quot;: &quot;0.000000&quot;,
+      &quot;cummulativeQuoteQty&quot;: &quot;0.000000&quot;,
+      &quot;status&quot;: &quot;NEW&quot;,
+      &quot;timeInForce&quot;: &quot;GTC&quot;,
+      &quot;type&quot;: &quot;LIMIT_MAKER&quot;,
+      &quot;side&quot;: &quot;BUY&quot;
+    }
+  ]
+}
+</code></pre>
+
+<h2 id="cancel-oco-trade">Cancel OCO (TRADE)</h2>
+<pre><code>DELETE /api/v3/orderList (HMAC SHA256)
+</code></pre>
+
+<p><strong>Weight</strong>: 1</p>
+<p>Cancel an entire Order List</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+<tr>
+<td>orderListId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>Either <code>orderListId</code> or <code>listClientOrderId</code> must be provided</td>
+</tr>
+<tr>
+<td>listClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>Either <code>orderListId</code> or <code>listClientOrderId</code> must be provided</td>
+</tr>
+<tr>
+<td>newClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>Used to uniquely identify this cancel. Automatically generated by default</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>The value cannot be greater than <code>60000</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Additional notes:
+* Cancelling an individual leg will cancel the entire OCO</p>
+<h2 id="query-oco-user_data">Query OCO (USER_DATA)</h2>
+<pre><code>GET /api/v3/orderList (HMAC SHA256)
+</code></pre>
+
+<p><strong>Weight</strong>: 1</p>
+<p>Retrieves a specific OCO based on provided optional parameters</p>
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>orderListId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>Either <code>orderListId</code> or <code>listClientOrderId</code> must be provided</td>
+</tr>
+<tr>
+<td>origClientOrderId</td>
+<td>STRING</td>
+<td>NO</td>
+<td>Either <code>orderListId</code> or <code>listClientOrderId</code> must be provided</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>The value cannot be greater than <code>60000</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+    &quot;orderListId&quot;: 27,
+    &quot;contingencyType&quot;: &quot;OCO&quot;,
+    &quot;listStatusType&quot;: &quot;EXEC_STARTED&quot;,
+    &quot;listOrderStatus&quot;: &quot;EXECUTING&quot;,
+    &quot;listClientOrderId&quot;: &quot;h2USkA5YQpaXHPIrkd96xE&quot;,
+    &quot;transactionTime&quot;: 1565245656253,
+    &quot;symbol&quot;: &quot;LTCBTC&quot;,
+    &quot;orders&quot;: [
+        {
+            &quot;symbol&quot;: &quot;LTCBTC&quot;,
+            &quot;orderId&quot;: 4,
+            &quot;clientOrderId&quot;: &quot;qD1gy3kc3Gx0rihm9Y3xwS&quot;
+        },
+        {
+            &quot;symbol&quot;: &quot;LTCBTC&quot;,
+            &quot;orderId&quot;: 5,
+            &quot;clientOrderId&quot;: &quot;ARzZ9I00CPM8i3NhmU9Ega&quot;
+        }
+    ]
+}
+</code></pre>
+
+<h2 id="query-all-oco-user_data">Query all OCO (USER_DATA)</h2>
+<pre><code>GET /api/v3/allOrderList (HMAC SHA256)
+</code></pre>
+
+<p><strong>Weight</strong>: 10</p>
+<p>Retrieves all OCO based on provided optional parameters</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fromId</td>
+<td>LONG</td>
+<td>NO</td>
+<td>If supplied, neither <code>startTime</code> or <code>endTime</code> can be provided</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>INT</td>
+<td>NO</td>
+<td>Default Value: 500; Max Value: 1000</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>The value cannot be greater than <code>60000</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+    {
+        &quot;orderListId&quot;: 29,
+        &quot;contingencyType&quot;: &quot;OCO&quot;,
+        &quot;listStatusType&quot;: &quot;EXEC_STARTED&quot;,
+        &quot;listOrderStatus&quot;: &quot;EXECUTING&quot;,
+        &quot;listClientOrderId&quot;: &quot;amEEAXryFzFwYF1FeRpUoZ&quot;,
+        &quot;transactionTime&quot;: 1565245913483,
+        &quot;symbol&quot;: &quot;LTCBTC&quot;,
+        &quot;orders&quot;: [
+            {
+                &quot;symbol&quot;: &quot;LTCBTC&quot;,
+                &quot;orderId&quot;: 4,
+                &quot;clientOrderId&quot;: &quot;oD7aesZqjEGlZrbtRpy5zB&quot;
+            },
+            {
+                &quot;symbol&quot;: &quot;LTCBTC&quot;,
+                &quot;orderId&quot;: 5,
+                &quot;clientOrderId&quot;: &quot;Jr1h6xirOxgeJOUuYQS7V3&quot;
+            }
+        ]
+    },
+    {
+        &quot;orderListId&quot;: 28,
+        &quot;contingencyType&quot;: &quot;OCO&quot;,
+        &quot;listStatusType&quot;: &quot;EXEC_STARTED&quot;,
+        &quot;listOrderStatus&quot;: &quot;EXECUTING&quot;,
+        &quot;listClientOrderId&quot;: &quot;hG7hFNxJV6cZy3Ze4AUT4d&quot;,
+        &quot;transactionTime&quot;: 1565245913407,
+        &quot;symbol&quot;: &quot;LTCBTC&quot;,
+        &quot;orders&quot;: [
+            {
+                &quot;symbol&quot;: &quot;LTCBTC&quot;,
+                &quot;orderId&quot;: 2,
+                &quot;clientOrderId&quot;: &quot;j6lFOfbmFMRjTYA7rRJ0LP&quot;
+            },
+            {
+                &quot;symbol&quot;: &quot;LTCBTC&quot;,
+                &quot;orderId&quot;: 3,
+                &quot;clientOrderId&quot;: &quot;z0KCjOdditiLS5ekAFtK81&quot;
+            }
+        ]
+    }
+]
+</code></pre>
+
+<h2 id="query-open-oco-user_data">Query Open OCO (USER_DATA)</h2>
+<pre><code>GET /api/v3/openOrderList (HMAC SHA256)
+</code></pre>
+
+<p>Weight: 2</p>
+<p><strong>Parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>The value cannot be greater than <code>60000</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+    {
+        &quot;orderListId&quot;: 31,
+        &quot;contingencyType&quot;: &quot;OCO&quot;,
+        &quot;listStatusType&quot;: &quot;EXEC_STARTED&quot;,
+        &quot;listOrderStatus&quot;: &quot;EXECUTING&quot;,
+        &quot;listClientOrderId&quot;: &quot;wuB13fmulKj3YjdqWEcsnp&quot;,
+        &quot;transactionTime&quot;: 1565246080644,
+        &quot;symbol&quot;: &quot;1565246079109&quot;,
+        &quot;orders&quot;: [
+            {
+                &quot;symbol&quot;: &quot;LTCBTC&quot;,
+                &quot;orderId&quot;: 4,
+                &quot;clientOrderId&quot;: &quot;r3EH2N76dHfLoSZWIUw1bT&quot;
+            },
+            {
+                &quot;symbol&quot;: &quot;LTCBTC&quot;,
+                &quot;orderId&quot;: 5,
+                &quot;clientOrderId&quot;: &quot;Cv1SnyPD3qhqpbjpYEHbd2&quot;
+            }
+        ]
+    }
 ]
 </code></pre>
 
@@ -707,7 +1178,7 @@ Creates and validates a new order but does not send it into the matching engine.
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -794,7 +1265,7 @@ Creates and validates a new order but does not send it into the matching engine.
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -813,6 +1284,7 @@ Otherwise most recent orders are returned.</p>
     &quot;symbol&quot;: &quot;BNBBTC&quot;,
     &quot;id&quot;: 28457,
     &quot;orderId&quot;: 100234,
+    &quot;orderListId&quot;: -1, //Unless OCO, the value will always be -1
     &quot;price&quot;: &quot;4.00000100&quot;,
     &quot;qty&quot;: &quot;12.00000000&quot;,
     &quot;quoteQty&quot;: &quot;48.000012&quot;,
@@ -860,7 +1332,7 @@ Otherwise most recent orders are returned.</p>
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -981,6 +1453,21 @@ Otherwise most recent orders are returned.</p>
 }
 </code></pre>
 
+<p>An additional event <code>outboundAccountPosition</code> is sent any time an account balance has changed and contains the assets that were possibly changed by the event that generated the balance change.</p>
+<pre><code class="javascript">{
+  &quot;e&quot;: &quot;outboundAccountPosition&quot;, //Event type
+  &quot;E&quot;: 1564034571105,             //Event Time
+  &quot;u&quot;: 1564034571073,             //Time of last account update
+  &quot;B&quot;: [                          //Balances Array
+    {
+      &quot;a&quot;: &quot;ETH&quot;,                 //Asset
+      &quot;f&quot;: &quot;10000.000000&quot;,        //Free
+      &quot;l&quot;: &quot;0.000000&quot;             //Locked
+    }
+  ]
+}
+</code></pre>
+
 <h3 id="order-update">Order Update</h3>
 <p>Orders are updated with the <code>executionReport</code> event. Check the API documentation and below for relevant enum definitions.
 Average price can be found by doing <code>Z</code> divided by <code>z</code>.</p>
@@ -997,7 +1484,7 @@ Average price can be found by doing <code>Z</code> divided by <code>z</code>.</p
   &quot;p&quot;: &quot;0.10264410&quot;,             // Order price
   &quot;P&quot;: &quot;0.00000000&quot;,             // Stop price
   &quot;F&quot;: &quot;0.00000000&quot;,             // Iceberg quantity
-  &quot;g&quot;: -1,                       // Ignore
+  &quot;g&quot;: -1,                       // OrderListId
   &quot;C&quot;: &quot;null&quot;,                   // Original client order ID; This is the ID of the order being canceled
   &quot;x&quot;: &quot;NEW&quot;,                    // Current execution type
   &quot;X&quot;: &quot;NEW&quot;,                    // Current order status
@@ -1029,6 +1516,33 @@ Average price can be found by doing <code>Z</code> divided by <code>z</code>.</p
 <li>TRADE</li>
 <li>EXPIRED</li>
 </ul>
+<p>If the order is an OCO, an event will be displayed named <code>ListStatus</code> in addition to the <code>executionReport</code> event.</p>
+<p><strong>Payload</strong></p>
+<pre><code class="javascript">{
+  &quot;e&quot;: &quot;listStatus&quot;,                //Event Type
+  &quot;E&quot;: 1564035303637,               //Event Time
+  &quot;s&quot;: &quot;ETHBTC&quot;,                    //Symbol
+  &quot;g&quot;: 2,                           //OrderListId
+  &quot;c&quot;: &quot;OCO&quot;,                       //Contingency Type
+  &quot;l&quot;: &quot;EXEC_STARTED&quot;,              //List Status Type
+  &quot;L&quot;: &quot;EXECUTING&quot;,                 //List Order Status
+  &quot;r&quot;: &quot;NONE&quot;,                      //List Reject Reason
+  &quot;C&quot;: &quot;F4QN4G8DlFATFlIUQ0cjdD&quot;,    //List Client Order ID
+  &quot;T&quot;: 1564035303625,               //Transaction Time
+  &quot;O&quot;: [                            //An array of objects
+    {
+      &quot;s&quot;: &quot;ETHBTC&quot;,                //Symbol
+      &quot;i&quot;: 17,                      // orderId
+      &quot;c&quot;: &quot;AJYsMjErWJesZvqlJCTUgL&quot; //ClientOrderId
+    },
+    {
+      &quot;s&quot;: &quot;ETHBTC&quot;,
+      &quot;i&quot;: 18,
+      &quot;c&quot;: &quot;bfYPSQdLoqAJeNrOr9adzq&quot;
+    }
+  ]
+}
+</code></pre>
               
             </div>
           </div>

@@ -213,7 +213,7 @@
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -264,7 +264,7 @@
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -315,7 +315,7 @@
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -520,7 +520,7 @@
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -651,7 +651,7 @@
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -737,7 +737,7 @@
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -820,7 +820,7 @@
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -945,7 +945,7 @@
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -1008,7 +1008,7 @@
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -1096,7 +1096,7 @@
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -1114,29 +1114,60 @@
 <p><strong>Response:</strong></p>
 <pre><code class="javascript">[
       {
-          &quot;id&quot;: 43123876,
-          &quot;price&quot;: &quot;0.00395740&quot;,
-          &quot;qty&quot;: &quot;4.06000000&quot;,
-          &quot;quoteQty&quot;: &quot;0.01606704&quot;,
+          &quot;clientOrderId&quot;: &quot;D2KDy4DIeS56PvkM13f8cP&quot;,
+          &quot;cummulativeQuoteQty&quot;: &quot;0.00000000&quot;,
+          &quot;executedQty&quot;: &quot;0.00000000&quot;,
+          &quot;icebergQty&quot;: &quot;0.00000000&quot;,
+          &quot;isWorking&quot;: false,
+          &quot;orderId&quot;: 41295,
+          &quot;origQty&quot;: &quot;5.31000000&quot;,
+          &quot;price&quot;: &quot;0.22500000&quot;,
+          &quot;side&quot;: &quot;SELL&quot;,
+          &quot;status&quot;: &quot;CANCELED&quot;,
+          &quot;stopPrice&quot;: &quot;0.18000000&quot;,
           &quot;symbol&quot;: &quot;BNBBTC&quot;,
-          &quot;time&quot;: 1556089977693
+          &quot;time&quot;: 1565769338806,
+          &quot;timeInForce&quot;: &quot;GTC&quot;,
+          &quot;type&quot;: &quot;TAKE_PROFIT_LIMIT&quot;,
+          &quot;updateTime&quot;: 1565769342148
       },
       {
-          &quot;id&quot;: 43123877,
-          &quot;price&quot;: &quot;0.00395740&quot;,
-          &quot;qty&quot;: &quot;0.77000000&quot;,
-          &quot;quoteQty&quot;: &quot;0.00304719&quot;,
+          &quot;clientOrderId&quot;: &quot;gXYtqhcEAs2Rn9SUD9nRKx&quot;,
+          &quot;cummulativeQuoteQty&quot;: &quot;0.00000000&quot;,
+          &quot;executedQty&quot;: &quot;0.00000000&quot;,
+          &quot;icebergQty&quot;: &quot;1.00000000&quot;,
+          &quot;isWorking&quot;: true,
+          &quot;orderId&quot;: 41296,
+          &quot;origQty&quot;: &quot;6.65000000&quot;,
+          &quot;price&quot;: &quot;0.18000000&quot;,
+          &quot;side&quot;: &quot;SELL&quot;,
+          &quot;status&quot;: &quot;CANCELED&quot;,
+          &quot;stopPrice&quot;: &quot;0.00000000&quot;,
           &quot;symbol&quot;: &quot;BNBBTC&quot;,
-          &quot;time&quot;: 1556089977693
+          &quot;time&quot;: 1565769348687,
+          &quot;timeInForce&quot;: &quot;GTC&quot;,
+          &quot;type&quot;: &quot;LIMIT&quot;,
+          &quot;updateTime&quot;: 1565769352226
       },
       {
-          &quot;id&quot;: 43253549,
-          &quot;price&quot;: &quot;0.00428930&quot;,
-          &quot;qty&quot;: &quot;23.30000000&quot;,
-          &quot;quoteQty&quot;: &quot;0.09994069&quot;,
+          &quot;clientOrderId&quot;: &quot;duDq1BqohhcMmdMs9FSuDy&quot;,
+          &quot;cummulativeQuoteQty&quot;: &quot;0.39450000&quot;,
+          &quot;executedQty&quot;: &quot;2.63000000&quot;,
+          &quot;icebergQty&quot;: &quot;0.00000000&quot;,
+          &quot;isWorking&quot;: true,
+          &quot;orderId&quot;: 41297,
+          &quot;origQty&quot;: &quot;2.63000000&quot;,
+          &quot;price&quot;: &quot;0.00000000&quot;,
+          &quot;side&quot;: &quot;SELL&quot;,
+          &quot;status&quot;: &quot;FILLED&quot;,
+          &quot;stopPrice&quot;: &quot;0.00000000&quot;,
           &quot;symbol&quot;: &quot;BNBBTC&quot;,
-          &quot;time&quot;: 1556163963504
+          &quot;time&quot;: 1565769358139,
+          &quot;timeInForce&quot;: &quot;GTC&quot;,
+          &quot;type&quot;: &quot;MARKET&quot;,
+          &quot;updateTime&quot;: 1565769358139
       }
+
 ]
 </code></pre>
 
@@ -1191,7 +1222,7 @@
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -1258,7 +1289,7 @@
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -1301,7 +1332,7 @@
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -1338,7 +1369,7 @@
 <td>recvWindow</td>
 <td>LONG</td>
 <td>NO</td>
-<td></td>
+<td>The value cannot be greater than <code>60000</code></td>
 </tr>
 <tr>
 <td>timestamp</td>

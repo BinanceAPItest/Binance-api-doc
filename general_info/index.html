@@ -163,7 +163,7 @@
 <li>All endpoints return either a JSON object or array.</li>
 <li>Data is returned in <strong>ascending</strong> order. Oldest first, newest last.</li>
 <li>All time and timestamp related fields are in milliseconds.</li>
-<li>HTTP <code>4XX</code> return codes are used for for malformed requests;
+<li>HTTP <code>4XX</code> return codes are used for malformed requests;
   the issue is on the sender's side.</li>
 <li>HTTP <code>429</code> return code is used when breaking a request rate limit.</li>
 <li>HTTP <code>418</code> return code is used when an IP has been auto-banned for continuing to send requests after receiving <code>429</code> codes.</li>
@@ -290,7 +290,7 @@ which can lead to requests taking varying amounts of time to reach the
 servers. With <code>recvWindow</code>, you can specify that the request must be
 processed within a certain number of milliseconds or be rejected by the
 server.</p>
-<p><strong>It recommended to use a small recvWindow of 5000 or less!</strong></p>
+<p><strong>It recommended to use a small recvWindow of 5000 or less! The max cannot go beyond 60,000!</strong></p>
 <h2 id="signed-endpoint-examples-for-post-apiv3order">SIGNED Endpoint Examples for POST /api/v3/order</h2>
 <p>Here is a step-by-step example of how to send a vaild signed payload from the
 Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl</code>.</p>
@@ -508,6 +508,16 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 <li>REJECTED</li>
 <li>EXPIRED</li>
 </ul>
+<p><strong>OCO Status (listStatusType):</strong>
+* RESPONSE
+* EXEC_STARTED
+* ALL_DONE</p>
+<p><strong>OCO Order Status (listOrderStatus):</strong>
+* EXECUTING
+* ALL_DONE
+* REJECT</p>
+<p><strong>ContingencyType</strong>
+* OCO</p>
 <p><strong>Order types (orderTypes, type):</strong></p>
 <ul>
 <li>LIMIT</li>

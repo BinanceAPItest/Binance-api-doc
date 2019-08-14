@@ -211,33 +211,45 @@ NONE</p>
 NONE</p>
 <p><strong>Response:</strong></p>
 <pre><code class="javascript">{
-  &quot;timezone&quot;: &quot;UTC&quot;,
-  &quot;serverTime&quot;: 1508631584636,
-  &quot;rateLimits&quot;: [
-    // These are defined in the `ENUM definitions` section under `Rate limiters (rateLimitType)`.
-    // All limits are optional.
-  ],
-  &quot;exchangeFilters&quot;: [
-    // There are defined in the `Filters` section.
-    // All filters are optional.
-  ],
-  &quot;symbols&quot;: [{
-    &quot;symbol&quot;: &quot;ETHBTC&quot;,
-    &quot;status&quot;: &quot;TRADING&quot;,
-    &quot;baseAsset&quot;: &quot;ETH&quot;,
-    &quot;baseAssetPrecision&quot;: 8,
-    &quot;quoteAsset&quot;: &quot;BTC&quot;,
-    &quot;quotePrecision&quot;: 8,
-    &quot;orderTypes&quot;: [
-      // These are defined in the `ENUM definitions` section under `Order types (orderTypes)`.
-      // All orderTypes are optional.
+    &quot;timezone&quot;: &quot;UTC&quot;,
+    &quot;serverTime&quot;: 1565246363776,
+    &quot;rateLimits&quot;: [
+        {
+            //These are defined in the `ENUM definitions` section under `Rate Limiters (rateLimitType)`.
+            //All limits are optional
+        }
     ],
-    &quot;icebergAllowed&quot;: false,
-    &quot;filters&quot;: [
-      // There are defined in the `Filters` section.
-      // All filters are optional.
+    &quot;exchangeFilters&quot;: [
+            //These are the defirned filters in the `Filters` section.
+            //All filters are optional.
+    ],
+    &quot;symbols&quot;: [
+        {
+            &quot;symbol&quot;: &quot;ETHBTC&quot;,
+            &quot;status&quot;: &quot;TRADING&quot;,
+            &quot;baseAsset&quot;: &quot;ETH&quot;,
+            &quot;baseAssetPrecision&quot;: 8,
+            &quot;quoteAsset&quot;: &quot;BTC&quot;,
+            &quot;quotePrecision&quot;: 8,
+            &quot;orderTypes&quot;: [
+                &quot;LIMIT&quot;,
+                &quot;LIMIT_MAKER&quot;,
+                &quot;MARKET&quot;,
+                &quot;STOP_LOSS&quot;,
+                &quot;STOP_LOSS_LIMIT&quot;,
+                &quot;TAKE_PROFIT&quot;,
+                &quot;TAKE_PROFIT_LIMIT&quot;
+            ],
+            &quot;icebergAllowed&quot;: true,
+            &quot;ocoAllowed&quot;: true,
+            &quot;isSpotTradingAllowed&quot;: true,
+            &quot;isMarginTradingAllowed&quot;: false,
+            &quot;filters&quot;: [
+            //These are defined in the Filters section.
+            //All filters are optional
+            ]
+        }
     ]
-  }]
 }
 </code></pre>
 
@@ -267,6 +279,14 @@ Adjusted based on the limit:</p>
 <td>1000</td>
 <td>10</td>
 </tr>
+<tr>
+<td>5000</td>
+<td>50</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>100</td>
+</tr>
 </tbody>
 </table>
 <p><strong>Parameters:</strong></p>
@@ -290,7 +310,7 @@ Adjusted based on the limit:</p>
 <td>limit</td>
 <td>INT</td>
 <td>NO</td>
-<td>Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500, 1000]</td>
+<td>Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500, 1000, 5000, 10000]</td>
 </tr>
 </tbody>
 </table>
