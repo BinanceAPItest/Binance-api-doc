@@ -859,7 +859,30 @@
 <p><strong>Weight:</strong>
 5</p>
 <p><strong>Parameters:</strong></p>
-<p>None</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>The value cannot be greater than <code>60000</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p><strong>Response:</strong></p>
 <pre><code class="javascript">{
       &quot;borrowEnabled&quot;: true,
