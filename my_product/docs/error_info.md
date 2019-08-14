@@ -10,6 +10,7 @@ Errors consist of two parts: an error code and a message. Codes are universal,
 ```
 
 
+
 ## 10xx - General Server or Network issues
 ### -1000 UNKNOWN
  * An unknown error occured while processing the request.
@@ -51,6 +52,9 @@ Errors consist of two parts: an error code and a message. Codes are universal,
 
 ### -1022 INVALID_SIGNATURE
  * Signature for this request is not valid.
+
+### -1099 Not found, authenticated, or authorized
+ * This replaces error code -1999
 
 
 ## 11xx - Request issues
@@ -126,6 +130,9 @@ Errors consist of two parts: an error code and a message. Codes are universal,
 ### -1130 INVALID_PARAMETER
  * Invalid data sent for a parameter.
  * Data sent for paramter '%s' is not valid.
+
+### -1131 BAD_RECV_WINDOW
+ * recvWindow must be less than 60000
 
 ### -2010 NEW_ORDER_REJECTED
  * NEW_ORDER_REJECTED

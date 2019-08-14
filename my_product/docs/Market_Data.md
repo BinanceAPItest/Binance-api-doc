@@ -59,33 +59,45 @@ NONE
 
 ```javascript
 {
-  "timezone": "UTC",
-  "serverTime": 1508631584636,
-  "rateLimits": [
-    // These are defined in the `ENUM definitions` section under `Rate limiters (rateLimitType)`.
-    // All limits are optional.
-  ],
-  "exchangeFilters": [
-    // There are defined in the `Filters` section.
-    // All filters are optional.
-  ],
-  "symbols": [{
-    "symbol": "ETHBTC",
-    "status": "TRADING",
-    "baseAsset": "ETH",
-    "baseAssetPrecision": 8,
-    "quoteAsset": "BTC",
-    "quotePrecision": 8,
-    "orderTypes": [
-      // These are defined in the `ENUM definitions` section under `Order types (orderTypes)`.
-      // All orderTypes are optional.
+    "timezone": "UTC",
+    "serverTime": 1565246363776,
+    "rateLimits": [
+        {
+            //These are defined in the `ENUM definitions` section under `Rate Limiters (rateLimitType)`.
+            //All limits are optional
+        }
     ],
-    "icebergAllowed": false,
-    "filters": [
-      // There are defined in the `Filters` section.
-      // All filters are optional.
+    "exchangeFilters": [
+            //These are the defirned filters in the `Filters` section.
+            //All filters are optional.
+    ],
+    "symbols": [
+        {
+            "symbol": "ETHBTC",
+            "status": "TRADING",
+            "baseAsset": "ETH",
+            "baseAssetPrecision": 8,
+            "quoteAsset": "BTC",
+            "quotePrecision": 8,
+            "orderTypes": [
+                "LIMIT",
+                "LIMIT_MAKER",
+                "MARKET",
+                "STOP_LOSS",
+                "STOP_LOSS_LIMIT",
+                "TAKE_PROFIT",
+                "TAKE_PROFIT_LIMIT"
+            ],
+            "icebergAllowed": true,
+            "ocoAllowed": true,
+            "isSpotTradingAllowed": true,
+            "isMarginTradingAllowed": false,
+            "filters": [
+            //These are defined in the Filters section.
+            //All filters are optional
+            ]
+        }
     ]
-  }]
 }
 ```
 
@@ -105,13 +117,15 @@ Limit | Weight
 5, 10, 20, 50, 100 | 1
 500 | 5
 1000 | 10
+5000 | 50
+10000 | 100
 
 **Parameters:**
 
 Name | Type | Mandatory | Description
 ------------ | ------------ | ------------ | ------------
 symbol | STRING | YES |
-limit | INT | NO | Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500, 1000]
+limit | INT | NO | Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500, 1000, 5000, 10000]
 
 **Caution:** setting limit=0 can return a lot of data.
 
