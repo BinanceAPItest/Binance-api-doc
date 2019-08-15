@@ -173,27 +173,25 @@
 but not get a response within the timeout period.
   It is important to <strong>NOT</strong> treat this as a failure operation; the execution status is
   <strong>UNKNOWN</strong> and could have been a success.</li>
-<li>When using <code>/api/v3</code> and <code>/sapi/v1/margin</code>, any endpoint can return an ERROR; the error payload is as follows:</li>
-<li></li>
-</ul>
-<pre><code class="javascript">{
-  &quot;code&quot;: -1121,
-  &quot;msg&quot;: &quot;Invalid symbol.&quot;
-}
-</code></pre>
-
-<ul>
-<li>When using <code>/wapi/v3</code>, any endpoint can retun an ERROR; the error payload is as follows:</li>
-<li></li>
-</ul>
-<pre><code class="javascript">{
-  &quot;success&quot;: false,
-  &quot;msg&quot;: &quot;Invalid symbol.&quot;
-}
-</code></pre>
-
-<ul>
-<li>Specific error codes and messages defined in <a href="../error_info/">ERROR INFO</a>.</li>
+<li>
+<p>When using <code>/api/v3</code> and <code>/sapi/v1/margin</code>, any endpoint can return an ERROR; the error payload is as follows:</p>
+<p><code>javascript
+{
+    "code": -1121,
+    "msg": "Invalid symbol."
+}</code></p>
+</li>
+<li>
+<p>When using <code>/wapi/v3</code>, any endpoint can retun an ERROR; the error payload is as follows:</p>
+<p><code>javascript
+{
+    "success": false,
+    "msg": "Invalid symbol."
+}</code></p>
+</li>
+<li>
+<p>Specific error codes and messages defined in <a href="../error_info/">ERROR INFO</a>.</p>
+</li>
 <li>For <code>GET</code> endpoints, parameters must be sent as a <code>query string</code>.</li>
 <li>For <code>POST</code>, <code>PUT</code>, and <code>DELETE</code> endpoints, the parameters may be sent as a
   <code>query string</code> or in the <code>request body</code> with content type
