@@ -139,6 +139,11 @@
     <a class="" href="../error_info/">ERROR INFO</a>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../change_log/">CHANGE LOG</a>
+	    </li>
+          
         </ul>
       </div>
       &nbsp;
@@ -173,7 +178,7 @@
               
                 <h1 id="rest-api">Rest API</h1>
 <h2 id="test-connectivity">Test connectivity</h2>
-<pre><code>GET /api/v3/ping
+<pre><code>GET /api/v1/ping
 </code></pre>
 
 <p>Test connectivity to the Rest API.</p>
@@ -186,7 +191,7 @@ NONE</p>
 </code></pre>
 
 <h2 id="check-server-time">Check server time</h2>
-<pre><code>GET /api/v3/time
+<pre><code>GET /api/v1/time
 </code></pre>
 
 <p>Test connectivity to the Rest API and get the current server time.</p>
@@ -201,7 +206,7 @@ NONE</p>
 </code></pre>
 
 <h2 id="exchange-information">Exchange information</h2>
-<pre><code>GET /api/v3/exchangeInfo
+<pre><code>GET /api/v1/exchangeInfo
 </code></pre>
 
 <p>Current exchange trading rules and symbol information</p>
@@ -254,7 +259,7 @@ NONE</p>
 </code></pre>
 
 <h2 id="order-book">Order book</h2>
-<pre><code>GET /api/v3/depth
+<pre><code>GET /api/v1/depth
 </code></pre>
 
 <p><strong>Weight:</strong>
@@ -334,7 +339,7 @@ Adjusted based on the limit:</p>
 </code></pre>
 
 <h2 id="recent-trades-list">Recent trades list</h2>
-<pre><code>GET /api/v3/trades
+<pre><code>GET /api/v1/trades
 </code></pre>
 
 <p>Get recent trades (up to last 500).</p>
@@ -379,7 +384,7 @@ Adjusted based on the limit:</p>
 </code></pre>
 
 <h2 id="old-trade-lookup">Old trade lookup</h2>
-<pre><code>GET /api/v3/historicalTrades
+<pre><code>GET /api/v1/historicalTrades
 </code></pre>
 
 <p>Get older market trades.</p>
@@ -430,7 +435,7 @@ Adjusted based on the limit:</p>
 </code></pre>
 
 <h2 id="compressedaggregate-trades-list">Compressed/Aggregate trades list</h2>
-<pre><code>GET /api/v3/aggTrades
+<pre><code>GET /api/v1/aggTrades
 </code></pre>
 
 <p>Get compressed, aggregate trades. Trades that fill at the time, from the same
@@ -500,7 +505,7 @@ order, with the same price will have the quantity aggregated.</p>
 </code></pre>
 
 <h2 id="klinecandlestick-data">Kline/Candlestick data</h2>
-<pre><code>GET /api/v3/klines
+<pre><code>GET /api/v1/klines
 </code></pre>
 
 <p>Kline/candlestick bars for a symbol.
@@ -606,7 +611,7 @@ Klines are uniquely identified by their open time.</p>
 </code></pre>
 
 <h2 id="24hr-ticker-price-change-statistics">24hr ticker price change statistics</h2>
-<pre><code>GET /api/v3/ticker/24hr
+<pre><code>GET /api/v1/ticker/24hr
 </code></pre>
 
 <p>24 hour rolling window price change statistics. <strong>Careful</strong> when accessing this with no symbol.</p>
@@ -791,6 +796,7 @@ Klines are uniquely identified by their open time.</p>
 ]
 </code></pre>
 
+<hr />
 <h1 id="web-socket-streams">Web-Socket Streams</h1>
 <ul>
 <li>The base endpoint is: <strong>wss://stream.binance.com:9443</strong></li>

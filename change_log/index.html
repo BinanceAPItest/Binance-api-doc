@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>CHANGE LOG - Exchange API Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "CHANGE LOG";
+    var mkdocs_page_input_path = "change_log.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Exchange API Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../general_info/">GENERAL INFO</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../account/">WALLET</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Market_Data/">MARKET DATA</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../spot/">SPOT ACCOUNT/TRADE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Margin/">MARGIN TRADE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../error_info/">ERROR INFO</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">CHANGE LOG</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#2019-08-16">2019-08-16</a></li>
+    
+
+    <li class="toctree-l2"><a href="#2019-08-15">2019-08-15</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#rest-api">Rest API</a></li>
+        
+            <li><a class="toctree-l3" href="#user-data-stream">USER DATA STREAM</a></li>
+        
+            <li><a class="toctree-l3" href="#new-errors">NEW ERRORS</a></li>
+        
+            <li><a class="toctree-l3" href="#new-2011-errors">NEW -2011 ERRORS</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#2019-03-12">2019-03-12</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#rest-api_1">Rest API</a></li>
+        
+            <li><a class="toctree-l3" href="#websocket-streams">Websocket streams</a></li>
+        
+            <li><a class="toctree-l3" href="#system-improvements">System improvements</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#2018-11-13">2018-11-13</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#rest-api_2">Rest API</a></li>
+        
+            <li><a class="toctree-l3" href="#user-data-stream_1">User data stream</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#2018-07-18">2018-07-18</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#rest-api_3">Rest API</a></li>
+        
+            <li><a class="toctree-l3" href="#user-data-stream_2">User data stream</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#2018-01-23">2018-01-23</a></li>
+    
+
+    <li class="toctree-l2"><a href="#2018-01-20">2018-01-20</a></li>
+    
+
+    <li class="toctree-l2"><a href="#2018-01-14">2018-01-14</a></li>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Exchange API Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>CHANGE LOG</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="2019-08-16">2019-08-16</h2>
+<ul>
+<li>
+<p>In Q4 2017, the following endpoints were deprecated and removed from the API documentation. They have been permanently removed from the API as of this version. We apologize for the omission from the original changelog:</p>
+<ul>
+<li>GET api/v1/order</li>
+<li>GET api/v1/openOrders</li>
+<li>POST api/v1/order</li>
+<li>DELETE api/v1/order</li>
+<li>GET api/v1/allOrders</li>
+<li>GET api/v1/account</li>
+<li>GET api/v1/myTrades</li>
+</ul>
+</li>
+<li>
+<p>Streams, endpoints, parameters, payloads, etc. described in the documents in this repository are <strong>considered official</strong> and <strong>supported</strong>. The use of any other streams, endpoints, parameters, or payloads, etc. is <strong>not supported; use them at your own risk and with no guarantees.</strong></p>
+</li>
+</ul>
+<hr />
+<h2 id="2019-08-15">2019-08-15</h2>
+<h3 id="rest-api">Rest API</h3>
+<ul>
+<li>
+<p>New order type: OCO ("One Cancels the Other")</p>
+<ul>
+<li>
+<p>An OCO has 2 orders: (also known as legs in financial terms)</p>
+<ul>
+<li><code>STOP_LOSS</code> or <code>STOP_LOSS_LIMIT</code> leg</li>
+<li><code>LIMIT_MAKER</code> leg</li>
+</ul>
+</li>
+<li>
+<p>Price Restrictions:</p>
+<ul>
+<li><code>SELL Orders</code> : Limit Price &gt; Last Price &gt; Stop Price</li>
+<li><code>BUY Orders</code> : Limit Price &lt; Last Price &lt; Stop Price</li>
+<li>As stated, the prices must "straddle" the last traded price on the symbol. EX: If the last price is 10:<ul>
+<li>A SELL OCO must have the limit price greater than 10, and the stop price less than 10.</li>
+<li>A BUY OCO must have a limit price less than 10, and the stop price greater than 10.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Quantity Restrictions:</p>
+<ul>
+<li>Both legs must have the <strong>same quantity</strong>.</li>
+<li><code>ICEBERG</code> quantities however, do not have to be the same.</li>
+</ul>
+</li>
+<li>
+<p>Execution Order:</p>
+<ul>
+<li>If the <code>LIMIT_MAKER</code> is touched, the limit maker leg will be executed first BEFORE cancelling the Stop Loss Leg.</li>
+<li>if the Market Price moves such that the <code>STOP_LOSS</code> or <code>STOP_LOSS_LIMIT</code> will trigger, the Limit Maker leg will be cancelled BEFORE executing the <code>STOP_LOSS</code> Leg.</li>
+</ul>
+</li>
+<li>
+<p>Cancelling an OCO</p>
+<ul>
+<li>Cancelling either order leg will cancel the entire OCO.</li>
+<li>The entire OCO can be canceled via the <code>orderListId</code> or the <code>listClientOrderId</code>.</li>
+</ul>
+</li>
+<li>
+<p>New Enums for OCO:</p>
+<ol>
+<li><code>ListStatusType</code><ul>
+<li><code>RESPONSE</code> - used when ListStatus is responding to a failed action. (either order list placement or cancellation)</li>
+<li><code>EXEC_STARTED</code> - used when an order list has been placed or there is an update to a list's status.</li>
+<li><code>ALL_DONE</code> - used when an order list has finished executing and is no longer active.</li>
+</ul>
+</li>
+<li><code>ListOrderStatus</code><ul>
+<li><code>EXECUTING</code> - used when an order list has been placed or there is an update to a list's status.</li>
+<li><code>ALL_DONE</code> - used when an order list has finished executing and is no longer active.</li>
+<li><code>REJECT</code> - used when ListStatus is responding to a failed action. (either order list placement or cancellation)</li>
+</ul>
+</li>
+<li><code>ContingencyType</code><ul>
+<li><code>OCO</code> - specifies the type of order list.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>New Endpoints:</p>
+<ul>
+<li>POST api/v3/order/oco</li>
+<li>DELETE api/v3/orderList</li>
+<li>GET api/v3/orderList</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>recvWindow</code> cannot exceed 60000.</p>
+</li>
+<li>New <code>intervalLetter</code> values for headers:<ul>
+<li>SECOND =&gt; S</li>
+<li>MINUTE =&gt; M</li>
+<li>HOUR =&gt; H</li>
+<li>DAY =&gt; D</li>
+</ul>
+</li>
+<li>New Headers <code>X-MBX-USED-WEIGHT-(intervalNum)(intervalLetter)</code> will give your current used request weight for the (intervalNum)(intervalLetter) rate limiter. For example, if there is a one minute request rate weight limiter set, you will get a <code>X-MBX-USED-WEIGHT-1M</code> header in the response. The legacy header <code>X-MBX-USED-WEIGHT</code> will still be returned and will represent the current used weight for the one minute request rate weight limit.</li>
+<li>New Header <code>X-MBX-ORDER-COUNT-(intervalNum)(intervalLetter)</code>that is updated on any valid order placement and tracks your current order count for the interval; rejected/unsuccessful orders are not guaranteed to have <code>X-MBX-ORDER-COUNT-**</code> headers in the response.<ul>
+<li>Eg. <code>X-MBX-ORDER-COUNT-1S</code> for "orders per 1 second" and <code>X-MBX-ORDER-COUNT-1D</code> for orders per "one day"</li>
+</ul>
+</li>
+<li>GET api/v1/depth now supports <code>limit</code> 5000 and 10000; weights are 50 and 100 respectively.</li>
+<li>GET api/v1/exchangeInfo has a new parameter <code>ocoAllowed</code>.</li>
+</ul>
+<h3 id="user-data-stream">USER DATA STREAM</h3>
+<ul>
+<li><code>executionReport</code> event now contains "g" which has the <code>orderListId</code>; it will be set to -1 for non-OCO orders.</li>
+<li>New Event Type <code>listStatus</code>; <code>listStatus</code> is sent on an update to any OCO order.</li>
+<li>New Event Type <code>outboundAccountPosition</code>; <code>outboundAccountPosition</code> is sent any time an account's balance changes and contains the assets that could have changed by the event that generated the balance change (a deposit, withdrawal, trade, order placement, or cancelation).</li>
+</ul>
+<h3 id="new-errors">NEW ERRORS</h3>
+<ul>
+<li><strong>-1131 BAD_RECV_WINDOW</strong><ul>
+<li><code>recvWindow</code> must be less than 60000</li>
+</ul>
+</li>
+<li><strong>-1099 Not found, authenticated, or authorized</strong><ul>
+<li>This replaces error code -1999</li>
+</ul>
+</li>
+</ul>
+<h3 id="new-2011-errors">NEW -2011 ERRORS</h3>
+<ul>
+<li><strong>OCO_BAD_ORDER_PARAMS</strong><ul>
+<li>A parameter for one of the orders is incorrect.</li>
+</ul>
+</li>
+<li><strong>OCO_BAD_PRICES</strong><ul>
+<li>The relationship of the prices for the orders is not correct.</li>
+</ul>
+</li>
+<li><strong>UNSUPPORTED_ORD_OCO</strong><ul>
+<li>OCO orders are not supported for this symbol.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="2019-03-12">2019-03-12</h2>
+<h3 id="rest-api_1">Rest API</h3>
+<ul>
+<li>X-MBX-USED-WEIGHT header added to Rest API responses.</li>
+<li>Retry-After header added to Rest API 418 and 429 responses.</li>
+<li>When canceling the Rest API can now return <code>errorCode</code> -1013 OR -2011 if the symbol's <code>status</code> isn't <code>TRADING</code>.</li>
+<li><code>api/v1/depth</code> no longer has the ignored and empty <code>[]</code>.</li>
+<li><code>api/v3/myTrades</code> now returns <code>quoteQty</code>; the price * qty of for the trade.</li>
+</ul>
+<h3 id="websocket-streams">Websocket streams</h3>
+<ul>
+<li><code>&lt;symbol&gt;@depth</code> and <code>&lt;symbol&gt;@depthX</code> streams no longer have the ignored and empty <code>[]</code>.</li>
+</ul>
+<h3 id="system-improvements">System improvements</h3>
+<ul>
+<li>Matching Engine stability/reliability improvements.</li>
+<li>Rest API performance improvements.</li>
+</ul>
+<hr />
+<h2 id="2018-11-13">2018-11-13</h2>
+<h3 id="rest-api_2">Rest API</h3>
+<ul>
+<li>Can now cancel orders through the Rest API during a trading ban.</li>
+<li>New filters: <code>PERCENT_PRICE</code>, <code>MARKET_LOT_SIZE</code>, <code>MAX_NUM_ICEBERG_ORDERS</code>.</li>
+<li>Added <code>RAW_REQUST</code> rate limit. Limits based on the number of requests over X minutes regardless of weight.</li>
+<li>/api/v3/ticker/price increased to weight of 2 for a no symbol query.</li>
+<li>/api/v3/ticker/bookTicker increased weight of 2 for a no symbol query.</li>
+<li>DELETE /api/v3/order will now return an execution report of the final state of the order.</li>
+<li><code>MIN_NOTIONAL</code> filter has two new parameters: <code>applyToMarket</code> (whether or not the filter is applied to MARKET orders) and <code>avgPriceMins</code> (the number of minutes over which the price averaged for the notional estimation).</li>
+<li><code>intervalNum</code> added to /api/v1/exchangeInfo limits. <code>intervalNum</code> describes the amount of the interval. For example: <code>intervalNum</code> 5, with <code>interval</code> minute, means "every 5 minutes".</li>
+</ul>
+<h4 id="explanation-for-the-average-price-calculation">Explanation for the average price calculation:</h4>
+<ol>
+<li>
+<p>(qty * price) of all trades / numTrades of the trades over previous 5 minutes.</p>
+</li>
+<li>
+<p>If there is no trade in the last 5 minutes, it takes the first trade that happened outside of the 5min window.
+   For example if the last trade was 20 minutes ago, that trade's price is the 5 min average.</p>
+</li>
+<li>
+<p>If there is no trade on the symbol, there is no average price and market orders cannot be placed.
+   On a new symbol with <code>applyToMarket</code> enabled on the <code>MIN_NOTIONAL</code> filter, market orders cannot be placed until there is at least 1 trade.</p>
+</li>
+<li>
+<p>The current average price can be checked here: <code>https://api.binance.com/api/v3/avgPrice?symbol=&lt;symbol&gt;</code>
+   For example:
+   https://api.binance.com/api/v3/avgPrice?symbol=BNBUSDT</p>
+</li>
+</ol>
+<h3 id="user-data-stream_1">User data stream</h3>
+<ul>
+<li><code>Last quote asset transacted quantity</code> (as variable <code>Y</code>) added to execution reports. Represents the <code>lastPrice</code> * <code>lastQty</code> (<code>L</code> * <code>l</code>).</li>
+</ul>
+<hr />
+<h2 id="2018-07-18">2018-07-18</h2>
+<h3 id="rest-api_3">Rest API</h3>
+<ul>
+<li>New filter: <code>ICEBERG_PARTS</code></li>
+<li><code>POST api/v3/order</code> new defaults for <code>newOrderRespType</code>. <code>ACK</code>, <code>RESULT</code>, or <code>FULL</code>; <code>MARKET</code> and <code>LIMIT</code> order types default to <code>FULL</code>, all other orders default to <code>ACK</code>.</li>
+<li>POST api/v3/order <code>RESULT</code> and <code>FULL</code> responses now have <code>cummulativeQuoteQty</code></li>
+<li>GET api/v3/openOrders with no symbol weight reduced to 40.</li>
+<li>GET api/v3/ticker/24hr with no symbol weight reduced to 40.</li>
+<li>Max amount of trades from GET /api/v1/trades increased to 1000.</li>
+<li>Max amount of trades from GET /api/v1/historicalTrades increased to 1000.</li>
+<li>Max amount of aggregate trades from GET /api/v1/aggTrades increased to 1000.</li>
+<li>Max amount of aggregate trades from GET /api/v1/klines increased to 1000.</li>
+<li>Rest API Order lookups now return <code>updateTime</code> which represents the last time the order was updated; <code>time</code> is the order creation time.</li>
+<li>Order lookup endpoints will now return <code>cummulativeQuoteQty</code>. If <code>cummulativeQuoteQty</code> is &lt; 0, it means the data isn't available for this order at this time.</li>
+<li><code>REQUESTS</code> rate limit type changed to <code>REQUEST_WEIGHT</code>. This limit was always logically request weight and the previous name for it caused confusion.</li>
+</ul>
+<h3 id="user-data-stream_2">User data stream</h3>
+<ul>
+<li><code>cummulativeQuoteQty</code> field added to order responses and execution reports (as variable <code>Z</code>). Represents the cummulative amount of the <code>quote</code> that has been spent (with a <code>BUY</code> order) or received (with a <code>SELL</code> order). Historical orders will have a value &lt; 0 in this field indicating the data is not available at this time. <code>cummulativeQuoteQty</code> divided by <code>cummulativeQty</code> will give the average price for an order.</li>
+<li><code>O</code> (order creation time) added to execution reports</li>
+</ul>
+<hr />
+<h2 id="2018-01-23">2018-01-23</h2>
+<ul>
+<li>GET /api/v1/historicalTrades weight decreased to 5</li>
+<li>GET /api/v1/aggTrades weight decreased to 1</li>
+<li>GET /api/v1/klines weight decreased to 1</li>
+<li>GET /api/v1/ticker/24hr all symbols weight decreased to number of trading symbols / 2</li>
+<li>GET /api/v3/allOrders weight decreased to 5</li>
+<li>GET /api/v3/myTrades weight decreased to 5</li>
+<li>GET /api/v3/account weight decreased to 5</li>
+<li>GET /api/v1/depth limit=500 weight decreased to 5</li>
+<li>GET /api/v1/depth limit=1000 weight decreased to 10</li>
+<li>-1003 error message updated to direct users to websockets</li>
+</ul>
+<hr />
+<h2 id="2018-01-20">2018-01-20</h2>
+<ul>
+<li>GET /api/v1/ticker/24hr single symbol weight decreased to 1</li>
+<li>GET /api/v3/openOrders all symbols weight decreased to number of trading symbols / 2</li>
+<li>GET /api/v3/allOrders weight decreased to 15</li>
+<li>GET /api/v3/myTrades weight decreased to 15</li>
+<li>GET /api/v3/order weight decreased to 1</li>
+<li>myTrades will now return both sides of a self-trade/wash-trade</li>
+</ul>
+<hr />
+<h2 id="2018-01-14">2018-01-14</h2>
+<ul>
+<li>GET /api/v1/aggTrades weight changed to 2</li>
+<li>GET /api/v1/klines weight changed to 2</li>
+<li>GET /api/v3/order weight changed to 2</li>
+<li>GET /api/v3/allOrders weight changed to 20</li>
+<li>GET /api/v3/account weight changed to 20</li>
+<li>GET /api/v3/myTrades weight changed to 20</li>
+<li>GET /api/v3/historicalTrades weight changed to 20</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../error_info/" class="btn btn-neutral" title="ERROR INFO"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../error_info/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

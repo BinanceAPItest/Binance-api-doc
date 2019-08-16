@@ -125,6 +125,11 @@
     <a class="" href="../error_info/">ERROR INFO</a>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../change_log/">CHANGE LOG</a>
+	    </li>
+          
         </ul>
       </div>
       &nbsp;
@@ -1311,7 +1316,7 @@ Otherwise most recent orders are returned.</p>
 </ul>
 <h2 id="user-data-stream-endpoints">User Data stream Endpoints</h2>
 <h3 id="create-a-listenkey">Create a listenKey</h3>
-<pre><code>POST /api/v3/userDataStream
+<pre><code>POST /api/v1/userDataStream
 </code></pre>
 
 <p>Start a new user data stream. The stream will close after 60 minutes unless a keepalive is sent.</p>
@@ -1349,7 +1354,7 @@ Otherwise most recent orders are returned.</p>
 </code></pre>
 
 <h3 id="pingkeep-alive-a-listenkey">Ping/Keep-alive a listenKey</h3>
-<pre><code>PUT /api/v3/userDataStream
+<pre><code>PUT /api/v1/userDataStream
 </code></pre>
 
 <p>Keepalive a user data stream to prevent a time out. User data streams will close after 60 minutes. It's recommended to send a ping about every 30 minutes.</p>
@@ -1379,7 +1384,7 @@ Otherwise most recent orders are returned.</p>
 </code></pre>
 
 <h3 id="close-a-listenkey">Close a listenKey</h3>
-<pre><code>DELETE /api/v3/userDataStream
+<pre><code>DELETE /api/v1/userDataStream
 </code></pre>
 
 <p>Close out a user data stream.</p>
@@ -1408,6 +1413,7 @@ Otherwise most recent orders are returned.</p>
 <pre><code class="javascript">{}
 </code></pre>
 
+<hr />
 <h2 id="web-socket-payloads">Web Socket Payloads</h2>
 <h3 id="account-update">Account Update</h3>
 <p>Account state is updated with the <code>outboundAccountInfo</code> event.</p>

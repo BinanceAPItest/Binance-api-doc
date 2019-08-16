@@ -125,6 +125,11 @@
     <a class="" href="../error_info/">ERROR INFO</a>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../change_log/">CHANGE LOG</a>
+	    </li>
+          
         </ul>
       </div>
       &nbsp;
@@ -201,9 +206,10 @@ but not get a response within the timeout period.
 <li>If a parameter sent in both the <code>query string</code> and <code>request body</code>, the
   <code>query string</code> parameter will be used.</li>
 </ul>
+<hr />
 <h1 id="limits">LIMITS</h1>
 <ul>
-<li>The <code>/api/v3/exchangeInfo</code> <code>rateLimits</code> array contains objects related to the exchange's <code>RAW_REQUEST</code>, <code>REQUEST_WEIGHT</code>, and <code>ORDER</code> rate limits. These are further defined in the <code>ENUM definitions</code> section under <code>Rate limiters (rateLimitType)</code>.</li>
+<li>The <code>/api/v1/exchangeInfo</code> <code>rateLimits</code> array contains objects related to the exchange's <code>RAW_REQUEST</code>, <code>REQUEST_WEIGHT</code>, and <code>ORDER</code> rate limits. These are further defined in the <code>ENUM definitions</code> section under <code>Rate limiters (rateLimitType)</code>.</li>
 <li>The <code>/wapi/v3</code> <code>rateLimits</code> array contains objects related to the exchange's <code>REQUESTS</code> and <code>ORDER</code> rate limits.</li>
 <li>A 429 will be returned when either rate limit is violated.</li>
 <li>Each route has a <code>weight</code> which determines for the number of requests each endpoint counts for. Heavier endpoints and endpoints that do operations on multiple symbols will have a heavier <code>weight</code>.</li>
@@ -213,6 +219,7 @@ but not get a response within the timeout period.
 <li>IP bans are tracked and <strong>scale in duration</strong> for repeat offenders, <strong>from 2 minutes to 3 days</strong>.</li>
 <li>A <code>Retry-After</code> header is sent with a 418 or 429 responses and will give the <strong>number of seconds</strong> required to wait, in the case of a 418, to prevent a ban, or, in the case of a 429, until the ban is over.</li>
 </ul>
+<hr />
 <h1 id="endpoint-security-type">Endpoint security type</h1>
 <ul>
 <li>Each endpoint has a security type that determines the how you will
@@ -258,6 +265,7 @@ but not get a response within the timeout period.
 <ul>
 <li><code>TRADE</code>, <code>MARGIN</code> and <code>USER_DATA</code> endpoints are <code>SIGNED</code> endpoints.</li>
 </ul>
+<hr />
 <h1 id="signed-tradeuser_data-and-margin-endpoint-security">SIGNED (TRADE、USER_DATA AND MARGIN) Endpoint security</h1>
 <ul>
 <li><code>SIGNED</code> endpoints require an additional parameter, <code>signature</code>, to be
@@ -493,6 +501,7 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 </code></pre>
 
 <p>Note that for <code>wapi</code>, parameters must be sent in query strings.</p>
+<hr />
 <h1 id="public-api-definitions">Public API definitions</h1>
 <h2 id="terminology">Terminology</h2>
 <ul>
@@ -612,6 +621,7 @@ Linux command line using <code>echo</code>, <code>openssl</code>, and <code>curl
 <li>MINUTE</li>
 <li>DAY</li>
 </ul>
+<hr />
 <h1 id="filters">Filters</h1>
 <p>Filters define trading rules on a symbol or an exchange.
 Filters come in two forms: <code>symbol filters</code> and <code>exchange filters</code>.</p>
