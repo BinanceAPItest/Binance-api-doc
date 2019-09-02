@@ -88,6 +88,12 @@
     <li class="toctree-l2"><a href="#query-margin-pair-market_data">Query margin pair (MARKET_DATA)</a></li>
     
 
+    <li class="toctree-l2"><a href="#get-all-margin-assets-market_data">Get all margin assets (MARKET_DATA)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get-all-margin-pairs-market_data">Get all margin pairs (MARKET_DATA)</a></li>
+    
+
     <li class="toctree-l2"><a href="#query-margin-priceindex-market_data">Query margin priceIndex (MARKET_DATA)</a></li>
     
 
@@ -97,10 +103,19 @@
     <li class="toctree-l2"><a href="#margin-account-cancel-order-trade">Margin account cancel order (TRADE)</a></li>
     
 
+    <li class="toctree-l2"><a href="#get-transfer-history-user_data">Get transfer history (USER_DATA)</a></li>
+    
+
     <li class="toctree-l2"><a href="#query-loan-record-user_data">Query loan record (USER_DATA)</a></li>
     
 
     <li class="toctree-l2"><a href="#query-repay-record-user_data">Query repay record (USER_DATA)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get-interest-history-user_data">Get interest history (USER_DATA)</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get-force-liquidation-record-user_data">Get Force Liquidation Record (USER_DATA)</a></li>
     
 
     <li class="toctree-l2"><a href="#query-margin-account-details-user_data">Query margin account details (USER_DATA)</a></li>
@@ -410,6 +425,151 @@
 }
 </code></pre>
 
+<h2 id="get-all-margin-assets-market_data">Get all margin assets (MARKET_DATA)</h2>
+<pre><code>Get /sapi/v1/margin/allAssets
+</code></pre>
+
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">  [
+      {
+          &quot;assetFullName&quot;: &quot;USD coin&quot;,
+          &quot;assetName&quot;: &quot;USDC&quot;,
+          &quot;isBorrowable&quot;: true,
+          &quot;isMortgageable&quot;: true,
+          &quot;userMinBorrow&quot;: &quot;0.00000000&quot;,
+          &quot;userMinRepay&quot;: &quot;0.00000000&quot;
+      },
+      {
+          &quot;assetFullName&quot;: &quot;BNB-coin&quot;,
+          &quot;assetName&quot;: &quot;BNB&quot;,
+          &quot;isBorrowable&quot;: true,
+          &quot;isMortgageable&quot;: true,
+          &quot;userMinBorrow&quot;: &quot;1.00000000&quot;,
+          &quot;userMinRepay&quot;: &quot;0.00000000&quot;
+      },
+      {
+          &quot;assetFullName&quot;: &quot;udst&quot;,
+          &quot;assetName&quot;: &quot;USDT&quot;,
+          &quot;isBorrowable&quot;: true,
+          &quot;isMortgageable&quot;: true,
+          &quot;userMinBorrow&quot;: &quot;1.00000000&quot;,
+          &quot;userMinRepay&quot;: &quot;0.00000000&quot;
+      },
+      {
+          &quot;assetFullName&quot;: &quot;etherum&quot;,
+          &quot;assetName&quot;: &quot;ETH&quot;,
+          &quot;isBorrowable&quot;: true,
+          &quot;isMortgageable&quot;: true,
+          &quot;userMinBorrow&quot;: &quot;0.00000000&quot;,
+          &quot;userMinRepay&quot;: &quot;0.00000000&quot;
+      },
+      {
+          &quot;assetFullName&quot;: &quot;Bitcoin&quot;,
+          &quot;assetName&quot;: &quot;BTC&quot;,
+          &quot;isBorrowable&quot;: true,
+          &quot;isMortgageable&quot;: true,
+          &quot;userMinBorrow&quot;: &quot;0.00000000&quot;,
+          &quot;userMinRepay&quot;: &quot;0.00000000&quot;
+      }
+  ]
+</code></pre>
+
+<h2 id="get-all-margin-pairs-market_data">Get all margin pairs (MARKET_DATA)</h2>
+<pre><code>Get /sapi/v1/margin/allPairs 
+</code></pre>
+
+<p><strong>Weight:</strong>
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>symbol</td>
+<td>STRING</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">[
+    {
+        &quot;base&quot;: &quot;BNB&quot;,
+        &quot;id&quot;: 351637150141315861,
+        &quot;isBuyAllowed&quot;: True,
+        &quot;isMarginTrade&quot;: True,
+        &quot;isSellAllowed&quot;: True,
+        &quot;quote&quot;: &quot;BTC&quot;,
+        &quot;symbol&quot;: &quot;BNBBTC&quot;
+    },
+    {
+        &quot;base&quot;: &quot;TRX&quot;,
+        &quot;id&quot;: 351637923235429141,
+        &quot;isBuyAllowed&quot;: True,
+        &quot;isMarginTrade&quot;: True,
+        &quot;isSellAllowed&quot;: True,
+        &quot;quote&quot;: &quot;BTC&quot;,
+        &quot;symbol&quot;: &quot;TRXBTC&quot;
+    },
+    {
+        &quot;base&quot;: &quot;XRP&quot;,
+        &quot;id&quot;: 351638112213990165,
+        &quot;isBuyAllowed&quot;: True,
+        &quot;isMarginTrade&quot;: True,
+        &quot;isSellAllowed&quot;: True,
+        &quot;quote&quot;: &quot;BTC&quot;,
+        &quot;symbol&quot;: &quot;XRPBTC&quot;
+    },
+    {
+        &quot;base&quot;: &quot;ETH&quot;,
+        &quot;id&quot;: 351638524530850581,
+        &quot;isBuyAllowed&quot;: True,
+        &quot;isMarginTrade&quot;: True,
+        &quot;isSellAllowed&quot;: True,
+        &quot;quote&quot;: &quot;BTC&quot;,
+        &quot;symbol&quot;: &quot;ETHBTC&quot;
+    },
+    {
+        &quot;base&quot;: &quot;BNB&quot;,
+        &quot;id&quot;: 376870400832855109,
+        &quot;isBuyAllowed&quot;: True,
+        &quot;isMarginTrade&quot;: True,
+        &quot;isSellAllowed&quot;: True,
+        &quot;quote&quot;: &quot;USDT&quot;,
+        &quot;symbol&quot;: &quot;BNBUSDT&quot;
+  },
+]
+</code></pre>
+
 <h2 id="query-margin-priceindex-market_data">Query margin priceIndex (MARKET_DATA)</h2>
 <pre><code>Get /sapi/v1/margin/priceIndex 
 </code></pre>
@@ -685,6 +845,107 @@
 }
 </code></pre>
 
+<h2 id="get-transfer-history-user_data">Get transfer history (USER_DATA)</h2>
+<pre><code>Get /sapi/v1/margin/transfer
+</code></pre>
+
+<p><strong>Weight:</strong>s
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>STRING</td>
+<td>YES</td>
+<td>Tranfer Type: ROLL_IN, ROLL_OUT</td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>current</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Currently querying page. Start from 1. Default:1</td>
+</tr>
+<tr>
+<td>size</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Default:10 Max:100</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>The value cannot be greater than <code>60000</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">{
+    &quot;rows&quot;: [
+    {
+        &quot;amount: &quot;0.10000000&quot;,
+        &quot;asset&quot;: &quot;BNB&quot;,
+        &quot;status&quot;: &quot;CONFIRMED&quot;,
+        &quot;timestamp&quot;: 1566898617,
+        &quot;txId&quot;: 5240372201,
+        &quot;type&quot;: &quot;ROLL_IN&quot;
+    },
+    {
+        &quot;amount&quot;: &quot;5.00000000&quot;,
+        &quot;asset&quot;: &quot;USDT&quot;,
+        &quot;status&quot;: &quot;CONFIRMED&quot;,
+        &quot;timestamp&quot;: 1566888436,
+        &quot;txId&quot;: 5239810406,
+        &quot;type&quot;: &quot;ROLL_OUT&quot;
+    },
+    {
+        &quot;amount&quot;: &quot;1.00000000&quot;,
+        &quot;asset&quot;: &quot;EOS,
+        &quot;status&quot;: &quot;CONFIRMED&quot;,
+        &quot;timestamp&quot;: 1566888403,
+        &quot;txId&quot;: 5239808703,
+        &quot;type&quot;: &quot;ROLL_IN&quot;
+    }
+    &quot;total&quot;: 3
+} 
+</code></pre>
+
+<ul>
+<li>Response in descending order</li>
+</ul>
 <h2 id="query-loan-record-user_data">Query loan record (USER_DATA)</h2>
 <pre><code>Get /sapi/v1/margin/loan
 </code></pre>
@@ -860,6 +1121,195 @@
      ],
      &quot;total&quot;: 1
 }
+</code></pre>
+
+<ul>
+<li>Response in descending order</li>
+</ul>
+<h2 id="get-interest-history-user_data">Get interest history (USER_DATA)</h2>
+<pre><code>Get /sapi/v1/margin/interestHistory
+</code></pre>
+
+<p><strong>Weight:</strong>s
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asset</td>
+<td>STRING</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>current</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Currently querying page. Start from 1. Default:1</td>
+</tr>
+<tr>
+<td>size</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Default:10 Max:100</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>The value cannot be greater than <code>60000</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">  {
+      &quot;rows&quot;: [
+          {
+              &quot;asset&quot;: &quot;BNB&quot;,
+              &quot;interest&quot;: &quot;0.02414667&quot;,
+              &quot;interestAccuredTime&quot;: 1566813600,
+              &quot;interestRate&quot;: &quot;0.01600000&quot;,
+              &quot;principal&quot;: &quot;36.22000000&quot;,
+              &quot;type&quot;: &quot;ON_BORROW&quot;
+          },
+          {
+              &quot;asset&quot;: &quot;BNB&quot;,
+              &quot;interest&quot;: &quot;0.02019334&quot;,
+              &quot;interestAccuredTime&quot;: 1566813600,
+              &quot;interestRate&quot;: &quot;0.01600000&quot;,
+              &quot;principal&quot;: &quot;30.29000000&quot;,
+              &quot;type&quot;: &quot;ON_BORROW&quot;
+          },
+          {
+              &quot;asset&quot;: &quot;BNB&quot;,
+              &quot;interest&quot;: &quot;0.02098667&quot;,
+              &quot;interestAccuredTime&quot;: 1566813600,
+              &quot;interestRate&quot;: &quot;0.01600000&quot;,
+              &quot;principal&quot;: &quot;31.48000000&quot;,
+              &quot;type&quot;: &quot;ON_BORROW&quot;
+          },
+          {
+              &quot;asset&quot;: &quot;BNB&quot;,
+              &quot;interest&quot;: &quot;0.02483334&quot;,
+              &quot;interestAccuredTime&quot;: 1566806400,
+              &quot;interestRate&quot;: &quot;0.01600000&quot;,
+              &quot;principal&quot;: &quot;37.25000000&quot;,
+              &quot;type&quot;: &quot;ON_BORROW&quot;
+          },
+          {
+              &quot;asset&quot;: &quot;BNB&quot;,
+              &quot;interest&quot;: &quot;0.02165334&quot;,
+              &quot;interestAccuredTime&quot;: 1566806400,
+              &quot;interestRate&quot;: &quot;0.01600000&quot;,
+              &quot;principal&quot;: &quot;32.48000000&quot;,
+              &quot;type&quot;: &quot;ON_BORROW&quot;
+          }
+      ],
+      &quot;total&quot;: 5
+  }
+</code></pre>
+
+<ul>
+<li>Response in descending order</li>
+</ul>
+<h2 id="get-force-liquidation-record-user_data">Get Force Liquidation Record (USER_DATA)</h2>
+<pre><code>Get /sapi/v1/margin/forceLiquidationRec
+</code></pre>
+
+<p><strong>Weight:</strong>s
+5</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>startTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>endTime</td>
+<td>LONG</td>
+<td>NO</td>
+<td></td>
+</tr>
+<tr>
+<td>current</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Currently querying page. Start from 1. Default:1</td>
+</tr>
+<tr>
+<td>size</td>
+<td>LONG</td>
+<td>NO</td>
+<td>Default:10 Max:100</td>
+</tr>
+<tr>
+<td>recvWindow</td>
+<td>LONG</td>
+<td>NO</td>
+<td>The value cannot be greater than <code>60000</code></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>LONG</td>
+<td>YES</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response:</strong></p>
+<pre><code class="javascript">  {
+      &quot;rows&quot;: [
+          {
+              &quot;avgPrice&quot;: &quot;0.00388359&quot;,
+              &quot;executedQty&quot;: &quot;31.39000000&quot;,
+              &quot;orderId&quot;: 180015097,
+              &quot;price&quot;: &quot;0.00388110&quot;,
+              &quot;qty&quot;: &quot;31.39000000&quot;,
+              &quot;side&quot;: &quot;SELL&quot;,
+              &quot;symbol&quot;: &quot;BNBBTC&quot;,
+              &quot;timeInForce&quot;: &quot;GTC&quot;,
+              &quot;updatedTime&quot;: 1558941374745
+          }
+      ],
+      &quot;total&quot;: 1
+  }
 </code></pre>
 
 <ul>
@@ -1476,8 +1926,6 @@
 <p><strong>Response:</strong></p>
 <pre><code class="javascript">{}
 </code></pre>
-
-<p>ar</p>
               
             </div>
           </div>
@@ -1500,7 +1948,6 @@
     
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
         </div>
